@@ -47,14 +47,14 @@ const DICTIONARY = {
 };
 
 const NLP_INTENTS = [
-  { patterns: [/^(hi|hey|hello|hlo|hii+|hai|namaste|namaskar|good\s*(morning|afternoon|evening|day)|howdy|sup|yo)/i], responses: ["Hello! Welcome to Gaurex 👋 I'm your intelligent assistant. How can I help you today?", "Hey! Great to see you. What can Gaurex help you build today?"] },
+  { patterns: [/^(hi|hey|hello|hlo|hii+|hai|namaste|namaskar|good\s*(morning|afternoon|evening|day)|howdy|sup|yo)/i], responses: ["Hello! Welcome to Gaurex 👋 I'm your intelligent AI assistant. How can I help you today?", "Hey! Great to see you. What project can Gaurex help you build today?"] },
   { patterns: [/how\s+are\s+you|how\s+r\s+u|hows\s+it\s+going|what.?s\s+up/i], responses: ["Running at 100% efficiency! 🤖 What can I help you with?"] },
   { patterns: [/thank|thanks|thx|appreciated/i], responses: ["You're welcome! Anything else I can help with? 😊"] },
-  { patterns: [/price|cost|fee|budget|quote|how\s+much/i], responses: ["Our pricing is customised per project scope.\n\n📧 gaurex.ai@gmail.com\n📞 +91 9579098477\n💬 WhatsApp: +91 9579098477"] },
+  { patterns: [/price|cost|fee|budget|quote|how\s+much/i], responses: ["Our pricing is customized per project scope:\n\n• Websites: Starts ₹15,000\n• AI Chatbots: Starts ₹20,000\n• Android Apps: Starts ₹25,000\n• ERP Systems: Starts ₹80,000\n\n📧 gaurex.ai@gmail.com\n📞 +91 9579098477"] },
   { patterns: [/contact|reach|call|phone|email/i], responses: ["📞 +91 9579098477\n📧 gaurex.ai@gmail.com\n⏰ Mon–Sat, 9AM–7PM IST\n💬 WhatsApp: +91 9579098477"] },
-  { patterns: [/founder|gauresh|khairnar|who\s+(made|built|started)/i], responses: ["Gaurex was founded by Gauresh Deepak Khairnar!\n\n🎓 AI & ML Engineer\n🛡️ Cyber Security Specialist\n🤝 Rayba Foundation NGO Owner\n👑 Vice President — K.K. Wagh\n💼 50+ projects completed"] },
+  { patterns: [/founder|gauresh|khairnar|who\s+(made|built|started)/i], responses: ["Gaurex was founded by Gauresh Deepak Khairnar!\n\n🎓 AI & ML Engineer (K.K. Wagh Polytechnic VP)\n🛡️ Cyber Security Specialist\n🤝 Rayba Foundation NGO Owner\n💼 50+ completed software projects"] },
 ];
-const FALLBACK = ["Good question! Reach us at gaurex.ai@gmail.com for a detailed answer!", "I'd love to help more — contact us at +91 9579098477 or gaurex.ai@gmail.com!"];
+const FALLBACK = ["Good question! Reach founder Gauresh Khairnar directly at gaurex.ai@gmail.com or +91 9579098477 for instant details!", "I'd love to help you build that! Contact us at +91 9579098477 or gaurex.ai@gmail.com!"];
 
 function nlpReply(input: string): string {
   const t = input.trim();
@@ -126,7 +126,6 @@ export default function Home() {
 
   const [chatOpen, setChatOpen] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
-  const [cookieConsent, setCookieConsent] = useState(true);
   const [backToTop, setBackToTop] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -151,10 +150,14 @@ export default function Home() {
     try {
       const saved = localStorage.getItem('gaurex_chat_history');
       if (saved) setChatMessages(JSON.parse(saved));
-      const cookieSeen = localStorage.getItem('gaurex_cookie_seen');
-      if (!cookieSeen) setCookieConsent(false);
     } catch {}
   }, []);
+
+  useEffect(() => {
+    if (chatMessages.length > 0) {
+      try { localStorage.setItem('gaurex_chat_history', JSON.stringify(chatMessages)); } catch {}
+    }
+  }, [chatMessages]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -282,6 +285,8 @@ export default function Home() {
     return () => clearTimeout(t);
   }, []);
 
+  useEffect(() => { chatEndRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [chatMessages, typingBot]);
+
   const sendChat = useCallback((text: string) => {
     if (!text.trim()) return;
     soundFx.playClick();
@@ -329,8 +334,6 @@ export default function Home() {
     setBookingOpen(true);
   };
 
-  const activeServiceData = activeService !== null ? SERVICES[activeService] : null;
-
   return (
     <>
       <Head>
@@ -338,7 +341,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       </Head>
 
-      {/* CURSOR CONSTELLATION TRAIL */}
       <CursorTrail />
 
       <div className="scroll-progress-container">
@@ -417,7 +419,6 @@ export default function Home() {
               ))}
             </div>
 
-            {/* LIVE CODE TERMINAL TYPING WIDGET */}
             <CodeTerminal />
           </div>
 
@@ -428,7 +429,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* DUAL MARQUEE (REVERSE SCROLL) */}
+        {/* DUAL MARQUEE */}
         <div className="client-strip">
           <div className="client-strip-title">Trusted By Institutions & Forward-Thinking Businesses</div>
           <div className="client-logos-track marquee-reverse">
@@ -493,7 +494,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SERVICES WITH SPOTLIGHT & HOLOGRAPHIC FOIL */}
+        {/* SERVICES */}
         <section id="services" className="section" style={{ background: 'var(--surface)' }}>
           <div className="container">
             <div className="services-header">
@@ -529,7 +530,7 @@ export default function Home() {
           <TechStackDrawer />
         </section>
 
-        {/* BEFORE VS AFTER SOLUTION SLIDER */}
+        {/* BEFORE VS AFTER SLIDER */}
         <BeforeAfterSlider />
 
         {/* CALLOUT BANNER */}
@@ -552,7 +553,7 @@ export default function Home() {
         {/* COST CALCULATOR */}
         <CostCalculator onBook={openBookingModal} />
 
-        {/* AI LIVE DEMO SANDBOX */}
+        {/* AI SANDBOX */}
         <AiSandbox />
 
         {/* SCROLLYTELLING */}
@@ -695,6 +696,38 @@ export default function Home() {
       </div>
 
       <button className={`back-to-top-trigger${backToTop ? ' visible' : ''}`} onClick={() => { soundFx.playClick(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>↑</button>
+
+      {/* CHATBOT WINDOW */}
+      <div className={`chatbot-window${chatOpen ? ' open' : ''}`}>
+        <div className="chatbot-header">
+          <div className="chatbot-header-left">
+            <div className="chatbot-avatar">G</div>
+            <div className="chatbot-info"><h4>Gaurex AI</h4><p>Online — 24/7</p></div>
+          </div>
+          <button className="chat-clear-btn" onClick={() => setChatMessages([])}>Clear</button>
+        </div>
+        <div className="chatbot-messages">
+          {chatMessages.map((msg, i) => (
+            <div className={`chat-msg ${msg.role}`} key={i}>
+              <div className="chat-bubble" style={{ whiteSpace: 'pre-line' }}>{msg.text}</div>
+            </div>
+          ))}
+          {typingBot && <div className="chat-msg bot"><div className="chat-bubble">Typing...</div></div>}
+          <div ref={chatEndRef} />
+        </div>
+        <div className="chatbot-quick-replies">
+          {['Hi 👋', 'Services', 'Pricing', 'Book Call', 'WhatsApp'].map(qr => (
+            <button key={qr} className="quick-reply" onClick={() => {
+              if (qr === 'Book Call') openBookingModal();
+              else sendChat(qr);
+            }}>{qr}</button>
+          ))}
+        </div>
+        <div className="chatbot-input-wrap">
+          <input className="chatbot-input" placeholder="Ask anything..." value={chatInput} onChange={e => setChatInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && sendChat(chatInput)} />
+          <button className="chatbot-send" onClick={() => sendChat(chatInput)}>➜</button>
+        </div>
+      </div>
     </>
   );
 }
