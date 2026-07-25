@@ -1,6 +1,6 @@
 /* ============================================
-   GAUREX — Gen-Z Dark Edition v11
-   Complete Floating Action Controls & Chatbot Window
+   GAUREX — Gen-Z Dark Edition v12
+   Mobile Display & Modal Overlay Hotfix
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
@@ -189,20 +189,53 @@ input, textarea, select { font-family: var(--font-body); }
 }
 .mobile-nav a:hover, .mobile-nav a.active { color: var(--accent); }
 
+/* ----------- MODALS & OVERLAYS ----------- */
+.booking-modal-overlay, .modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(8, 8, 8, 0.88);
+  backdrop-filter: blur(16px);
+  z-index: 20000;
+  display: none !important;
+  align-items: center; justify-content: center;
+  padding: clamp(1rem, 4vw, 2rem);
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.3s var(--ease-out), visibility 0.3s;
+}
+.booking-modal-overlay.open, .modal-overlay.open {
+  display: flex !important;
+  opacity: 1 !important; visibility: visible !important;
+}
+
+.booking-modal-panel, .modal-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  width: 100%; max-width: 600px;
+  border-radius: var(--r-md);
+  overflow: hidden; position: relative;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.8);
+}
+.booking-top-bar, .modal-top-bar {
+  padding: 1.25rem 1.5rem;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.booking-title, .modal-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--text); }
+.modal-close { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; color: var(--text-muted); cursor: pointer; transition: all 0.3s; }
+.modal-close:hover { border-color: var(--accent); color: var(--accent); }
+.booking-body, .modal-body { padding: 2rem 1.5rem; }
+
 /* ----------- FLOATING ACTION BUTTONS & CHATBOT WINDOW ----------- */
 .floating-actions {
   position: fixed;
   bottom: clamp(1.25rem, 3vw, 2rem);
   right: clamp(1.25rem, 3vw, 2rem);
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  z-index: 9999;
+  display: flex; flex-direction: column;
+  gap: 0.75rem; z-index: 9999;
 }
 .whatsapp-trigger {
   width: 52px; height: 52px;
-  background: var(--whatsapp);
-  border-radius: 50%;
+  background: var(--whatsapp); border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 6px 20px rgba(37,211,102,0.4);
   transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
@@ -212,8 +245,7 @@ input, textarea, select { font-family: var(--font-body); }
 
 .chatbot-trigger {
   width: 52px; height: 52px;
-  background: var(--accent);
-  border-radius: 50%;
+  background: var(--accent); border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 6px 24px rgba(255,69,0,0.4);
   transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
@@ -226,9 +258,7 @@ input, textarea, select { font-family: var(--font-body); }
   bottom: clamp(1.25rem, 3vw, 2rem);
   left: clamp(1.25rem, 3vw, 2rem);
   width: 44px; height: 44px;
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: 50%;
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   color: var(--text-muted); z-index: 9999; opacity: 0; pointer-events: none;
   transition: all 0.3s var(--ease-out);
@@ -242,18 +272,15 @@ input, textarea, select { font-family: var(--font-body); }
   right: clamp(1.25rem, 3vw, 2rem);
   width: min(380px, calc(100vw - 2.5rem));
   max-height: min(540px, calc(100svh - 120px));
-  background: var(--surface);
-  border: 1px solid var(--border-hot);
-  display: flex; flex-direction: column;
-  z-index: 10000;
-  border-radius: var(--r-md);
+  background: var(--surface); border: 1px solid var(--border-hot);
+  display: none; flex-direction: column;
+  z-index: 10000; border-radius: var(--r-md);
   box-shadow: 0 24px 80px rgba(0,0,0,0.8);
-  transform-origin: bottom right;
-  transition: all 0.35s var(--ease-out);
+  transform-origin: bottom right; transition: all 0.35s var(--ease-out);
   opacity: 0; transform: scale(0.85) translateY(16px);
   pointer-events: none; overflow: hidden;
 }
-.chatbot-window.open { opacity: 1; transform: scale(1) translateY(0); pointer-events: all; }
+.chatbot-window.open { display: flex !important; opacity: 1; transform: scale(1) translateY(0); pointer-events: all; }
 
 .chatbot-header { padding: 1rem 1.25rem; background: var(--surface-2); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
 .chatbot-header-left { display: flex; align-items: center; gap: 0.85rem; }

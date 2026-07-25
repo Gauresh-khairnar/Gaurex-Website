@@ -116,7 +116,6 @@ const MARQUEE_ITEMS = ['Websites', '✦', 'Mobile Apps', '✦', 'AI Agents', '�
 
 export default function Home() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const loaderRef = useRef<HTMLDivElement>(null);
   const scrollySectionRef = useRef<HTMLElement>(null);
   const scrollyTrackRef = useRef<HTMLDivElement>(null);
 
@@ -147,6 +146,7 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true);
+    setHeroDrawn(true);
     try {
       const saved = localStorage.getItem('gaurex_chat_history');
       if (saved) setChatMessages(JSON.parse(saved));
@@ -158,14 +158,6 @@ export default function Home() {
       try { localStorage.setItem('gaurex_chat_history', JSON.stringify(chatMessages)); } catch {}
     }
   }, [chatMessages]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      loaderRef.current?.classList.add('hidden');
-      setTimeout(() => setHeroDrawn(true), 400);
-    }, 1800);
-    return () => clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -356,12 +348,6 @@ export default function Home() {
 
       <div className="scroll-progress-container">
         <div className="scroll-progress-bar" style={{ width: `${scrollProgress}%` }} />
-      </div>
-
-      <div className="loader" ref={loaderRef}>
-        <div className="loader-logo">Gaur<span>ex</span></div>
-        <div className="loader-progress"><div className="loader-progress-bar" /></div>
-        <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-dim)' }}>Loading</p>
       </div>
 
       <Navbar currentPath="/" />
