@@ -47,7 +47,7 @@ const DICTIONARY = {
 };
 
 const NLP_INTENTS = [
-  { patterns: [/^(hi|hey|hello|hlo|hii+|hai|namaste|namaskar|good\s*(morning|afternoon|evening|day)|howdy|sup|yo)/i], responses: ["Hello! Welcome to Gaurex 👋 I'm your intelligent AI assistant. How can I help you today?", "Hey! Great to see you. What project can Gaurex help you build today?"] },
+  { patterns: [/^(hi|hey|hello|hlo|hii+|hai|namaste|namaskar|good\s*(morning|afternoon|evening|day)|howdy|sup|yo)/i], responses: ["Hello! Welcome to Gaurex 👋 I'm your world-class AI assistant. How can I help you today?", "Hey! Great to see you. What project can Gaurex help you build today?"] },
   { patterns: [/how\s+are\s+you|how\s+r\s+u|hows\s+it\s+going|what.?s\s+up/i], responses: ["Running at 100% efficiency! 🤖 What can I help you with?"] },
   { patterns: [/thank|thanks|thx|appreciated/i], responses: ["You're welcome! Anything else I can help with? 😊"] },
   { patterns: [/price|cost|fee|budget|quote|how\s+much/i], responses: ["Our pricing is customized per project scope:\n\n• Websites: Starts ₹15,000\n• AI Chatbots: Starts ₹20,000\n• Android Apps: Starts ₹25,000\n• ERP Systems: Starts ₹80,000\n\n📧 gaurex.ai@gmail.com\n📞 +91 9579098477"] },
@@ -134,7 +134,7 @@ export default function Home() {
   const [submitting, setSubmitting] = useState(false);
 
   const [chatMessages, setChatMessages] = useState<{ role: 'bot' | 'user'; text: string }[]>([
-    { role: 'bot', text: "Hello! 👋 I'm Gaurex AI — your intelligent assistant. Ask me about our services, pricing, AI solutions, or book a free call!" }
+    { role: 'bot', text: "Hello! 👋 I'm Gaurex Neural AI. Ask me about our services, pricing, founder info, AI agents, or book a free call!" }
   ]);
   const [chatInput, setChatInput] = useState('');
   const chatEndRef = useRef<HTMLDivElement>(null);
@@ -287,17 +287,28 @@ export default function Home() {
 
   useEffect(() => { chatEndRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [chatMessages, typingBot]);
 
-  const sendChat = useCallback((text: string) => {
+  const sendChat = useCallback(async (text: string) => {
     if (!text.trim()) return;
     soundFx.playClick();
     setChatMessages(prev => [...prev, { role: 'user', text }]);
     setChatInput('');
     setTypingBot(true);
-    setTimeout(() => {
+
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text }),
+      });
+      const data = await res.json();
+      soundFx.playSuccess();
+      setTypingBot(false);
+      setChatMessages(prev => [...prev, { role: 'bot', text: data.reply || nlpReply(text) }]);
+    } catch {
       soundFx.playSuccess();
       setTypingBot(false);
       setChatMessages(prev => [...prev, { role: 'bot', text: nlpReply(text) }]);
-    }, 600 + Math.random() * 600);
+    }
   }, []);
 
   const handleFormSubmit = async (e: React.FormEvent) => {
@@ -702,7 +713,7 @@ export default function Home() {
         <div className="chatbot-header">
           <div className="chatbot-header-left">
             <div className="chatbot-avatar">G</div>
-            <div className="chatbot-info"><h4>Gaurex AI</h4><p>Online — 24/7</p></div>
+            <div className="chatbot-info"><h4>Gaurex Neural AI</h4><p>Online — 24/7</p></div>
           </div>
           <button className="chat-clear-btn" onClick={() => setChatMessages([])}>Clear</button>
         </div>
@@ -712,19 +723,16 @@ export default function Home() {
               <div className="chat-bubble" style={{ whiteSpace: 'pre-line' }}>{msg.text}</div>
             </div>
           ))}
-          {typingBot && <div className="chat-msg bot"><div className="chat-bubble">Typing...</div></div>}
+          {typingBot && <div className="chat-msg bot"><div className="chat-bubble">Thinking... 🤖</div></div>}
           <div ref={chatEndRef} />
         </div>
         <div className="chatbot-quick-replies">
-          {['Hi 👋', 'Services', 'Pricing', 'Book Call', 'WhatsApp'].map(qr => (
-            <button key={qr} className="quick-reply" onClick={() => {
-              if (qr === 'Book Call') openBookingModal();
-              else sendChat(qr);
-            }}>{qr}</button>
+          {['Hi 👋', 'Services', 'Pricing', 'Founder Info', 'WhatsApp'].map(qr => (
+            <button key={qr} className="quick-reply" onClick={() => sendChat(qr)}>{qr}</button>
           ))}
         </div>
         <div className="chatbot-input-wrap">
-          <input className="chatbot-input" placeholder="Ask anything..." value={chatInput} onChange={e => setChatInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && sendChat(chatInput)} />
+          <input className="chatbot-input" placeholder="Ask Gaurex AI anything..." value={chatInput} onChange={e => setChatInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && sendChat(chatInput)} />
           <button className="chatbot-send" onClick={() => sendChat(chatInput)}>➜</button>
         </div>
       </div>
