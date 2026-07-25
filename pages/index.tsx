@@ -181,7 +181,7 @@ export default function Home() {
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 5;
 
-    const count = 2200;
+    const count = window.innerWidth <= 768 ? 800 : 2200;
     const positions = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
       positions[i * 3] = (Math.random() - 0.5) * 18;
@@ -247,6 +247,10 @@ export default function Home() {
     const totalCards = PROCESS_CARDS.length;
 
     const onScroll = () => {
+      if (window.innerWidth <= 900) {
+        track.style.transform = 'none';
+        return;
+      }
       const rect = section.getBoundingClientRect();
       const sectionHeight = section.offsetHeight - window.innerHeight;
       const scrolled = Math.max(0, -rect.top);
@@ -341,7 +345,6 @@ export default function Home() {
     <>
       <Head>
         <title>Gaurex — Intelligent Software Solutions</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       </Head>
 
       <CursorTrail />
@@ -554,7 +557,7 @@ export default function Home() {
         <AiSandbox />
 
         {/* SCROLLYTELLING */}
-        <section id="process" className="scrolly-section" ref={scrollySectionRef} style={{ height: `${(PROCESS_CARDS.length - 1) * 55 + 110}vh` }}>
+        <section id="process" className="scrolly-section" ref={scrollySectionRef}>
           <div className="scrolly-sticky">
             <div className="scrolly-header">
               <div>
