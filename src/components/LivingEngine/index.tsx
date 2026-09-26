@@ -1,14 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 export default function LivingEngine() {
-  const lineVariants = {
+  const lineVariants: Variants = {
     hidden: { height: 0, opacity: 0 },
     visible: { height: 40, opacity: 1, transition: { duration: 0.8, ease: "easeInOut" } }
   };
 
-  const nodeVariants = {
+  const nodeVariants: Variants = {
     hidden: { opacity: 0, y: 10 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
   };
