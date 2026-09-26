@@ -1,65 +1,36 @@
-# Gaurex — Intelligent Software Solutions
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-> **Boutique software development studio** delivering AI agents, websites, mobile apps, ERP systems, and intelligent business solutions.
+## Getting Started
 
----
+First, run the development server:
 
-## 🌐 Live Routes
-- `http://localhost:3000/` — Main Landing Page
-- `http://localhost:3000/services` — Dedicated Services Page
-- `http://localhost:3000/portfolio` — Selected Works Page
-- `http://localhost:3000/calculator` — Project Cost Calculator
-- `http://localhost:3000/contact` — Contact & Consultation Page
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
----
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 🌟 Architecture & Features
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### 📁 Modular File Structure
-- `pages/index.tsx` — Main landing page
-- `pages/services.tsx` — Services page
-- `pages/portfolio.tsx` — Projects page
-- `pages/calculator.tsx` — Cost estimator page
-- `pages/contact.tsx` — Contact page
-- `components/Navbar.tsx` — Shared navigation with route highlighting & sound toggle
-- `components/Footer.tsx` — Shared footer with site hierarchy
-- `components/CostCalculator.tsx` — Interactive project cost & timeline estimator
-- `components/AiSandbox.tsx` — Conversational AI Model Live Playground
-- `utils/sound.ts` — Web Audio API Synthesizer (Native UI sound effects for clicks, hovers, pops & modals without external audio files)
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### 🎨 Advanced Visuals & Interactive Effects
-1. **Web Audio API UI Sounds**: Native synthesized audio feedback (subtle clicks, pops, modal sweeps, and success chimes). Includes a navbar `🔊 Sound ON / 🔇 Sound OFF` toggle.
-2. **Glassmorphic Radial Spotlight**: Mouse-tracking radial gradient spotlight underneath glass borders.
-3. **Multi-Colored Flame & Gold Flicker Shine**: Metallic gold (`.shine-text-gold`) and flame orange (`.shine-text`) shining headline animations.
-4. **Project Cost Calculator**: Interactive module selection with live budget calculation & timeline estimation.
-5. **AI Model Sandbox**: Embedded prompt tester allowing users to test sample or custom prompts against the NLP engine.
-6. **Card Scrollytelling**: 6 horizontal cards panning smoothly on scroll with dot pip indicators.
-7. **High-Fidelity Browser Mockups**: Realistic desktop window frames showcasing client metrics and KPIs.
-8. **Instant WhatsApp Floating CTA**: Direct `wa.me/919579098477` integration.
+## Learn More
 
----
+To learn more about Next.js, take a look at the following resources:
 
-## 🛠️ Tech Stack
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-| Layer | Technology |
-|---|---|
-| **Framework** | Next.js 16 (Turbopack) |
-| **Language** | TypeScript |
-| **Styling** | Custom Vanilla CSS (Gen-Z Dark Theme) |
-| **Audio** | Native Web Audio API Synthesizer |
-| **3D Engine** | Three.js (Particle WebGL Canvas) |
-| **SEO** | OpenGraph, Twitter Cards, JSON-LD, Sitemap |
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
----
+## Deploy on Vercel
 
-## 📞 Contact Details
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-- **Company**: Gaurex
-- **Founder**: Gauresh Deepak Khairnar (AI & ML Engineer)
-- **Phone / WhatsApp**: +91 9579098477
-- **Email**: gaurex.ai@gmail.com
-- **Founder Direct**: Khairnargauresh01@gmail.com
-
----
-
-*Crafted by Gaurex · Nashik, Maharashtra, India*
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
