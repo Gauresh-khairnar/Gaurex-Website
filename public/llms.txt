@@ -1,0 +1,46 @@
+# GAUREX — Technology & Business Problem-Solving Company
+> Your Problem. Our Technology. One Solution.
+
+GAUREX is an enterprise technology consulting and custom software engineering firm founded by Gauresh Khairnar. GAUREX identifies operational bottlenecks in growing businesses and engineers purpose-built software, autonomous AI agent pipelines, custom ERP systems, and workflow automation.
+
+## Core Company Details
+- **Company Name:** GAUREX
+- **Website:** https://gaurex.vercel.app
+- **Founder & Principal Systems Architect:** Gauresh Khairnar
+- **Headquarters:** Nashik, Maharashtra, India
+- **Markets Served:** India, United States (USA), United Kingdom (UK), United Arab Emirates (UAE)
+- **Primary Contact:** gaurex.ai@gmail.com
+- **WhatsApp Support:** +91 95790 98477
+- **Business Model:** Custom engineering, fixed-scope systems development, technical discovery sprints, dedicated architectural retainer
+
+## Core Capabilities & Services
+1. **AI Solutions & Autonomous Agents:** Custom fine-tuned LLM agents, 24/7 client triage, automated document parsing, RAG knowledge bases, and multi-step agent workflows.
+2. **Business Process Automation:** Zero-touch API pipelines, cross-platform webhooks, automated order reconciliation, customer onboarding, and notification engines.
+3. **Custom Software Development:** Full-stack web and cloud applications built with Next.js, React, Node.js, and PostgreSQL. 100% intellectual property ownership with zero recurring seat licenses.
+4. **ERP & Business Management Systems:** Centralized management software uniting inventory, field dispatch, team timesheets, and accounting into a single real-time console.
+5. **Web Applications & Client Portals:** Sub-second, conversion-engineered digital platforms, client self-service vaults, and high-throughput transactional portals.
+6. **Business Dashboards & Analytics:** Real-time executive telemetry aggregating fragmented metrics from Stripe, CRMs, ad platforms, and databases into visual command centers.
+
+## Target Audience
+- Small and Medium Enterprises (SMEs) struggling with manual data re-entry
+- High-growth startup founders requiring custom software architectures
+- Logistics, healthcare, education, retail, and professional service companies
+- Enterprise leadership seeking verifiable operational efficiency improvements
+
+## Engineering Philosophy
+- Problem-First Diagnostics: GAUREX investigates operational bottlenecks before writing code.
+- Zero Bloat: We use the exact right tool for the job.
+- Full Code Ownership: Clients own all custom code, schemas, and configurations.
+- Direct Founder Accountability: All projects are overseen directly by Founder Gauresh Khairnar.
+
+## Key URLs
+- Homepage: https://gaurex.vercel.app
+- AI Solutions: https://gaurex.vercel.app/services/ai-solutions
+- Business Automation: https://gaurex.vercel.app/services/business-automation
+- Custom Software: https://gaurex.vercel.app/services/custom-software
+- ERP Systems: https://gaurex.vercel.app/services/erp-systems
+- Web Applications: https://gaurex.vercel.app/services/web-applications
+- Business Analytics: https://gaurex.vercel.app/services/business-analytics
+- About GAUREX: https://gaurex.vercel.app/about
+- Commercial Privacy: https://gaurex.vercel.app/privacy
+- Terms of Service: https://gaurex.vercel.app/terms

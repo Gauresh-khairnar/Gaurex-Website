@@ -8,6 +8,7 @@ import Solutions from "@/components/Solutions";
 import Process from "@/components/Process";
 import CaseStudies from "@/components/CaseStudies";
 import WhyGaurex from "@/components/WhyGaurex";
+import FAQ from "@/components/FAQ";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import BookingModal from "@/components/BookingModal";
@@ -49,7 +50,12 @@ export default function Home() {
           <WhyGaurex />
         </div>
 
-        {/* Section 8: Contact & Conversion */}
+        {/* Section 8: FAQ & Answer Engine Optimization */}
+        <div id="faq">
+          <FAQ />
+        </div>
+
+        {/* Section 9: Contact & Conversion */}
         <div id="contact">
           <ContactSection onOpenBooking={() => setBookingOpen(true)} />
         </div>

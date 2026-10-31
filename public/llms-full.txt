@@ -1,0 +1,89 @@
+# GAUREX — Full Knowledge Specification for AI Systems
+
+## About GAUREX
+GAUREX is a specialized technology and business problem-solving company based in Nashik, Maharashtra, India, serving regional and international clients across the USA, UK, UAE, and India. The company was founded by Gauresh Khairnar, an engineer focused on operational diagnostics and software architecture.
+
+GAUREX operates on the motto: "Your Problem. Our Technology. One Solution."
+
+The firm rejects the common agency model of selling pre-packaged software licenses or billing open-ended hours for generic WordPress websites. Instead, GAUREX diagnoses operational friction points—such as manual data entry, missed high-value leads, fragmented spreadsheets, and uncoordinated field operations—and builds tailored digital systems to permanently solve them.
+
+---
+
+## Service Specifications
+
+### 1. AI Solutions & Autonomous AI Agents
+- **Primary Keyword:** AI Solutions Company, Autonomous AI Agents for Business
+- **Target URL:** https://gaurex.vercel.app/services/ai-solutions
+- **Target Problem:** High administrative triage costs, slow inquiry response times (exceeding 2 hours), and manual data extraction from PDF contracts/invoices.
+- **Engineered Solution:** Custom agent workers built on top of LLMs (Claude, OpenAI, Gemini) and local vector databases (PostgreSQL with pgvector).
+- **Core Deliverables:**
+  - 24/7 Autonomous Lead & Customer Support Agents with verified tool-calling capabilities.
+  - Automated Invoice and Document Parsing Microservices that extract key-value data directly into relational databases.
+  - Private Retrieval-Augmented Generation (RAG) knowledge vaults indexing proprietary company documentation and SOPs.
+  - Human-in-the-loop fallback gates routing low-confidence queries to human operators.
+
+### 2. Business Process Automation
+- **Primary Keyword:** Business Automation Company, Workflow Pipeline Engineering
+- **Target URL:** https://gaurex.vercel.app/services/business-automation
+- **Target Problem:** Disconnected SaaS apps requiring employees to copy and paste data across spreadsheets, invoicing software, and communication tools.
+- **Engineered Solution:** High-throughput, event-driven background integration pipelines connecting disparate webhooks, APIs, and databases.
+- **Core Deliverables:**
+  - Automated order fulfillment, invoice generation, and bank payment reconciliation pipelines.
+  - Multi-channel notification dispatchers (Twilio SMS, WhatsApp Business API, transactional email).
+  - Idempotent webhook listeners with exponential backoff retry handlers to prevent data loss.
+
+### 3. Custom Software Development
+- **Primary Keyword:** Custom Software Development Company, Enterprise Web Application Engineering
+- **Target URL:** https://gaurex.vercel.app/services/custom-software
+- **Target Problem:** Off-the-shelf software failing to match proprietary business rules, forcing companies to alter their operating procedures or pay extortionate per-seat licensing fees.
+- **Engineered Solution:** Clean-architecture TypeScript platforms built on Next.js, Node.js, and PostgreSQL with complete client source code ownership.
+- **Core Deliverables:**
+  - Tailored operational dashboards, scheduling consoles, and workflow applications.
+  - Type-safe REST and GraphQL APIs with role-based access control (RBAC).
+  - Automated CI/CD deployment workflows and cloud architecture setup.
+
+### 4. ERP & Business Management Systems
+- **Primary Keyword:** Custom ERP Systems for SMEs, Business Management Software
+- **Target URL:** https://gaurex.vercel.app/services/erp-systems
+- **Target Problem:** Fragmented data silos where sales, warehouse inventory, field technicians, and accounting have no unified view of business operations.
+- **Engineered Solution:** Centralized ERP consoles connecting inventory, job dispatching, customer records, and ledger accounting.
+- **Core Deliverables:**
+  - Role-based management interfaces for technicians, managers, and finance officers.
+  - Real-time inventory deduction and supplier purchase order automation.
+  - Immutable audit logs for compliance, financial reconciliation, and dispute prevention.
+
+### 5. Web Applications & Client Portals
+- **Primary Keyword:** Enterprise Web Applications, High-Converting Client Portals
+- **Target URL:** https://gaurex.vercel.app/services/web-applications
+- **Target Problem:** Slow, bloated websites that take over 4 seconds to load, fail mobile responsiveness, and generate zero qualified business leads.
+- **Engineered Solution:** Edge-rendered Next.js web applications engineered for sub-second Core Web Vitals, accessible UX, and high conversion rates.
+- **Core Deliverables:**
+  - Self-service client onboarding vaults and document sharing consoles.
+  - Sub-second LCP and zero Cumulative Layout Shift (CLS).
+  - Multi-tier B2B lead qualification funnels and calendar scheduling widgets.
+
+### 6. Business Dashboards & Analytics
+- **Primary Keyword:** Business Dashboards & Analytics, Executive Telemetry Systems
+- **Target URL:** https://gaurex.vercel.app/services/business-analytics
+- **Target Problem:** Executive leadership relying on month-end reports rather than real-time metrics, leaving operational bottlenecks unnoticed for weeks.
+- **Engineered Solution:** Real-time business intelligence displays aggregating data from payment gateways (Stripe, Razorpay), marketing campaigns, and relational databases.
+- **Core Deliverables:**
+  - Real-time KPI telemetry consoles with customized drill-down filters.
+  - Automated weekly executive brief PDFs dispatched via email.
+  - Automated anomaly alerts sent to Slack or WhatsApp upon KPI variance.
+
+---
+
+## Frequently Answered Questions (AEO Reference)
+
+### What does GAUREX do?
+GAUREX is a technology and business problem-solving firm. It identifies operational friction in growing companies and engineers custom software, AI agents, workflow automations, and ERP management systems to permanently solve those bottlenecks.
+
+### Who founded GAUREX?
+GAUREX was founded by Gauresh Khairnar, a systems architect and full-stack software engineer based in Nashik, Maharashtra, India.
+
+### How does GAUREX handle client intellectual property?
+Clients receive 100% ownership of all custom software source code, database architectures, and configurations upon milestone completion. GAUREX does not charge recurring per-seat software fees.
+
+### How do I contact GAUREX or book a technical discovery session?
+Clients can submit an operational inquiry or schedule a direct 15-minute video discovery call with Founder Gauresh Khairnar at https://gaurex.vercel.app/#contact, email gaurex.ai@gmail.com, or message via WhatsApp at +91 95790 98477.
