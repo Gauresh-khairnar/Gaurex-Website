@@ -1,121 +1,169 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Bot, Workflow, Code, Database, Globe, BarChart2 } from "lucide-react";
 
 const solutions = [
   {
-    title: "Business Growth Systems",
-    desc: "Solve fragmented digital operations.",
-    problem: "Disconnected tools stalling growth.",
-    solution: "Unified digital ecosystem.",
-    outcome: "Scalable business operations.",
+    icon: Bot,
+    title: "AI Solutions & Agents",
+    slug: "ai-solutions",
+    outcome: "Eliminate 70% of routine manual triage with 24/7 intelligent task execution.",
+    description: "Purpose-built LLM agents and machine intelligence embedded directly into your core business applications. We automate complex customer communication, data extraction, and decision support.",
+    capabilities: [
+      "24/7 Autonomous Customer & Lead Triage",
+      "Intelligent Document & Invoice Parsing",
+      "Custom Enterprise Knowledge-Base RAG",
+      "Automated Multi-Step AI Workflow Execution"
+    ],
   },
   {
-    title: "AI Solutions",
-    desc: "Use AI to automate decisions and workflows.",
-    problem: "Slow, manual decision-making.",
-    solution: "Custom AI integrations.",
-    outcome: "Faster, smarter business output.",
+    icon: Workflow,
+    title: "Business Process Automation",
+    slug: "business-automation",
+    outcome: "Eliminate human data re-entry and recover 20+ hours of operational overhead weekly.",
+    description: "Reliable background automation pipelines that connect isolated SaaS tools, databases, and APIs. We replace brittle manual hand-offs with bulletproof, auditable software workflows.",
+    capabilities: [
+      "Cross-Platform API & Webhook Pipelines",
+      "Automated Order & Invoice Generation",
+      "Customer Onboarding Sequences",
+      "Multi-System Data Synchronization"
+    ],
   },
   {
-    title: "Smart Websites",
-    desc: "Turn online presence into a business asset.",
-    problem: "Website acts as a brochure, not a tool.",
-    solution: "Conversion-optimized digital platform.",
-    outcome: "Predictable lead generation.",
+    icon: Code,
+    title: "Custom Software Development",
+    slug: "custom-software",
+    outcome: "Achieve absolute operational alignment with 100% proprietary code ownership.",
+    description: "Full-stack software engineering tailored specifically to your unique business logic. We build scalable, secure platforms free from monthly SaaS seat fees and rigid feature limitations.",
+    capabilities: [
+      "Modern Next.js & React Architecture",
+      "High-Throughput Node & Python APIs",
+      "Scalable Relational Database Schemas",
+      "Enterprise Cloud Deployment & CI/CD"
+    ],
   },
   {
-    title: "Business Automation",
-    desc: "Reduce repetitive manual work.",
-    problem: "Hours wasted on data entry.",
-    solution: "Automated workflow pipelines.",
-    outcome: "Reclaimed time and zero human error.",
-  },
-  {
-    title: "AI Agents",
-    desc: "Create intelligent systems that handle business tasks.",
-    problem: "Customer support & task handling is expensive.",
-    solution: "24/7 AI-driven assistants.",
-    outcome: "Lower costs, better customer experience.",
-  },
-  {
-    title: "CRM & Lead Systems",
-    desc: "Capture, organize and follow up with customers.",
-    problem: "Losing track of potential clients.",
-    solution: "Centralized lead management.",
-    outcome: "Higher conversion rates.",
-  },
-  {
-    title: "Booking Systems",
-    desc: "Simplify appointments and scheduling.",
-    problem: "Friction in booking services.",
-    solution: "Seamless self-serve scheduling.",
-    outcome: "Increased appointments, less admin.",
-  },
-  {
+    icon: Database,
     title: "ERP & Management Systems",
-    desc: "Connect business operations in one system.",
-    problem: "Data scattered across departments.",
-    solution: "Single source of truth platform.",
-    outcome: "Total business visibility.",
+    slug: "erp-systems",
+    outcome: "Consolidate operations, inventory, and finances into a single source of truth.",
+    description: "Custom enterprise resource planning platforms engineered for growing SMEs. We connect supply chains, project milestones, team allocation, and billing into one synchronized command console.",
+    capabilities: [
+      "Granular Role-Based Access Controls",
+      "Real-Time Inventory & Procurement Tracking",
+      "Client Management & Milestone Billing",
+      "Automated Financial Reconciliation"
+    ],
   },
   {
-    title: "Custom Software",
-    desc: "Build technology around unique business requirements.",
-    problem: "Off-the-shelf software doesn't fit.",
-    solution: "Tailor-made digital architecture.",
-    outcome: "Absolute operational alignment.",
+    icon: Globe,
+    title: "Web Applications & Portals",
+    slug: "web-applications",
+    outcome: "Convert visitors into paying customers with sub-second, conversion-engineered portals.",
+    description: "Ultra-fast, enterprise-grade digital platforms engineered to capture, qualify, and retain customers. Built with pristine code quality, rock-solid security, and responsive layouts across all devices.",
+    capabilities: [
+      "Sub-Second Core Web Vitals Performance",
+      "Self-Service Client & Partner Portals",
+      "Custom E-Commerce & Transaction Engines",
+      "Enterprise Authentication & Audit Logs"
+    ],
+  },
+  {
+    icon: BarChart2,
+    title: "Business Dashboards & Analytics",
+    slug: "business-analytics",
+    outcome: "Make confident executive decisions backed by real-time visual telemetry.",
+    description: "Unified business intelligence consoles that pull fragmented metrics across marketing, sales pipelines, and operations into clean, actionable dashboards with zero reporting delay.",
+    capabilities: [
+      "Live KPI Telemetry & Executive Displays",
+      "Multi-Source Ingestion (Stripe, Ads, CRM)",
+      "Automated Weekly PDF Executive Briefs",
+      "Anomaly Detection & Operational Alerts"
+    ],
   },
 ];
 
 export default function Solutions() {
   return (
-    <section id="solutions" className="py-24 bg-gray-50/50">
+    <section id="solutions" className="py-24 md:py-32 bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-4">
-            Solutions Built Around Your Business.
+        
+        {/* Header */}
+        <div className="max-w-3xl mb-16 md:mb-20">
+          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
+            <span>Pillars of Engineering</span>
+          </div>
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-black leading-tight mb-6">
+            Engineered Solutions Built Around Your Real Workflows.
           </h2>
-        </motion.div>
+          <p className="text-base md:text-lg text-gray-600 leading-relaxed">
+            We don&apos;t sell generic pre-packaged software. Every GAUREX system is purpose-built to solve tangible operational bottlenecks, maximize team throughput, and accelerate sustainable growth.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {solutions.map((item, i) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="p-8 rounded-3xl bg-white border border-gray-100 hover:border-black/10 hover:shadow-lg transition-all duration-300 group"
-            >
-              <h3 className="text-xl font-semibold text-black mb-2">{item.title}</h3>
-              <p className="text-gray-500 mb-8">{item.desc}</p>
-              
-              <div className="space-y-4 text-sm">
-                <div className="flex items-start gap-3">
-                  <span className="text-gray-400 font-medium w-16 shrink-0">Problem</span>
-                  <span className="text-gray-800">{item.problem}</span>
+        {/* 6 Solutions Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {solutions.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={item.slug}
+                className="bg-white rounded-2xl border border-gray-200 p-8 flex flex-col justify-between hover:border-black hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-all duration-200 group"
+              >
+                <div>
+                  {/* Top Bar with Icon */}
+                  <div className="w-12 h-12 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center text-black mb-6 group-hover:bg-black group-hover:text-white transition-colors">
+                    <Icon className="w-5 h-5" />
+                  </div>
+
+                  <h3 className="text-xl font-bold text-black mb-3">
+                    {item.title}
+                  </h3>
+
+                  {/* Business Outcome Highlight */}
+                  <div className="p-3 bg-[#F7F7F7] rounded-lg border border-gray-200/60 mb-5">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-black block mb-0.5">
+                      Business Outcome:
+                    </span>
+                    <span className="text-xs font-semibold text-gray-900 leading-snug block">
+                      {item.outcome}
+                    </span>
+                  </div>
+
+                  <p className="text-xs text-gray-600 leading-relaxed mb-6">
+                    {item.description}
+                  </p>
+
+                  {/* Capabilities List */}
+                  <div className="space-y-2 mb-8">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 block mb-2">
+                      Key Capabilities:
+                    </span>
+                    {item.capabilities.map((cap, i) => (
+                      <div key={i} className="flex items-start gap-2 text-xs text-gray-700">
+                        <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0 mt-1.5" />
+                        <span>{cap}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-gray-400 font-medium w-16 shrink-0">Solution</span>
-                  <span className="text-black font-medium">{item.solution}</span>
-                </div>
-                <div className="pt-4 border-t border-gray-100 flex items-start gap-3">
-                  <span className="text-black font-semibold w-16 shrink-0">Outcome</span>
-                  <span className="text-black font-semibold flex items-center gap-2">
-                    {item.outcome} <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-black" />
-                  </span>
+
+                {/* Working CTA */}
+                <div className="pt-6 border-t border-gray-100">
+                  <Link
+                    href={`/services/${item.slug}`}
+                    className="w-full py-3 px-4 bg-gray-50 border border-gray-200 hover:border-black hover:bg-black hover:text-white text-black text-xs font-bold uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 group-hover:bg-black group-hover:text-white"
+                  >
+                    Explore Service Details
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
               </div>
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
+
       </div>
     </section>
   );

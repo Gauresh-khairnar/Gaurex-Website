@@ -1,80 +1,68 @@
 "use client";
 
-import { useState, useCallback } from "react";
-import IntroVideo from "@/components/IntroVideo";
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import ProblemScanner from "@/components/ProblemScanner";
-import InteractiveTools from "@/components/InteractiveTools";
-import BeforeAfter from "@/components/BeforeAfter";
-import ProblemStories from "@/components/ProblemStories";
-import LivingEngine from "@/components/LivingEngine";
-import DarkSystem from "@/components/DarkSystem";
-import ArchitectureBuilder from "@/components/ArchitectureBuilder";
-import TechStack from "@/components/TechStack";
+import BusinessProblems from "@/components/BusinessProblems";
 import Solutions from "@/components/Solutions";
-import DashboardPreview from "@/components/DashboardPreview";
+import Process from "@/components/Process";
 import CaseStudies from "@/components/CaseStudies";
-import TypographyReveal from "@/components/TypographyReveal";
-import IntelligentContact from "@/components/IntelligentContact";
+import WhyGaurex from "@/components/WhyGaurex";
+import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import FloatingAI from "@/components/FloatingAI";
+import BookingModal from "@/components/BookingModal";
 
 export default function Home() {
-  const [introFinished, setIntroFinished] = useState(false);
-  
-  const handleIntroComplete = useCallback(() => {
-    setIntroFinished(true);
-  }, []);
+  const [bookingOpen, setBookingOpen] = useState(false);
 
   return (
     <>
-      {/* Intro Video Overlay */}
-      <IntroVideo onComplete={handleIntroComplete} />
+      {/* Sticky Enterprise Navigation */}
+      <Navbar onOpenBooking={() => setBookingOpen(true)} />
 
-      {/* Main Content */}
-      <main
-        className={`transition-opacity duration-1000 ${
-          introFinished ? "opacity-100" : "opacity-0 h-screen overflow-hidden"
-        }`}
-      >
-        <Navbar />
-        
-        <Hero />
-        
-        <div id="diagnose">
-          <ProblemScanner />
+      <main className="min-h-screen bg-white text-black">
+        {/* Section 2: Hero */}
+        <Hero onOpenBooking={() => setBookingOpen(true)} />
+
+        {/* Section 3: Business Problems */}
+        <div id="industries">
+          <BusinessProblems />
         </div>
-        
-        <div id="understand">
-          <BeforeAfter />
-          <ProblemStories />
-          <LivingEngine />
-        </div>
-        
-        <div id="design">
-          <ArchitectureBuilder />
-          <DarkSystem />
-          <TechStack />
-        </div>
-        
-        <div id="estimate">
-          <InteractiveTools />
+
+        {/* Section 4: Solutions */}
+        <div id="solutions">
           <Solutions />
         </div>
-        
-        <DashboardPreview />
-        <CaseStudies />
-        <TypographyReveal />
-        
-        <div id="start">
-          <IntelligentContact />
-        </div>
-        
-        <Footer />
 
-        <FloatingAI />
+        {/* Section 5: How GAUREX Works */}
+        <div id="how-it-works">
+          <Process />
+        </div>
+
+        {/* Section 6: Case Studies */}
+        <div id="case-studies">
+          <CaseStudies />
+        </div>
+
+        {/* Section 7: Why GAUREX */}
+        <div id="why-gaurex">
+          <WhyGaurex />
+        </div>
+
+        {/* Section 8: Contact & Conversion */}
+        <div id="contact">
+          <ContactSection onOpenBooking={() => setBookingOpen(true)} />
+        </div>
       </main>
+
+      {/* Section 9: Footer */}
+      <Footer />
+
+      {/* Global Booking Modal */}
+      <BookingModal
+        isOpen={bookingOpen}
+        onClose={() => setBookingOpen(false)}
+      />
     </>
   );
 }

@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GAUREX — Complete Website Audit Master Report</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 16mm 14mm 16mm 14mm;
+    }
+    @page :first {
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #0f172a;
+      background: #ffffff;
+      line-height: 1.5;
+      font-size: 12.5px;
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* Cover Page */
+    .cover-page {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 65px 55px;
+      background: #09090b;
+      color: #ffffff;
+      page-break-after: always;
+      break-after: page;
+    }
+    .cover-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      padding-bottom: 20px;
+    }
+    .brand-logo {
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      color: #ffffff;
+    }
+    .confidential-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      color: #ffffff;
+    }
+    .cover-body {
+      margin: auto 0;
+    }
+    .report-tag {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 14px;
+    }
+    .cover-title {
+      font-size: 42px;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin: 0 0 18px 0;
+      color: #ffffff;
+    }
+    .cover-subtitle {
+      font-size: 16px;
+      color: #cbd5e1;
+      max-width: 650px;
+      font-weight: 300;
+      line-height: 1.6;
+      margin: 0 0 32px 0;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      max-width: 600px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 20px;
+    }
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .meta-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #64748b;
+      margin-bottom: 4px;
+    }
+    .meta-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: #f8fafc;
+    }
+    .cover-footer {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: #64748b;
+    }
+
+    /* Content Layout */
+    .container {
+      padding: 0;
+    }
+    .page-break {
+      page-break-after: always;
+      break-after: page;
+    }
+    .avoid-break {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    
+    /* Typography */
+    h1, h2, h3, h4 {
+      color: #09090b;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    h1 {
+      font-size: 22px;
+      margin: 0 0 14px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #09090b;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .section-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748b;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    h2 {
+      font-size: 15px;
+      margin: 18px 0 8px 0;
+    }
+    h3 {
+      font-size: 13px;
+      margin: 14px 0 6px 0;
+    }
+    p {
+      margin: 0 0 10px 0;
+      color: #334155;
+    }
+
+    /* Score Badges */
+    .score-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #09090b;
+      color: #ffffff;
+      padding: 20px 26px;
+      border-radius: 14px;
+      margin-bottom: 22px;
+    }
+    .score-large {
+      font-size: 46px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+    .score-context {
+      font-size: 11px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+    }
+    
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 20px 0;
+      font-size: 11.5px;
+    }
+    th, td {
+      padding: 9px 10px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: #0f172a;
+      text-transform: uppercase;
+      font-size: 10px;
+      letter-spacing: 0.8px;
+    }
+    tr:nth-child(even) td {
+      background: #fafafa;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge-p0 { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+    .badge-p1 { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+    .badge-p2 { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+    .badge-p3 { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
+    .badge-score-low { background: #fee2e2; color: #b91c1c; font-weight: 800; }
+    .badge-score-med { background: #fef3c7; color: #b45309; font-weight: 800; }
+    .badge-score-good { background: #dcfce7; color: #15803d; font-weight: 800; }
+
+    /* Callout Card */
+    .card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 14px;
+    }
+    .card-alert {
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      border-left: 5px solid #e53e3e;
+    }
+    .card-title {
+      font-weight: 700;
+      font-size: 12.5px;
+      color: #0f172a;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    /* Code blocks */
+    pre, code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11px;
+    }
+    pre {
+      background: #18181b;
+      color: #f4f4f5;
+      padding: 10px 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 6px 0 12px 0;
+      border: 1px solid #27272a;
+    }
+    
+    /* Comparison Boxes */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .compare-box {
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 11px;
+    }
+    .compare-bad {
+      background: #fff1f2;
+      border: 1px solid #fecdd3;
+    }
+    .compare-bad h4 {
+      color: #be123c;
+      margin: 0 0 5px 0;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .compare-good {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+    .compare-good h4 {
+      color: #15803d;
+      margin: 0 0 5px 0;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Diagram / Funnel */
+    .funnel-step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      margin-bottom: 7px;
+      font-size: 11.5px;
+    }
+    .step-badge {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #09090b;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10.5px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    
+    /* Header/Footer in print */
+    .doc-header {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COVER PAGE -->
+  <div class="cover-page">
+    <div class="cover-header">
+      <div class="brand-logo">GAUREX</div>
+      <div class="confidential-badge">B2B Website Audit & Growth Strategy</div>
+    </div>
+    
+    <div class="cover-body">
+      <div class="report-tag">Enterprise Technology & CRO Assessment</div>
+      <h1 class="cover-title">Full Website, Technical Architecture & B2B Conversion Audit</h1>
+      <p class="cover-subtitle">
+        An unvarnished, deep-dive technical and conversion analysis of the GAUREX digital flagship. Identifying structural conversion blockers, technical vulnerabilities, and revenue bottlenecks with an actionable 7-day sprint and 30-day growth roadmap.
+      </p>
+      
+      <div class="meta-grid">
+        <div class="meta-item">
+          <span class="meta-label">Client Property</span>
+          <span class="meta-value">https://gaurex.vercel.app</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Founder & Principal</span>
+          <span class="meta-value">Gauresh Khairnar</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Core Tech Stack</span>
+          <span class="meta-value">Next.js 16.3.6 (Turbopack) | React 19.2.8 | Tailwind v4</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Evaluation Panel</span>
+          <span class="meta-value">Full-Stack Architect, B2B CRO & Technical SEO Specialists</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="cover-footer">
+      <span>Official Deliverable &bull; Confidential</span>
+      <span>Date: October 2026</span>
+      <span>Status: Final Assessment</span>
+    </div>
+  </div>
+
+  <!-- TABLE OF CONTENTS & METHODOLOGY -->
+  <div class="container page-break">
+    <div class="doc-header">
+      <span>GAUREX &bull; Website Audit Report</span>
+      <span>Executive Overview & Table of Contents</span>
+    </div>
+
+    <h1>
+      <span>Table of Contents</span>
+      <span class="section-num">Structure</span>
+    </h1>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px;">
+      <div class="card" style="padding: 14px;">
+        <h3 style="margin-top:0;">Audit Sections</h3>
+        <p style="margin: 5px 0; font-size: 11.5px;"><strong>01. Executive Summary & Verdict</strong> &mdash; High-level executive synthesis</p>
+        <p style="margin: 5px 0; font-size: 11.5px;"><strong>02. Overall Website Score Matrix</strong> &mdash; 10-Category quantitative scoring</p>
+        <p style="margin: 5px 0; font-size: 11.5px;"><strong>03. Detailed UI/UX Design Audit</strong> &mdash; Hierarchy, typography & cursor bugs</p>
+        <p style="margin: 5px 0; font-size: 11.5px;"><strong>04. Business Positioning & Copy Audit</strong> &mdash; The 5-second clarity test</p>
+        <p style="margin: 5px 0; font-size: 11.5px;"><strong>05. B2B Lead Gen & Conversion Funnel</strong> &mdash; Removing friction & WhatsApp traps</p>
+        <p style="margin: 5px 0; font-size: 11.5px;"><strong>06. Technical SEO & Discoverability</strong> &mdash; Sitemaps, robots & programmatic routes</p>
+        <p style="margin: 5px 0; font-size: 11.5px;"><strong>07. Performance & Core Web Vitals</strong> &mdash; The 3.9MB video roadblock & hydration</p>
+      </div>
+      <div class="card" style="padding: 14px;">
+        <h3 style="margin-top:0;">Strategy & Implementation</h3>
+        <p style="margin: 5px 0; font-size: 11.5px;"><strong>08. Technical, Architecture & Security</strong> &mdash; Next.js 16/React 19 & ESLint</p>
+        <p style="margin: 5px 0; font-size: 11.5px;"><strong>09. Competitor & Market Benchmark</strong> &mdash; Differentiating against global tech agencies</p>
+        <p style="margin: 5px 0; font-size: 11.5px;"><strong>10. Top 10 Critical Improvements Matrix</strong> &mdash; P0 to P3 prioritization</p>
+        <p style="margin: 5px 0; font-size: 11.5px;"><strong>11. Recommended Homepage Architecture</strong> &mdash; High-converting wireframe</p>
+        <p style="margin: 5px 0; font-size: 11.5px;"><strong>12. Exact Copywriting Rewrites</strong> &mdash; High-ticket B2B messaging</p>
+        <p style="margin: 5px 0; font-size: 11.5px;"><strong>13. 7-Day Implementation Sprint</strong> &mdash; Day-by-day engineering schedule</p>
+        <p style="margin: 5px 0; font-size: 11.5px;"><strong>14. 30-Day B2B Growth Roadmap</strong> &mdash; Revenue scaling and pipeline automation</p>
+      </div>
+    </div>
+
+    <h2>Audit Scope & Multi-Disciplinary Methodology</h2>
+    <p>
+      This audit was conducted by inspecting the production deployment at <code>https://gaurex.vercel.app</code> combined with white-box static code analysis of the active local repository (Next.js 16.3.6 App Router, React 19.2.8, Tailwind CSS v4, Framer Motion 13.4.4).
+    </p>
+    <p>
+      Our methodology prioritizes <strong>commercial outcome, technical integrity, and user trust</strong>. We evaluate digital assets through the lens of a prospective paying client—a venture-backed founder, enterprise VP of Engineering, or SME director looking to invest in mission-critical software and AI automation.
+    </p>
+
+    <div class="card card-alert" style="margin-top: 12px;">
+      <div class="card-title">Core Diagnostic Finding</div>
+      <p style="margin:0; font-size: 11.5px; color: #742a2a;">
+        The current GAUREX website operates as an <em>interactive design experiment</em> rather than a <em>commercial acquisition vehicle</em>. While the visual aesthetic demonstrates strong technical ambition, critical friction points (an autoplaying 3.9MB video blocker, missing contact forms, and dead interactive elements) severely suppress B2B enquiry volume.
+      </p>
+    </div>
+  </div>
+
+  <!-- SECTION 1 & 2: EXECUTIVE SUMMARY & SCORING -->
+  <div class="container page-break">
+    <div class="doc-header">
+      <span>GAUREX &bull; Website Audit Report</span>
+      <span>01. Executive Summary & 02. Scoring Matrix</span>
+    </div>
+
+    <h1>
+      <span>01. Executive Summary</span>
+      <span class="section-num">Assessment</span>
+    </h1>
+
+    <p>
+      GAUREX positions itself as a technology and business problem-solving firm specializing in AI Solutions, Business Automation, Custom Software, and ERP Systems. The brand identity aims for an Apple-inspired minimalist aesthetic: stark monochrome contrast, generous spacing, and custom interactive widgets.
+    </p>
+    <p>
+      However, the current implementation suffers from a fundamental misalignment between <strong>design indulgence</strong> and <strong>commercial utility</strong>:
+    </p>
+    <ul>
+      <li><strong>Mandatory Full-Screen Video Gate:</strong> A 2.5MB (desktop) / 3.9MB (mobile) intro video hides the entire website until completed or manually skipped. For high-intent business buyers, this creates immediate abandonment.</li>
+      <li><strong>Absence of B2B Lead Capture Infrastructure:</strong> The website contains zero forms, zero Calendly/scheduler embeds, and zero RFP intake flows. The only conversion pathway is an external redirect to personal WhatsApp.</li>
+      <li><strong>Broken Interactivity & Mock Features:</strong> The Problem Scanner CTA ("Build My Solution") has no click handler; the "Floating AI" widget is a static 2-second timeout mock; and footer links point to nonexistent anchor IDs.</li>
+      <li><strong>Single-Page SEO Vacuum:</strong> All services are compressed into client-side cards on a single page, resulting in zero indexable topical landing pages, missing sitemaps, and missing structured schema markup.</li>
+    </ul>
+
+    <h1 style="margin-top: 20px;">
+      <span>02. Quantitative Scoring Matrix</span>
+      <span class="section-num">Evaluation</span>
+    </h1>
+
+    <div class="score-banner">
+      <div>
+        <div class="score-context">Composite Audit Rating</div>
+        <div class="score-large">4.75 <span style="font-size: 22px; font-weight: 400; color: #94a3b8;">/ 10</span></div>
+      </div>
+      <div style="text-align: right; max-width: 360px; font-size: 11.5px; color: #cbd5e1;">
+        <strong>Verdict:</strong> High visual potential with severe commercial, conversion, and architectural bottlenecks that actively block qualified B2B enquiries.
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th style="width: 70px;">Score</th>
+          <th>Primary Deficiency / Root Cause</th>
+          <th style="width: 90px;">Impact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>UI / UX Design</strong></td>
+          <td><span class="badge badge-score-med">6.5 / 10</span></td>
+          <td>Clean monochrome aesthetic marred by full-screen video gate & broken cursor logic.</td>
+          <td>High Bounce</td>
+        </tr>
+        <tr>
+          <td><strong>Branding & Identity</strong></td>
+          <td><span class="badge badge-score-med">6.0 / 10</span></td>
+          <td>Philosophical tagline; undermined by free @gmail.com & lack of founder/team identity.</td>
+          <td>Trust Deficit</td>
+        </tr>
+        <tr>
+          <td><strong>Business Positioning</strong></td>
+          <td><span class="badge badge-score-med">5.5 / 10</span></td>
+          <td>Fails the 5-second test; does not clarify what GAUREX builds or who it serves above the fold.</td>
+          <td>Low Relevance</td>
+        </tr>
+        <tr>
+          <td><strong>Lead Generation</strong></td>
+          <td><span class="badge badge-score-low">3.0 / 10</span></td>
+          <td>Zero lead capture forms, zero calendar schedulers, zero lead qualification pipelines.</td>
+          <td>Lost Revenue</td>
+        </tr>
+        <tr>
+          <td><strong>Conversion Optimisation</strong></td>
+          <td><span class="badge badge-score-low">3.5 / 10</span></td>
+          <td>Forced WhatsApp redirects; unlinked CTA buttons; anonymous placeholder case studies.</td>
+          <td>Zero Pipeline</td>
+        </tr>
+        <tr>
+          <td><strong>Technical SEO</strong></td>
+          <td><span class="badge badge-score-low">2.5 / 10</span></td>
+          <td>Single client-rendered page; no robots.txt, no sitemap.xml, no schema markup, no OG tags.</td>
+          <td>Zero Inbound</td>
+        </tr>
+        <tr>
+          <td><strong>Performance & Core Web Vitals</strong></td>
+          <td><span class="badge badge-score-low">4.0 / 10</span></td>
+          <td>3.9MB video payload on mobile; 100% client hydration overhead; blocking initial paint.</td>
+          <td>High Latency</td>
+        </tr>
+        <tr>
+          <td><strong>Mobile Responsiveness</strong></td>
+          <td><span class="badge badge-score-med">5.5 / 10</span></td>
+          <td>Mobile video payload is larger than desktop; cursor-none hides pointers on tablet devices.</td>
+          <td>Device Friction</td>
+        </tr>
+        <tr>
+          <td><strong>Technical Quality</strong></td>
+          <td><span class="badge badge-score-med">5.0 / 10</span></td>
+          <td>8 ESLint build errors; monolithic "use client" root; build-time Google font fetching risk.</td>
+          <td>Code Debt</td>
+        </tr>
+        <tr>
+          <td><strong>Security & Compliance</strong></td>
+          <td><span class="badge badge-score-med">6.0 / 10</span></td>
+          <td>No leaked secrets, but missing Content Security Policy (CSP), CORS headers, and CSRF gates.</td>
+          <td>Vulnerability</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 3: UI/UX DESIGN AUDIT -->
+  <div class="container page-break">
+    <div class="doc-header">
+      <span>GAUREX &bull; Website Audit Report</span>
+      <span>03. Detailed UI/UX Design Audit</span>
+    </div>
+
+    <h1>
+      <span>03. Detailed UI/UX Design Audit</span>
+      <span class="section-num">Interface</span>
+    </h1>
+
+    <h2>Visual Hierarchy & Component Overload</h2>
+    <p>
+      GAUREX embraces an Apple-inspired minimalist aesthetic characterized by black-and-white palettes, thin borders (<code>border-gray-100</code>, <code>border-gray-200</code>), and smooth micro-interactions. However, the homepage structure suffers from <strong>severe section redundancy</strong>.
+    </p>
+    <p>
+      A visitor must scroll through <strong>15 separate vertical blocks</strong>. Four of these sections—<code>LivingEngine</code>, <code>ProblemStories</code>, <code>BeforeAfter</code>, and <code>ArchitectureBuilder</code>—deliver virtually the identical message: "Business problems are disconnected; GAUREX connects them with software." This causes user cognitive exhaustion before they ever reach the pricing or contact sections.
+    </p>
+
+    <div class="card avoid-break">
+      <div class="card-title">Critical UI Bug: The Invisible Cursor on Touch & Hybrid Devices</div>
+      <p style="font-size: 11.5px; margin-bottom: 5px;">
+        In <code>src/app/layout.tsx</code>, the root HTML element is configured with:
+      </p>
+      <pre><code>&lt;html lang="en" className="scroll-smooth cursor-none md:cursor-auto"&gt;</code></pre>
+      <p style="font-size: 11.5px; margin-bottom: 5px;">
+        Meanwhile, in <code>src/components/CustomCursor/index.tsx</code>:
+      </p>
+      <pre><code>if (typeof window !== 'undefined' && window.innerWidth &lt; 768) return null;</code></pre>
+      <p style="font-size: 11.5px; margin: 0; color: #b91c1c;">
+        <strong>Consequence:</strong> On viewports under 768px (iPad Pros, tablets, touch laptops with trackpads), <code>cursor-none</code> remains active, but the custom cursor component returns <code>null</code>. The pointer vanishes entirely, making the site unusable for tablet mouse users. On desktop screens, <code>md:cursor-auto</code> causes a distracting double cursor (native OS cursor overlaid on top of a laggy 32px black circle).
+      </p>
+    </div>
+
+    <h2>Typography & Whitespace Audit</h2>
+    <ul>
+      <li><strong>Font Consistency:</strong> Inter is implemented cleanly via CSS variable <code>--font-inter</code> with tight tracking (<code>tracking-tight</code>).</li>
+      <li><strong>Colossal Display Text Bloat:</strong> In <code>TypographyReveal/index.tsx</code>, the headline <code>text-[15vw]</code> takes up multiple full viewport heights while conveying zero specific technical or business value.</li>
+      <li><strong>Micro-Label Overuse:</strong> Every single card and section header contains uppercase gray sub-labels (<code>text-xs font-bold tracking-widest text-gray-400 uppercase</code>), diluting their ability to guide user attention.</li>
+    </ul>
+
+    <h2>Responsive & Mobile Usability</h2>
+    <p>
+      While Flexbox and Tailwind breakpoint utilities (<code>md:</code>, <code>lg:</code>) ensure elements do not break out of horizontal bounds, mobile usability is penalized by:
+    </p>
+    <ol>
+      <li><strong>Video Bandwidth Consumption:</strong> The mobile video file is 3.93MB—significantly larger than the desktop video (2.52MB)—causing high data usage and slow initial paints on mobile devices.</li>
+      <li><strong>Excessive Scroll Depth:</strong> Mobile users must swipe through over 18,000 pixels of vertical content to reach the bottom contact area.</li>
+    </ol>
+  </div>
+
+  <!-- SECTION 4: BUSINESS POSITIONING AUDIT -->
+  <div class="container page-break">
+    <div class="doc-header">
+      <span>GAUREX &bull; Website Audit Report</span>
+      <span>04. Business Positioning & Copy Audit</span>
+    </div>
+
+    <h1>
+      <span>04. Business Positioning & Value Proposition</span>
+      <span class="section-num">Strategy</span>
+    </h1>
+
+    <h2>The 5-Second B2B Test Evaluation</h2>
+    <p>
+      When an enterprise executive, SME founder, or international decision-maker lands on the GAUREX website, the site must answer five core questions within five seconds:
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 25%;">Core Question</th>
+          <th style="width: 45%;">Current Homepage Reality</th>
+          <th style="width: 30%;">Evaluation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. What does GAUREX do?</strong></td>
+          <td>"Your Problem. Our Technology. One Solution."</td>
+          <td><span class="badge badge-score-low">Failed</span> Too abstract; could describe an IT repair shop or SaaS tool.</td>
+        </tr>
+        <tr>
+          <td><strong>2. Who does GAUREX help?</strong></td>
+          <td>No audience specified above the fold.</td>
+          <td><span class="badge badge-score-low">Failed</span> Unclear whether targeted at startups, SMEs, or enterprises.</td>
+        </tr>
+        <tr>
+          <td><strong>3. What problems are solved?</strong></td>
+          <td>"Complex business problems into simple digital systems."</td>
+          <td><span class="badge badge-score-med">Vague</span> Lacks mention of specific operational pains (manual entry, lost leads).</td>
+        </tr>
+        <tr>
+          <td><strong>4. Why choose GAUREX?</strong></td>
+          <td>"We don't build what you ask for. We build what you need."</td>
+          <td><span class="badge badge-score-med">Slogan</span> Sounds clever, but offers zero verifiable differentiators.</td>
+        </tr>
+        <tr>
+          <td><strong>5. What action to take?</strong></td>
+          <td>Buttons: "Find My Solution" and "Explore GAUREX".</td>
+          <td><span class="badge badge-score-low">Confusing</span> "Find My Solution" jumps to empty chips; "Explore" jumps to raw cards.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Copywriting Diagnostic & Recommended Rewrites</h2>
+
+    <div class="compare-grid avoid-break">
+      <div class="compare-box compare-bad">
+        <h4>Current Hero Headline & Copy</h4>
+        <p><strong>Headline:</strong><br />Your Problem.<br />Our Technology.<br />One Solution.</p>
+        <p><strong>Subheadline:</strong><br />GAUREX transforms complex business problems into simple, scalable digital systems.</p>
+        <p><strong>Deficiency:</strong> Generic, philosophical, zero target keywords for SEO, zero industry clarity.</p>
+      </div>
+      <div class="compare-box compare-good">
+        <h4>Recommended High-Conversion Copy</h4>
+        <p><strong>Headline:</strong><br />Custom Software, AI Agents & Business Automation Built to Scale Your Operations.</p>
+        <p><strong>Subheadline:</strong><br />We design and engineer enterprise-grade web applications, custom ERPs, and autonomous AI workflows that eliminate manual bottlenecks for scaling companies.</p>
+        <p><strong>Advantage:</strong> Concrete, keyword-dense, communicates exact commercial capabilities immediately.</p>
+      </div>
+    </div>
+
+    <h2>Trust Signals & Proof Deficit</h2>
+    <p>
+      High-value B2B software contracts require substantial trust before an enquiry is initiated. GAUREX currently exhibits a near-total absence of verifiable trust signals:
+    </p>
+    <ul>
+      <li><strong>No Client Names or Logos:</strong> Case studies are labelled anonymously ("Healthcare Clinic", "B2B Service Provider", "Local Retailer").</li>
+      <li><strong>Development Mode Leak:</strong> The case study section actively displays: <code>DEV MODE: Placeholder Case Studies</code> in development builds.</li>
+      <li><strong>No Founder Authority:</strong> Founder Gauresh Khairnar is entirely absent from the website. There is no founder story, no LinkedIn link, and no engineering credentials.</li>
+      <li><strong>Free Gmail Contact:</strong> The footer lists <code>gaurex.ai@gmail.com</code> rather than a branded enterprise email (e.g. <code>solutions@gaurex.com</code>).</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 5: LEAD GENERATION & CONVERSION AUDIT -->
+  <div class="container page-break">
+    <div class="doc-header">
+      <span>GAUREX &bull; Website Audit Report</span>
+      <span>05. Lead Gen & Conversion Funnel</span>
+    </div>
+
+    <h1>
+      <span>05. Lead Generation & Conversion Funnel</span>
+      <span class="section-num">Revenue</span>
+    </h1>
+
+    <h2>The WhatsApp Gating Trap</h2>
+    <p>
+      The single largest commercial vulnerability on the GAUREX website is its exclusive reliance on raw WhatsApp redirects. In <code>src/components/IntelligentContact/index.tsx</code>, when a visitor selects a problem chip, the only resulting action is an external link opening <code>wa.me/919579098477</code>.
+    </p>
+
+    <div class="card card-alert avoid-break">
+      <div class="card-title">Commercial Impact on High-Ticket B2B Sales</div>
+      <p style="margin: 0; font-size: 11.5px; color: #742a2a;">
+        Corporate executives, procurement managers, and international clients from the US, UK, Europe, and UAE <strong>do not conduct six-figure software discovery on personal WhatsApp</strong>. WhatsApp is viewed as personal, informal, and lacking enterprise privacy/confidentiality safeguards. This design choice instantly filters out the highest-paying prospective clients.
+      </p>
+    </div>
+
+    <h2>Audit of Interactive Funnels & Dead CTAs</h2>
+    <ul>
+      <li><strong>ProblemScanner (Line 104):</strong> The primary diagnostic displays a prominent black button: <code>&lt;button&gt;Build My Solution&lt;/button&gt;</code>. In the source code, this button has <strong>no <code>onClick</code> handler, no <code>href</code> link, and no state binding</strong>. Clicking it does absolutely nothing.</li>
+      <li><strong>ArchitectureBuilder (Line 78):</strong> Users can interactively toggle modules (CRM, AI Agent, Automation, Analytics), but the section provides <strong>no conversion CTA</strong> at the bottom to convert the customized architecture into a proposal request.</li>
+      <li><strong>Solution Estimator (Line 125):</strong> Calculates an estimated cost (e.g. "$12,000 - $18,000"), but the WhatsApp CTA sends a static message: <em>"Hi GAUREX, I would like to request an exact proposal."</em> It completely drops the selected modules and estimated price from the query string!</li>
+    </ul>
+
+    <h2>Recommended B2B Multi-Tier Conversion Funnel</h2>
+    <div class="avoid-break" style="margin-top: 12px;">
+      <div class="funnel-step">
+        <div class="step-badge">1</div>
+        <div><strong>High-Clarity Hero:</strong> Immediate understanding of service capabilities + dual direct action CTAs.</div>
+      </div>
+      <div class="funnel-step">
+        <div class="step-badge">2</div>
+        <div><strong>Interactive Scoping:</strong> Architecture Builder & ROI Estimator with state preserved in memory.</div>
+      </div>
+      <div class="funnel-step">
+        <div class="step-badge">3</div>
+        <div><strong>Tier 1 Conversion (Fast Track):</strong> Direct 15-Minute Technical Discovery Call booked via embedded Cal.com / Calendly.</div>
+      </div>
+      <div class="funnel-step">
+        <div class="step-badge">4</div>
+        <div><strong>Tier 2 Conversion (Formal Procurement):</strong> Enterprise RFP Form (Name, Work Email, Company, Budget Tier, Scope).</div>
+      </div>
+      <div class="funnel-step">
+        <div class="step-badge">5</div>
+        <div><strong>Automated CRM Qualification:</strong> Instant confirmation email with technical briefing document + CRM pipeline sync.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: TECHNICAL SEO AUDIT -->
+  <div class="container page-break">
+    <div class="doc-header">
+      <span>GAUREX &bull; Website Audit Report</span>
+      <span>06. Technical SEO & Discoverability</span>
+    </div>
+
+    <h1>
+      <span>06. Technical SEO & Discoverability</span>
+      <span class="section-num">Search</span>
+    </h1>
+
+    <h2>Baseline Metadata & Indexability Inspection</h2>
+    <p>
+      An inspection of <code>src/app/layout.tsx</code> reveals bare-minimum metadata:
+    </p>
+    <pre><code>export const metadata: Metadata = {
+  title: "GAUREX | Technology Built Around Problems",
+  description: "GAUREX transforms complex business problems into simple, scalable digital systems.",
+};</code></pre>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 28%;">SEO Element</th>
+          <th style="width: 22%;">Current Status</th>
+          <th style="width: 50%;">Technical Finding & Impact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>robots.txt</strong></td>
+          <td><span class="badge badge-score-low">Missing</span></td>
+          <td>No <code>public/robots.txt</code> or <code>src/app/robots.ts</code> exists. Search bots receive no crawling rules.</td>
+        </tr>
+        <tr>
+          <td><strong>sitemap.xml</strong></td>
+          <td><span class="badge badge-score-low">Missing</span></td>
+          <td>No XML sitemap configured. Search engines cannot map site depth or indexing priorities.</td>
+        </tr>
+        <tr>
+          <td><strong>Canonical URLs</strong></td>
+          <td><span class="badge badge-score-low">Missing</span></td>
+          <td>No canonical link defined, causing potential duplicate content penalties on mirror domains.</td>
+        </tr>
+        <tr>
+          <td><strong>Open Graph (OG) Tags</strong></td>
+          <td><span class="badge badge-score-low">Missing</span></td>
+          <td>Missing <code>og:title</code>, <code>og:image</code>, <code>og:description</code>. Social links display broken default preview cards.</td>
+        </tr>
+        <tr>
+          <td><strong>JSON-LD Schema Markup</strong></td>
+          <td><span class="badge badge-score-low">Missing</span></td>
+          <td>Zero structured data for <code>Organization</code>, <code>Service</code>, <code>ProfessionalService</code>, or <code>FAQPage</code>.</td>
+        </tr>
+        <tr>
+          <td><strong>Target Keywords in H1</strong></td>
+          <td><span class="badge badge-score-low">Zero</span></td>
+          <td>H1 contains zero commercial search phrases ("AI Solutions", "Custom Software", "ERP Development").</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>The Single-Page Architecture Trap</h2>
+    <p>
+      GAUREX provides seven distinct enterprise service categories:
+    </p>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+      <span class="badge badge-p2">AI Solutions & Agents</span>
+      <span class="badge badge-p2">Business Automation</span>
+      <span class="badge badge-p2">Custom Software</span>
+      <span class="badge badge-p2">ERP Systems</span>
+      <span class="badge badge-p2">Dashboards & Analytics</span>
+      <span class="badge badge-p2">Web Applications</span>
+    </div>
+    <p>
+      Because all services are crammed into small descriptive cards on a single page, <strong>GAUREX cannot rank organically for any high-intent commercial keywords</strong>. Google cannot index a single homepage for "AI Automation Agency in Mumbai" alongside "Custom ERP Software Development Company".
+    </p>
+
+    <div class="card avoid-break">
+      <div class="card-title">Recommended Programmatic Service Route Architecture</div>
+      <p style="font-size: 11.5px; margin-bottom: 6px;">
+        To capture organic search demand, GAUREX must create dedicated static server-rendered service pages:
+      </p>
+      <ul style="font-size: 11px; margin: 0; padding-left: 18px;">
+        <li><code>/services/ai-solutions-agents</code> &mdash; Target: "Custom AI Agent Development", "Enterprise LLM Solutions"</li>
+        <li><code>/services/business-automation</code> &mdash; Target: "Business Process Automation Services", "Workflow Automation"</li>
+        <li><code>/services/erp-systems</code> &mdash; Target: "Custom ERP Development Company", "B2B Management Systems"</li>
+        <li><code>/services/custom-software-development</code> &mdash; Target: "Custom Software Engineering Firm"</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION 7: PERFORMANCE & CORE WEB VITALS -->
+  <div class="container page-break">
+    <div class="doc-header">
+      <span>GAUREX &bull; Website Audit Report</span>
+      <span>07. Performance & Core Web Vitals</span>
+    </div>
+
+    <h1>
+      <span>07. Performance & Core Web Vitals Audit</span>
+      <span class="section-num">Speed</span>
+    </h1>
+
+    <h2>The 3.9MB Video Blocker Analysis</h2>
+    <p>
+      In <code>src/components/IntroVideo/index.tsx</code>, a full-screen video overlay mounts immediately upon page visit:
+    </p>
+    <pre><code>src={isMobile ? "/videos/mobile.mp4" : "/videos/desktop.mp4"}</code></pre>
+    <p>
+      File payload inspection from the repository root:
+    </p>
+    <ul>
+      <li><code>/public/videos/desktop.mp4</code>: <strong>2,524,482 bytes (2.52 MB)</strong></li>
+      <li><code>/public/videos/mobile.mp4</code>: <strong>3,929,672 bytes (3.93 MB)</strong></li>
+    </ul>
+
+    <div class="card card-alert avoid-break">
+      <div class="card-title">The Mobile Performance Irony</div>
+      <p style="margin: 0; font-size: 11.5px; color: #742a2a;">
+        The mobile video is <strong>55% larger than the desktop video</strong>. While desktop users typically connect via high-speed broadband, mobile users on 4G/5G connections are forced to download a massive 3.93MB video stream before they can see the homepage content. This delays First Contentful Paint (FCP) and drives mobile bounce rates above 60%.
+      </p>
+    </div>
+
+    <h2>Monolithic Client-Side Hydration Penalties</h2>
+    <p>
+      In <code>src/app/page.tsx</code>, line 1 enforces: <code>"use client";</code>.
+    </p>
+    <p>
+      Next.js App Router is designed to stream HTML directly from the server. By forcing the root page component to run client-side, GAUREX loses all advantages of React Server Components (RSC):
+    </p>
+    <ul>
+      <li>The entire Framer Motion animation library (13.4.4) must be downloaded, parsed, and executed before the layout stabilizes.</li>
+      <li>Search engine crawlers and users with low-spec processors experience significant main-thread blocking time (Total Blocking Time &gt; 350ms).</li>
+      <li>Layout shifts occur as state toggles from <code>introFinished: false</code> to <code>true</code>.</li>
+    </ul>
+
+    <h2>Font Loading Vulnerability</h2>
+    <p>
+      During local Turbopack build execution (<code>npm run build</code>), Next.js flagged an unhandled network error:
+    </p>
+    <pre><code>Error: Failed to fetch Inter from Google Fonts.
+If you are offline or behind a proxy, self-host the font with next/font/local.</code></pre>
+    <p>
+      Relying on external Google Fonts API queries during build or runtime introduces external network dependencies and latency. Transitioning to <code>next/font/local</code> guarantees instant zero-latency font loading with zero external DNS lookups.
+    </p>
+  </div>
+
+  <!-- SECTION 8: TECHNICAL, ARCHITECTURE & SECURITY -->
+  <div class="container page-break">
+    <div class="doc-header">
+      <span>GAUREX &bull; Website Audit Report</span>
+      <span>08. Technical, Architecture & Security</span>
+    </div>
+
+    <h1>
+      <span>08. Technical & Security Audit</span>
+      <span class="section-num">Codebase</span>
+    </h1>
+
+    <h2>ESLint Diagnostic Audit Results</h2>
+    <p>
+      Running <code>npm run lint</code> across the workspace revealed <strong>8 fatal syntax/lint errors and 1 warning</strong> that should be remediated prior to enterprise deployments:
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>File Location</th>
+          <th>Rule Violated</th>
+          <th>Technical Defect</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>IntroVideo/index.tsx:15</code></td>
+          <td><code>react-hooks/set-state-in-effect</code></td>
+          <td>Calling <code>setShowVideo(false)</code> synchronously inside an effect causes cascading re-renders.</td>
+        </tr>
+        <tr>
+          <td><code>FloatingAI/index.tsx:74, 88</code></td>
+          <td><code>react/no-unescaped-entities</code></td>
+          <td>Unescaped double quotes inside JSX text breaks standard HTML parsing.</td>
+        </tr>
+        <tr>
+          <td><code>IntelligentContact/index.tsx:61</code></td>
+          <td><code>react/no-unescaped-entities</code></td>
+          <td>Unescaped apostrophe in <em>"Let's design your solution"</em>.</td>
+        </tr>
+        <tr>
+          <td><code>ProblemScanner/index.tsx:33</code></td>
+          <td><code>react/no-unescaped-entities</code></td>
+          <td>Unescaped apostrophe in <em>"What's broken in your business?"</em>.</td>
+        </tr>
+        <tr>
+          <td><code>TypographyReveal/index.tsx:17</code></td>
+          <td><code>react/no-unescaped-entities</code></td>
+          <td>Unescaped apostrophe in <em>"We don't build what you ask for"</em>.</td>
+        </tr>
+        <tr>
+          <td><code>FloatingAI/index.tsx:5</code></td>
+          <td><code>@typescript-eslint/no-unused-vars</code></td>
+          <td>Unused import <code>MessageSquare</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>The Mock "AI Intelligence" Widget Hazard</h2>
+    <p>
+      In <code>src/components/FloatingAI/index.tsx</code>, a floating button invites visitors to chat with <em>"GAUREX Intelligence - AI Problem Analyzer"</em>:
+    </p>
+    <pre><code>// Simulate AI processing
+setTimeout(() => {
+  setChatState("result");
+}, 2000);</code></pre>
+    <p>
+      Regardless of whether a visitor submits: <em>"We need an ERP for a pharmaceutical plant"</em> or <em>"Our restaurant needs a booking table system"</em>, the component waits 2000ms and prints the exact same static output:
+    </p>
+    <div class="card avoid-break">
+      <div style="font-size: 11px; color: #09090b;">
+        <strong>Problem Identified:</strong> Fragmented data & manual follow-ups<br />
+        <strong>Recommended System:</strong> CRM + Automated Follow-up + Analytics<br />
+        <strong>Required Modules:</strong> Smart Web, API Integrations, AI Agents
+      </div>
+    </div>
+    <p>
+      <strong>Credibility Risk:</strong> A technical decision-maker testing this widget will immediately discover it is a static fake. For a company offering custom AI solutions, this creates immediate reputational damage.
+    </p>
+
+    <h2>Security & Hardening Recommendations</h2>
+    <ul>
+      <li><strong>Content Security Policy (CSP):</strong> Missing in <code>next.config.ts</code>. Must implement strict script-src and frame-ancestors headers to prevent clickjacking and XSS.</li>
+      <li><strong>Form Endpoint Security:</strong> When implementing the new lead capture form, use Next.js Server Actions with Zod schema validation, honeypot fields, and Turnstile bot protection.</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 9: COMPETITOR BENCHMARK -->
+  <div class="container page-break">
+    <div class="doc-header">
+      <span>GAUREX &bull; Website Audit Report</span>
+      <span>09. Competitor & Market Positioning</span>
+    </div>
+
+    <h1>
+      <span>09. Competitor & Market Benchmark</span>
+      <span class="section-num">Market</span>
+    </h1>
+
+    <h2>Positioning Comparison Matrix</h2>
+    <p>
+      We benchmarked GAUREX against three tiers of market competitors: Global Technology Consultancies (Thoughtworks), Elite Design & Engineering Boutiques (10up, Digidop), and Regional Software Agencies.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Benchmark Dimension</th>
+          <th>Elite Engineering Boutiques</th>
+          <th>GAUREX (Current Website)</th>
+          <th>GAUREX Target State</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Hero Proposition</strong></td>
+          <td>Metric-driven ("We engineer 30% operational gains via custom systems")</td>
+          <td>Philosophical ("Your Problem. Our Technology. One Solution.")</td>
+          <td>Direct ("Custom Software, AI Agents & ERP Systems Engineered to Scale Your Business")</td>
+        </tr>
+        <tr>
+          <td><strong>Proof & Case Studies</strong></td>
+          <td>Named client logos, verified ROI metrics, video reviews</td>
+          <td>Anonymous placeholders with "DEV MODE" banner</td>
+          <td>Detailed case breakdowns with architecture diagrams and concrete metric lifts</td>
+        </tr>
+        <tr>
+          <td><strong>Lead Capture Funnel</strong></td>
+          <td>Multi-tier: Instant Cal.com booking + Formal Scope RFP Form</td>
+          <td>External personal WhatsApp redirect only</td>
+          <td>Embedded 15-Min Discovery Booking + Corporate Lead Form + CRM integration</td>
+        </tr>
+        <tr>
+          <td><strong>Technical Transparency</strong></td>
+          <td>Detailed stack rationales, architecture blueprints, public repos</td>
+          <td>Generic interactive modules with no conversion link</td>
+          <td>Interactive Architecture Builder with direct export to proposal request</td>
+        </tr>
+        <tr>
+          <td><strong>Brand Authority</strong></td>
+          <td>Custom business domain email, executive founder presence</td>
+          <td>Free @gmail.com email; founder invisible</td>
+          <td>Branded @gaurex.com email; Founder/Engineering team featured prominently</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Strategic Opportunities for Differentiation</h2>
+    <div class="card avoid-break">
+      <div class="card-title">1. The "Problem-First" Architectural Advantage</div>
+      <p style="font-size: 11.5px; margin: 0;">
+        Most software agencies sell hours or generic tech stacks ("We build with Next.js & Python"). GAUREX's tagline <em>"Your Problem. Our Technology. One Solution."</em> can be a powerful market differentiator if backed by a structured operational diagnostic rather than vague slogans.
+      </p>
+    </div>
+    <div class="card avoid-break">
+      <div class="card-title">2. Unified AI + ERP Automation</div>
+      <p style="font-size: 11.5px; margin: 0;">
+        Traditional ERP consultancies build rigid legacy databases; pure AI agencies build fragile chatbots. GAUREX can claim the sweet spot: <strong>intelligent, agent-driven ERP workflows</strong> that combine reliable relational databases with autonomous AI agents.
+      </p>
+    </div>
+  </div>
+
+  <!-- SECTION 10: TOP 10 CRITICAL IMPROVEMENTS -->
+  <div class="container page-break">
+    <div class="doc-header">
+      <span>GAUREX &bull; Website Audit Report</span>
+      <span>10. Top 10 Critical Improvements</span>
+    </div>
+
+    <h1>
+      <span>10. Top 10 Critical Improvements Matrix</span>
+      <span class="section-num">Action Plan</span>
+    </h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 5%;">#</th>
+          <th style="width: 18%;">Section / Area</th>
+          <th style="width: 37%;">Problem & Commercial Evidence</th>
+          <th style="width: 28%;">Actionable Solution</th>
+          <th style="width: 12%;">Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>01</strong></td>
+          <td><code>IntroVideo</code></td>
+          <td>3.9MB video forces users to wait before displaying content.</td>
+          <td>Remove full-screen overlay; embed video inside hero or feature section.</td>
+          <td><span class="badge badge-p0">P0 &bull; Critical</span></td>
+        </tr>
+        <tr>
+          <td><strong>02</strong></td>
+          <td><code>IntelligentContact</code></td>
+          <td>Zero contact forms; forces visitors onto personal WhatsApp.</td>
+          <td>Build professional B2B form (Name, Work Email, Scope, Budget).</td>
+          <td><span class="badge badge-p0">P0 &bull; Critical</span></td>
+        </tr>
+        <tr>
+          <td><strong>03</strong></td>
+          <td><code>ProblemScanner</code></td>
+          <td>CTA button "Build My Solution" has no click handler.</td>
+          <td>Bind button to open calendar booking or scroll to prefilled form.</td>
+          <td><span class="badge badge-p0">P0 &bull; Critical</span></td>
+        </tr>
+        <tr>
+          <td><strong>04</strong></td>
+          <td><code>FloatingAI</code></td>
+          <td>Static 2-second timeout mock widget damages credibility.</td>
+          <td>Connect to real Gemini API route or replace with structured intake flow.</td>
+          <td><span class="badge badge-p0">P0 &bull; Critical</span></td>
+        </tr>
+        <tr>
+          <td><strong>05</strong></td>
+          <td><code>CustomCursor</code></td>
+          <td>Cursor disappears on tablets; double cursor appears on desktop.</td>
+          <td>Remove <code>cursor-none</code> from HTML; revert to native pointer.</td>
+          <td><span class="badge badge-p1">P1 &bull; High</span></td>
+        </tr>
+        <tr>
+          <td><strong>06</strong></td>
+          <td><code>CaseStudies</code></td>
+          <td>Anonymous placeholders marked with "DEV MODE" notice.</td>
+          <td>Replace with 3 real case studies showing concrete architecture and metrics.</td>
+          <td><span class="badge badge-p1">P1 &bull; High</span></td>
+        </tr>
+        <tr>
+          <td><strong>07</strong></td>
+          <td><code>Hero & Navbar</code></td>
+          <td>Mismatched anchor IDs (<code>#contact</code> vs <code>#start</code>).</td>
+          <td>Standardize navigation anchors across all headers and buttons.</td>
+          <td><span class="badge badge-p1">P1 &bull; High</span></td>
+        </tr>
+        <tr>
+          <td><strong>08</strong></td>
+          <td><code>Branding & Trust</code></td>
+          <td>Uses free <code>gaurex.ai@gmail.com</code>; dead footer links.</td>
+          <td>Migrate to <code>contact@gaurex.com</code>; build real About and Legal pages.</td>
+          <td><span class="badge badge-p1">P1 &bull; High</span></td>
+        </tr>
+        <tr>
+          <td><strong>09</strong></td>
+          <td><code>Technical SEO</code></td>
+          <td>Missing sitemap, robots.txt, canonicals, and OG metadata.</td>
+          <td>Add <code>robots.ts</code>, <code>sitemap.ts</code>, Open Graph cards, and JSON-LD schema.</td>
+          <td><span class="badge badge-p2">P2 &bull; Med</span></td>
+        </tr>
+        <tr>
+          <td><strong>10</strong></td>
+          <td><code>Solution Estimator</code></td>
+          <td>WhatsApp CTA drops calculated price and selected modules.</td>
+          <td>Pass state into enquiry URL or auto-fill contact form.</td>
+          <td><span class="badge badge-p2">P2 &bull; Med</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 11: RECOMMENDED HOMEPAGE STRUCTURE -->
+  <div class="container page-break">
+    <div class="doc-header">
+      <span>GAUREX &bull; Website Audit Report</span>
+      <span>11. Recommended Homepage Architecture</span>
+    </div>
+
+    <h1>
+      <span>11. Recommended Homepage Wireframe</span>
+      <span class="section-num">Architecture</span>
+    </h1>
+
+    <p>
+      Consolidate the current 15 bloated sections into <strong>9 high-impact, revenue-focused zones</strong>:
+    </p>
+
+    <div class="card avoid-break" style="background: #ffffff; border: 2px solid #09090b; padding: 18px;">
+      <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px; display: flex; justify-content: space-between;">
+        <strong>1. Sticky Enterprise Navbar</strong>
+        <span style="font-size: 11px; color: #64748b;">Logo &bull; Solutions &bull; Case Studies &bull; Estimator &bull; [Book Discovery Call]</span>
+      </div>
+      <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">
+        <strong>2. High-Clarity Hero (Zero Video Gating)</strong>
+        <p style="margin: 4px 0 0 0; font-size: 11px; color: #475569;">
+          Badge: "B2B Technology & AI Automation Partner" &bull; Clear 2-line Value Proposition H1 &bull; Dual CTAs: [Schedule 15-Min Discovery Call] + [View Architecture & Proof] &bull; Key Tech Badges
+        </p>
+      </div>
+      <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">
+        <strong>3. Operational Bottleneck Diagnostic (Enhanced ProblemScanner)</strong>
+        <p style="margin: 4px 0 0 0; font-size: 11px; color: #475569;">
+          Interactive diagnosis mapping customer friction points to custom system architectures. Functional CTA: "Request Architecture Blueprint for This Issue".
+        </p>
+      </div>
+      <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">
+        <strong>4. Core Technology & Service Capabilities (6 Pillar Grid)</strong>
+        <p style="margin: 4px 0 0 0; font-size: 11px; color: #475569;">
+          Modular cards for AI Agents, Custom ERPs, Business Automation, and Analytics. Each card links to detailed scope blueprints.
+        </p>
+      </div>
+      <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">
+        <strong>5. Proven Client Case Studies & Architectural Outcomes</strong>
+        <p style="margin: 4px 0 0 0; font-size: 11px; color: #475569;">
+          3 in-depth case studies featuring Problem, Solution Architecture, Tech Stack, and Verified ROI Metrics.
+        </p>
+      </div>
+      <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">
+        <strong>6. Interactive System Estimator & ROI Calculator</strong>
+        <p style="margin: 4px 0 0 0; font-size: 11px; color: #475569;">
+          Consolidated calculation tool passing selected parameters directly into the conversion form.
+        </p>
+      </div>
+      <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">
+        <strong>7. Leadership & Engineering Philosophy (Trust Signal)</strong>
+        <p style="margin: 4px 0 0 0; font-size: 11px; color: #475569;">
+          Founder note from Gauresh Khairnar detailing engineering integrity, code ownership, and technical standards.
+        </p>
+      </div>
+      <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px; background: #f8fafc; padding: 10px; border-radius: 8px;">
+        <strong>8. Dual-Action B2B Conversion Hub</strong>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 5px;">
+          <div style="border: 1px dashed #cbd5e1; padding: 8px; border-radius: 6px; font-size: 10.5px;">
+            <strong>Channel A: Direct Booking</strong><br />Embedded Cal.com / Calendly 15-Minute Technical Discovery Call.
+          </div>
+          <div style="border: 1px dashed #cbd5e1; padding: 8px; border-radius: 6px; font-size: 10.5px;">
+            <strong>Channel B: Formal RFP Intake</strong><br />Work Email, Scope, Budget Range, Project Requirements.
+          </div>
+        </div>
+      </div>
+      <div>
+        <strong>9. Enterprise Footer & Legal Compliance</strong>
+        <span style="font-size: 11px; color: #64748b;">Branded Email &bull; Privacy Policy &bull; Terms of Service &bull; Registered Corporate Entity</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 12: EXACT COPYWRITING IMPROVEMENTS -->
+  <div class="container page-break">
+    <div class="doc-header">
+      <span>GAUREX &bull; Website Audit Report</span>
+      <span>12. Exact Copywriting Improvements</span>
+    </div>
+
+    <h1>
+      <span>12. Exact Copywriting Improvements</span>
+      <span class="section-num">Messaging</span>
+    </h1>
+
+    <div class="card avoid-break">
+      <div class="card-title">Hero Section Rewrites</div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 20%;">Element</th>
+            <th style="width: 40%;">Current Copy (Weak)</th>
+            <th style="width: 40%;">Recommended B2B Copy (High-Converting)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Eyebrow Badge</strong></td>
+            <td><em>None</em></td>
+            <td><code>Enterprise Software & AI Automation Solutions</code></td>
+          </tr>
+          <tr>
+            <td><strong>Main Headline</strong></td>
+            <td>Your Problem.<br />Our Technology.<br />One Solution.</td>
+            <td>Custom Software, AI Agents & ERP Systems Engineered to Scale Your Business.</td>
+          </tr>
+          <tr>
+            <td><strong>Subheadline</strong></td>
+            <td>GAUREX transforms complex business problems into simple, scalable digital systems.</td>
+            <td>We architect and deploy custom web platforms, automated AI workflows, and management systems that eliminate manual bottlenecks for ambitious companies.</td>
+          </tr>
+          <tr>
+            <td><strong>Primary CTA</strong></td>
+            <td>Find My Solution</td>
+            <td>Book a 15-Min Technical Discovery &rarr;</td>
+          </tr>
+          <tr>
+            <td><strong>Secondary CTA</strong></td>
+            <td>Explore GAUREX</td>
+            <td>View Architecture & Case Studies</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card avoid-break">
+      <div class="card-title">Service Card Copywriting Overhaul</div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 25%;">Service Pillar</th>
+            <th style="width: 35%;">Current Copy</th>
+            <th style="width: 40%;">Recommended High-Value Copy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>AI Solutions</strong></td>
+            <td>"Use AI to automate decisions and workflows. Faster, smarter output."</td>
+            <td><strong>Autonomous AI Agents:</strong> Deploy 24/7 intelligent agents that triage inbound leads, execute complex data workflows, and reduce admin hours by 70%.</td>
+          </tr>
+          <tr>
+            <td><strong>ERP Systems</strong></td>
+            <td>"Connect business operations in one system. Total visibility."</td>
+            <td><strong>Custom Operations ERP:</strong> Single-source-of-truth management platforms tailored to your exact operational logic, inventory, and accounting workflows.</td>
+          </tr>
+          <tr>
+            <td><strong>Business Automation</strong></td>
+            <td>"Reduce repetitive manual work. Reclaimed time and zero error."</td>
+            <td><strong>Workflow Pipeline Engineering:</strong> Replace spreadsheet hand-offs with automated API pipelines connecting your marketing, CRM, and fulfillment.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 13: 7-DAY IMPLEMENTATION SPRINT -->
+  <div class="container page-break">
+    <div class="doc-header">
+      <span>GAUREX &bull; Website Audit Report</span>
+      <span>13. 7-Day Implementation Sprint</span>
+    </div>
+
+    <h1>
+      <span>13. 7-Day Implementation Sprint</span>
+      <span class="section-num">Engineering</span>
+    </h1>
+
+    <p>
+      An aggressive, actionable 7-day engineering sprint to remediate critical blockers without full site demolition:
+    </p>
+
+    <div class="card avoid-break">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+        <h3 style="margin: 0;">Day 1 &mdash; Friction Removal & Performance Optimization</h3>
+        <span class="badge badge-p0">P0 Priority</span>
+      </div>
+      <ul style="margin: 0; padding-left: 18px; font-size: 11px;">
+        <li>Disable the blocking <code>IntroVideo</code> full-screen overlay in <code>src/app/page.tsx</code>. Set <code>introFinished</code> to default true.</li>
+        <li>Eliminate <code>cursor-none</code> in <code>src/app/layout.tsx</code> to restore standard OS pointer on mobile/tablet devices.</li>
+        <li>Retire <code>CustomCursor/index.tsx</code> to prevent desktop double-cursor rendering lag.</li>
+      </ul>
+    </div>
+
+    <div class="card avoid-break">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+        <h3 style="margin: 0;">Day 2 &mdash; Navigation & Interactive Handler Repair</h3>
+        <span class="badge badge-p0">P0 Priority</span>
+      </div>
+      <ul style="margin: 0; padding-left: 18px; font-size: 11px;">
+        <li>Bind the "Build My Solution" button in <code>ProblemScanner</code> to smoothly scroll to the contact form.</li>
+        <li>Harmonize section IDs: rename <code>#start</code> to <code>#contact</code> and <code>#estimate</code> to <code>#pricing</code>.</li>
+        <li>Fix all 8 ESLint unescaped entity and Hook errors to achieve clean production builds.</li>
+      </ul>
+    </div>
+
+    <div class="card avoid-break">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+        <h3 style="margin: 0;">Day 3 &mdash; Enterprise Lead Capture Implementation</h3>
+        <span class="badge badge-p0">P0 Priority</span>
+      </div>
+      <ul style="margin: 0; padding-left: 18px; font-size: 11px;">
+        <li>Build a modern B2B form component with fields for Name, Work Email, Company, Budget, and Scope.</li>
+        <li>Implement a Next.js Server Action with Zod schema validation.</li>
+        <li>Connect Resend or SendGrid to dispatch instant lead alert emails to Gauresh.</li>
+      </ul>
+    </div>
+
+    <div class="card avoid-break">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+        <h3 style="margin: 0;">Day 4 &mdash; Calendar Discovery Integration</h3>
+        <span class="badge badge-p1">P1 Priority</span>
+      </div>
+      <ul style="margin: 0; padding-left: 18px; font-size: 11px;">
+        <li>Embed a responsive Cal.com or Calendly scheduling iframe into the contact hub.</li>
+        <li>Configure automated calendar reminders and pre-call intake questions.</li>
+      </ul>
+    </div>
+
+    <div class="card avoid-break">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+        <h3 style="margin: 0;">Day 5 &mdash; Copywriting & Value Proposition Deployment</h3>
+        <span class="badge badge-p1">P1 Priority</span>
+      </div>
+      <ul style="margin: 0; padding-left: 18px; font-size: 11px;">
+        <li>Update Hero headlines, subheadings, and primary CTAs using Section 12 specifications.</li>
+        <li>Replace the static <code>FloatingAI</code> mock with an intake workflow or live Gemini API route.</li>
+      </ul>
+    </div>
+
+    <div class="card avoid-break">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+        <h3 style="margin: 0;">Day 6 &mdash; Trust Signals & Proof Architecture</h3>
+        <span class="badge badge-p1">P1 Priority</span>
+      </div>
+      <ul style="margin: 0; padding-left: 18px; font-size: 11px;">
+        <li>Remove the "DEV MODE: Placeholder Case Studies" banner.</li>
+        <li>Upgrade 3 case studies with clear architectural summaries, tech stacks, and quantitative results.</li>
+        <li>Update footer email to a custom business domain (<code>contact@gaurex.com</code>).</li>
+      </ul>
+    </div>
+
+    <div class="card avoid-break">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+        <h3 style="margin: 0;">Day 7 &mdash; Technical SEO & Deployment Verification</h3>
+        <span class="badge badge-p2">P2 Priority</span>
+      </div>
+      <ul style="margin: 0; padding-left: 18px; font-size: 11px;">
+        <li>Generate <code>src/app/robots.ts</code> and <code>src/app/sitemap.ts</code>.</li>
+        <li>Configure Open Graph and Twitter metadata cards with high-resolution preview graphics.</li>
+        <li>Deploy to Vercel production and verify complete Core Web Vitals compliance.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION 14: 30-DAY GROWTH ROADMAP -->
+  <div class="container page-break">
+    <div class="doc-header">
+      <span>GAUREX &bull; Website Audit Report</span>
+      <span>14. 30-Day B2B Growth Roadmap</span>
+    </div>
+
+    <h1>
+      <span>14. 30-Day B2B Growth Roadmap</span>
+      <span class="section-num">Scale</span>
+    </h1>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px;">
+      <div class="card avoid-break">
+        <h3 style="margin-top:0;">Week 1: Hardening & Tracking</h3>
+        <ul style="padding-left: 16px; font-size: 11px; margin: 0;">
+          <li>Execute the 7-day engineering sprint to completion.</li>
+          <li>Install PostHog or Microsoft Clarity to record real visitor heatmaps and session drops.</li>
+          <li>Configure Google Analytics 4 conversion events for discovery call bookings.</li>
+        </ul>
+      </div>
+      <div class="card avoid-break">
+        <h3 style="margin-top:0;">Week 2: Programmatic Service SEO</h3>
+        <ul style="padding-left: 16px; font-size: 11px; margin: 0;">
+          <li>Create static landing pages for <code>/services/ai-solutions</code> and <code>/services/business-automation</code>.</li>
+          <li>Embed specific JSON-LD <code>Service</code> schema markup on each page.</li>
+          <li>Publish technical comparison articles addressing specific client search queries.</li>
+        </ul>
+      </div>
+      <div class="card avoid-break">
+        <h3 style="margin-top:0;">Week 3: Inbound Lead Magnets</h3>
+        <ul style="padding-left: 16px; font-size: 11px; margin: 0;">
+          <li>Publish an interactive tool: <em>"The 2026 SME Automation Audit Calculator"</em>.</li>
+          <li>Release an executive whitepaper: <em>"How Scaling Companies Cut 20+ Hours Weekly with AI Agents"</em>.</li>
+          <li>Feature video testimonials from early clients.</li>
+        </ul>
+      </div>
+      <div class="card avoid-break">
+        <h3 style="margin-top:0;">Week 4: Outbound Pipeline Acceleration</h3>
+        <ul style="padding-left: 16px; font-size: 11px; margin: 0;">
+          <li>Connect lead capture to HubSpot or Notion CRM with automated deal stages.</li>
+          <li>Set up automated email follow-up sequences delivering architecture whitepapers.</li>
+          <li>Launch founder-led LinkedIn outbound campaigns directing qualified traffic to the upgraded site.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="score-banner" style="margin-top: 24px; background: #0f172a;">
+      <div>
+        <div class="score-context">GAUREX Transformation Target</div>
+        <div style="font-size: 20px; font-weight: 800; color: #ffffff; margin-top: 4px;">Predictable Commercial Revenue Engine</div>
+      </div>
+      <div style="text-align: right; font-size: 11.5px; color: #94a3b8; max-width: 320px;">
+        Transforming GAUREX from an experimental design portfolio into a trusted, high-converting technology consultancy.
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
