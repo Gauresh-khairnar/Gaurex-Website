@@ -3,14 +3,20 @@ import fs from "fs";
 import path from "path";
 
 // Persistence directory for lead safety
-const DATA_DIR = path.join(process.cwd(), "data");
+function getLeadDataDir() {
+  if (process.env.VERCEL === "1") {
+    return path.join("/tmp", "data");
+  }
+  return path.join(process.cwd(), "data");
+}
 
 function saveLeadToDisk(type: "inquiry" | "booking", payload: Record<string, unknown>) {
   try {
-    if (!fs.existsSync(DATA_DIR)) {
-      fs.mkdirSync(DATA_DIR, { recursive: true });
+    const dataDir = getLeadDataDir();
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
     }
-    const filePath = path.join(DATA_DIR, `${type}s.json`);
+    const filePath = path.join(dataDir, `${type}s.json`);
     let existing: Record<string, unknown>[] = [];
     if (fs.existsSync(filePath)) {
       const content = fs.readFileSync(filePath, "utf-8");
@@ -28,10 +34,10 @@ function saveLeadToDisk(type: "inquiry" | "booking", payload: Record<string, unk
   }
 }
 
-// Nodemailer Transporter configuration
+// Nodemailer Transporter configuration with fallback
 function getTransporter() {
-  const user = process.env.SMTP_USER || process.env.EMAIL_USER;
-  const pass = process.env.SMTP_PASS || process.env.EMAIL_PASS;
+  const user = process.env.SMTP_USER || process.env.EMAIL_USER || "khairnargauresh01@gmail.com";
+  const pass = process.env.SMTP_PASS || process.env.EMAIL_PASS || "defkjhdxfigigolv";
   const host = process.env.SMTP_HOST || "smtp.gmail.com";
   const port = Number(process.env.SMTP_PORT) || 465;
 
@@ -153,17 +159,17 @@ export async function dispatchDiscoveryCallEmails(data: BookingEmailData) {
 
   if (transporter) {
     try {
-      // Send to Admin
+      // Send to Admin (deliver to both gaurex.ai and founder email)
       await transporter.sendMail({
-        from: `"GAUREX Alert" <${process.env.SMTP_USER || "gaurex.ai@gmail.com"}>`,
-        to: "gaurex.ai@gmail.com",
+        from: `"GAUREX Alert" <khairnargauresh01@gmail.com>`,
+        to: "gaurex.ai@gmail.com, khairnargauresh01@gmail.com",
         subject: `[DISCOVERY CALL] ${data.name} (${data.company || "Individual"}) - ${data.slot}`,
         html: adminHtml,
       });
 
       // Send to Customer
       await transporter.sendMail({
-        from: `"Gauresh Khairnar | GAUREX" <${process.env.SMTP_USER || "gaurex.ai@gmail.com"}>`,
+        from: `"Gauresh Khairnar | GAUREX" <khairnargauresh01@gmail.com>`,
         to: data.email,
         replyTo: "gaurex.ai@gmail.com",
         subject: `Confirmed: 15-Minute Technical Discovery Call with GAUREX`,
@@ -271,17 +277,17 @@ export async function dispatchInquiryEmails(data: InquiryEmailData) {
 
   if (transporter) {
     try {
-      // Send to Admin
+      // Send to Admin (deliver to both gaurex.ai and founder email)
       await transporter.sendMail({
-        from: `"GAUREX Lead Intake" <${process.env.SMTP_USER || "gaurex.ai@gmail.com"}>`,
-        to: "gaurex.ai@gmail.com",
+        from: `"GAUREX Lead Intake" <khairnargauresh01@gmail.com>`,
+        to: "gaurex.ai@gmail.com, khairnargauresh01@gmail.com",
         subject: `[NEW INQUIRY] ${data.fullName} - ${data.companyName} (${data.requiredSolution})`,
         html: adminHtml,
       });
 
       // Send to Customer
       await transporter.sendMail({
-        from: `"Gauresh Khairnar | GAUREX" <${process.env.SMTP_USER || "gaurex.ai@gmail.com"}>`,
+        from: `"Gauresh Khairnar | GAUREX" <khairnargauresh01@gmail.com>`,
         to: data.email,
         replyTo: "gaurex.ai@gmail.com",
         subject: `Receipt: GAUREX Technical Project Inquiry (${data.referenceId})`,
