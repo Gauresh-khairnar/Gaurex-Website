@@ -69,6 +69,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://gaurex.vercel.app",
   },
+  verification: {
+    google: "zYsDSmMzl6I1NW3u4w5hBTQ1WuMokCV1TC2DOGnBqRo",
+  },
 };
 
 export default function RootLayout({
@@ -150,6 +153,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        <meta name="google-site-verification" content="zYsDSmMzl6I1NW3u4w5hBTQ1WuMokCV1TC2DOGnBqRo" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
