@@ -89,3 +89,4 @@ export const faqs: FAQItem[] = [
     linkHref: "/#contact",
   },
 ];
+

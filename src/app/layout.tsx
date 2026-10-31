@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     canonical: "https://gaurex.vercel.app",
   },
   verification: {
-    google: "zYsDSmMzl6I1NW3u4w5hBTQ1WuMokCV1TC2DOGnBqRo",
+    google: ["-UjmUtmGdJivi6Dt8OXBr7Ry38ght3OMZtrsC07r9ZE", "zYsDSmMzl6I1NW3u4w5hBTQ1WuMokCV1TC2DOGnBqRo"],
   },
 };
 
@@ -153,6 +153,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        <meta name="google-site-verification" content="-UjmUtmGdJivi6Dt8OXBr7Ry38ght3OMZtrsC07r9ZE" />
         <meta name="google-site-verification" content="zYsDSmMzl6I1NW3u4w5hBTQ1WuMokCV1TC2DOGnBqRo" />
         <script
           type="application/ld+json"

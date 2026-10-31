@@ -5,7 +5,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingModal from "@/components/BookingModal";
-import { ArrowRight, CheckCircle2, ChevronRight, HelpCircle, Check, ArrowUpRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronRight, HelpCircle, Layers, Check, ArrowUpRight } from "lucide-react";
 
 export interface ServiceUseCase {
   title: string;

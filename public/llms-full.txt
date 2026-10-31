@@ -87,3 +87,4 @@ Clients receive 100% ownership of all custom software source code, database arch
 
 ### How do I contact GAUREX or book a technical discovery session?
 Clients can submit an operational inquiry or schedule a direct 15-minute video discovery call with Founder Gauresh Khairnar at https://gaurex.vercel.app/#contact, email gaurex.ai@gmail.com, or message via WhatsApp at +91 95790 98477.
+
