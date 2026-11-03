@@ -22,7 +22,7 @@ interface ProjectEstimatorProps {
   onOpenBooking: () => void;
 }
 
-type PlatformType = "ios" | "web" | "ai" | "full";
+type PlatformType = "full" | "ai" | "web" | "ios";
 type ProjectScale = "mvp" | "scaleup" | "enterprise";
 
 interface PlatformOption {
@@ -36,36 +36,36 @@ interface PlatformOption {
 
 const PLATFORMS: PlatformOption[] = [
   {
-    id: "ios",
-    title: "Native iOS Executive Dashboard",
-    icon: Smartphone,
-    tagline: "SwiftUI, Face ID biometric security, Gyroscope sweeps & offline vault",
-    basePriceINR: 240000,
-    baseWeeks: 5,
-  },
-  {
-    id: "web",
-    title: "Next.js Full-Stack SaaS",
-    icon: Globe,
-    tagline: "React 19, Server Actions, Tailwind v4, edge-rendered enterprise portals",
-    basePriceINR: 190000,
-    baseWeeks: 4,
+    id: "full",
+    title: "Complete Enterprise Architecture Package",
+    icon: Layers,
+    tagline: "Turnkey Suite: Native iOS App + Next.js 16 Web SaaS + Cloud Backend + Legal Vault",
+    basePriceINR: 480000,
+    baseWeeks: 8,
   },
   {
     id: "ai",
-    title: "Autonomous AI Agents (Neo)",
+    title: "Autonomous AI & Multi-Agent Package",
     icon: Cpu,
-    tagline: "Custom LLM pipelines, autonomous co-founders & WhatsApp bot automation",
+    tagline: "Custom Neo AI Swarms, LLM Pipelines, WhatsApp Bot Automation & CRM Sync",
     basePriceINR: 280000,
     baseWeeks: 6,
   },
   {
-    id: "full",
-    title: "Unified Digital Ecosystem",
-    icon: Layers,
-    tagline: "End-to-end integration: iOS App + Next.js Platform + Neo AI Swarm",
-    basePriceINR: 480000,
-    baseWeeks: 9,
+    id: "web",
+    title: "Next.js Full-Stack SaaS Package",
+    icon: Globe,
+    tagline: "React 19, Server Actions, Enterprise Customer Portal, Edge High-Availability",
+    basePriceINR: 240000,
+    baseWeeks: 5,
+  },
+  {
+    id: "ios",
+    title: "Native iOS Executive Dashboard Package",
+    icon: Smartphone,
+    tagline: "SwiftUI, Face ID Biometric Security, CoreMotion Gyroscope & Offline Vault",
+    basePriceINR: 250000,
+    baseWeeks: 5,
   },
 ];
 
@@ -83,7 +83,7 @@ const ADDONS = [
 ];
 
 export default function ProjectEstimator({ onOpenBooking }: ProjectEstimatorProps) {
-  const [selectedPlatform, setSelectedPlatform] = useState<PlatformType>("ios");
+  const [selectedPlatform, setSelectedPlatform] = useState<PlatformType>("full");
   const [selectedScale, setSelectedScale] = useState<ProjectScale>("mvp");
   const [selectedAddons, setSelectedAddons] = useState<string[]>(["biometric", "whatsapp"]);
   const [currency, setCurrency] = useState<"INR" | "USD">("INR");
@@ -155,9 +155,9 @@ export default function ProjectEstimator({ onOpenBooking }: ProjectEstimatorProp
   const openWhatsAppInquiry = () => {
     sound.playClick();
     const text = encodeURIComponent(
-      `Hello Gauresh! I configured an executive scope on GAUREX Estimator:\n\n• Solution: ${currentPlatform.title}\n• Scale: ${currentScale.label}\n• Estimated Timeline: ${calculatedValues.totalWeeks} Weeks\n• Investment: ₹${calculatedValues.totalINR.toLocaleString("en-IN")}\n\nI'd like to schedule a strategic consultation.`
+      `Hello Gauresh! I configured an executive package on GAUREX Estimator:\n\n• Package: ${currentPlatform.title}\n• Scale: ${currentScale.label}\n• Estimated Timeline: ${calculatedValues.totalWeeks} Weeks\n• Investment: ₹${calculatedValues.totalINR.toLocaleString("en-IN")}\n\nI'd like to schedule a strategic consultation.`
     );
-    window.open(`https://wa.me/918459461159?text=${text}`, "_blank");
+    window.open(`https://wa.me/919579098477?text=${text}`, "_blank");
   };
 
   return (
@@ -171,13 +171,13 @@ export default function ProjectEstimator({ onOpenBooking }: ProjectEstimatorProp
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold uppercase tracking-wider mb-4">
             <Calculator className="w-3.5 h-3.5" />
-            Executive Architecture Estimator
+            Executive Architecture & Package Estimator
           </div>
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white mb-5">
             Calculate Your Solution Scope & <span className="text-amber-400">ROI Potential</span>
           </h2>
           <p className="text-stone-400 text-base sm:text-lg">
-            Configure your technical requirements to generate transparent engineering timelines, annual operational savings, and direct investment estimates.
+            Configure your enterprise package requirements to generate transparent engineering timelines, annual operational savings, and milestone-based investment estimates.
           </p>
         </div>
 
@@ -185,11 +185,11 @@ export default function ProjectEstimator({ onOpenBooking }: ProjectEstimatorProp
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Controls Column (7 cols) */}
           <div className="lg:col-span-7 space-y-8">
-            {/* Step 1: Platform Selection */}
+            {/* Step 1: Package Selection */}
             <div>
               <div className="text-xs font-bold uppercase tracking-widest text-amber-400 mb-3 flex items-center gap-2">
                 <span className="w-5 h-5 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center text-[10px]">1</span>
-                Select Core Technology Foundation
+                Select Turnkey Solution Package
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {PLATFORMS.map((platform) => {

@@ -141,7 +141,7 @@ export default function NeoWebConcierge({ onOpenBooking }: NeoWebConciergeProps)
       const elem = document.getElementById("estimator");
       if (elem) elem.scrollIntoView({ behavior: "smooth" });
     } else if (action.type === "whatsapp") {
-      window.open("https://wa.me/918459461159?text=Hello%20Gauresh%2C%20I%20would%20like%20to%20discuss%20a%20strategic%20project%20with%20GAUREX.", "_blank");
+      window.open("https://wa.me/919579098477?text=Hello%20Gauresh%2C%20I%20would%20like%20to%20discuss%20a%20strategic%20package%20with%20GAUREX.", "_blank");
     }
   };
 
