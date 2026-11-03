@@ -289,3 +289,4 @@ export const articleDetails: Record<string, ArticleContent> = {
     }
   }
 };
+

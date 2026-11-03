@@ -48,24 +48,37 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://gaurex.vercel.app",
     siteName: "GAUREX",
-    title: "GAUREX | Your Problem. Our Technology. One Solution.",
-    description: "Intelligent software, AI solutions, custom ERP systems, and business process automation that simplify operations and help growing businesses scale.",
+    title: "Business Automation Company | AI Solutions – GAUREX",
+    description: "GAUREX helps businesses automate operations, simplify workflows and solve complex problems through AI, custom software and intelligent technology.",
     images: [
       {
         url: "/logo.jpg",
-        width: 800,
-        height: 800,
+        width: 1024,
+        height: 1024,
         alt: "GAUREX Monogram Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "GAUREX | Business Technology & AI Solutions",
-    description: "Intelligent software, AI solutions, custom ERP systems, and business process automation that simplify operations and help growing businesses scale.",
+    title: "Business Automation Company | AI Solutions – GAUREX",
+    description: "GAUREX helps businesses automate operations, simplify workflows and solve complex problems through AI, custom software and intelligent technology.",
     images: ["/logo.jpg"],
     creator: "@gaurex",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+  },
+  manifest: "/site.webmanifest",
   alternates: {
     canonical: "https://gaurex.vercel.app",
   },

@@ -6,7 +6,7 @@ import { articles } from "@/data/articles";
 import { ArrowRight, Clock, Calendar } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Educational Articles & Guides | GAUREX Business Automation",
+  title: "Business Automation Guides & Insights | GAUREX",
   description: "Explore engineering guides, workflow automation frameworks, and AI integration blueprints from GAUREX.",
   keywords: [
     "How to automate business processes",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "https://gaurex.vercel.app/blog",
   },
   openGraph: {
-    title: "Educational Articles & Guides | GAUREX Business Automation",
+    title: "Business Automation Guides & Insights | GAUREX",
     description: "Explore engineering guides, workflow automation frameworks, and AI integration blueprints from GAUREX.",
     url: "https://gaurex.vercel.app/blog",
   },

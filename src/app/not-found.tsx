@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight, Home, Compass, MessageSquare } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "404 – Page Not Found | GAUREX",
+  description: "The requested resource could not be found.",
+};
 
 export default function NotFound() {
   return (
