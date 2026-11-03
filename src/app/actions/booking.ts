@@ -1,6 +1,7 @@
 "use server";
 
 import { dispatchDiscoveryCallEmails, BookingEmailData } from "@/lib/email";
+import { saveLeadToBridge } from "@/lib/leadBridge";
 
 export interface BookingFormData {
   name: string;
@@ -55,6 +56,22 @@ export async function submitDiscoveryCallBooking(data: BookingFormData): Promise
 
   try {
     const { meetLink } = await dispatchDiscoveryCallEmails(payload);
+    
+    // Mirror Discovery booking into GAUREX iOS Lead Bridge
+    try {
+      saveLeadToBridge({
+        name: data.name.trim(),
+        email: data.email.trim(),
+        company: data.company?.trim(),
+        scope: "Discovery Strategy Session",
+        estimatedValue: 450000,
+        source: "gaurex_website_contact",
+        notes: `Confirmed Slot: ${data.slot} | Ref: ${referenceId}`,
+      });
+    } catch {
+      // Non-fatal
+    }
+
     return {
       success: true,
       message: `Your discovery session has been confirmed for ${data.slot}. An invitation has been sent to ${data.email}.`,

@@ -1,6 +1,7 @@
 "use server";
 
 import { dispatchInquiryEmails, InquiryEmailData } from "@/lib/email";
+import { saveLeadToBridge } from "@/lib/leadBridge";
 
 export interface ContactFormData {
   fullName: string;
@@ -80,7 +81,22 @@ export async function submitContactInquiry(formData: ContactFormData): Promise<C
     timestamp,
   };
 
-  // 4. Dispatch emails to Admin (gaurex.ai@gmail.com) AND Customer
+  // 4. Save to GAUREX iOS Lead Bridge Pipeline
+  try {
+    saveLeadToBridge({
+      name: formData.fullName.trim(),
+      email: formData.email.trim(),
+      company: formData.companyName.trim(),
+      scope: formData.requiredSolution,
+      estimatedValue: formData.budget.includes("₹10L") ? 1800000 : (formData.budget.includes("₹5L") ? 750000 : 350000),
+      source: "gaurex_website_contact",
+      notes: `Industry: ${formData.industry} | Timeline: ${formData.timeline} | Need: ${formData.problem}`,
+    });
+  } catch (err) {
+    console.error("[LEAD BRIDGE MIRROR ERROR]:", err);
+  }
+
+  // 5. Dispatch emails to Admin (gaurex.ai@gmail.com) AND Customer
   try {
     await dispatchInquiryEmails(inquiryPayload);
   } catch (err) {

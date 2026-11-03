@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import BusinessProblems from "@/components/BusinessProblems";
 import Solutions from "@/components/Solutions";
+import ProjectEstimator from "@/components/ProjectEstimator";
 import Process from "@/components/Process";
 import CaseStudies from "@/components/CaseStudies";
 import WhyGaurex from "@/components/WhyGaurex";
@@ -12,6 +13,7 @@ import FAQ from "@/components/FAQ";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import BookingModal from "@/components/BookingModal";
+import NeoWebConcierge from "@/components/NeoWebConcierge";
 
 export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
@@ -34,6 +36,9 @@ export default function Home() {
         <div id="solutions">
           <Solutions />
         </div>
+
+        {/* Section 4.5: Executive Scope & ROI Estimator */}
+        <ProjectEstimator onOpenBooking={() => setBookingOpen(true)} />
 
         {/* Section 5: How GAUREX Works */}
         <div id="how-it-works">
@@ -69,6 +74,9 @@ export default function Home() {
         isOpen={bookingOpen}
         onClose={() => setBookingOpen(false)}
       />
+
+      {/* Autonomous AI Executive Concierge (Strict English) */}
+      <NeoWebConcierge onOpenBooking={() => setBookingOpen(true)} />
     </>
   );
 }

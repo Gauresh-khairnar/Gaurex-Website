@@ -8,6 +8,35 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Obsidian Glass Card Styling */
+  .obsidian-glass {
+    background: rgba(18, 18, 22, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(234, 170, 0, 0.2);
+  }
+
+  /* Gold Shimmer Sweep Animation */
+  @keyframes gold-sweep {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .gold-shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(234, 170, 0, 0) 0%,
+      rgba(234, 170, 0, 0.35) 50%,
+      rgba(234, 170, 0, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: gold-sweep 3.5s infinite;
+  }
 }
 
 html {
