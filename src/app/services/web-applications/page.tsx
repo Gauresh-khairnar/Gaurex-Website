@@ -4,6 +4,13 @@ import ServiceDetail from "@/components/ServiceDetail";
 export const metadata: Metadata = {
   title: "Modern Web Applications & Client Portals | GAUREX",
   description: "High-performance, conversion-engineered web portals and digital platforms engineered for sub-second load speeds, Apple-grade minimalism, and B2B lead generation.",
+  keywords: [
+    "Modern web applications development",
+    "High-performance client portals",
+    "Custom B2B website development",
+    "Next.js web engineering firm",
+    "Conversion rate optimization CRO"
+  ],
   alternates: {
     canonical: "https://gaurex.vercel.app/services/web-applications",
   },
@@ -18,23 +25,65 @@ export default function WebApplicationsPage() {
   return (
     <ServiceDetail
       slug="web-applications"
-      badge="Web Engineering"
+      badge="Web Engineering & Portals"
       title="Web Applications & Client Portals"
-      subtitle="We build high-converting, lightning-fast digital assets and self-service portals that represent your brand with authority and turn visitors into paying clients."
+      subtitle="GAUREX builds high-converting, lightning-fast digital assets and self-service portals that represent your brand with authority and turn qualified visitors into paying clients."
       outcome="Achieve sub-second interaction speeds and convert qualified visitors into predictable pipeline revenue."
       problemHeading="Slow, Static Websites That Act As Passive Brochures"
-      problemText="Most corporate websites are bloated WordPress themes that take 6+ seconds to load on mobile, contain broken contact forms, and fail to qualify visitors. They generate zero measurable pipeline and damage brand credibility."
+      problemText="Most corporate websites are bloated WordPress themes that take 6+ seconds to load on mobile, contain broken contact forms, and fail to qualify visitors. They generate zero measurable pipeline and damage brand credibility for enterprise buyers."
+      targetAudience={[
+        "B2B service providers and consultancies needing high-trust enterprise digital credibility",
+        "Companies wanting self-service client portals to reduce routine account management support",
+        "Businesses suffering from slow WordPress sites with high mobile bounce rates",
+        "Enterprises seeking strict Core Web Vitals performance and technical SEO excellence"
+      ]}
+      automatableProcesses={[
+        "Interactive project scope and engineering cost estimation intake flows",
+        "Automated calendar booking and video room generation for prospective clients",
+        "Client document upload, digital contract verification, and onboarding staging",
+        "Real-time CRM contact creation and dual-channel email alert dispatches",
+        "Dynamic search engine sitemap and schema structured data generation"
+      ]}
+      workflowDemonstration={{
+        title: "B2B Lead Intake & Consultation Scheduling: Legacy Form vs GAUREX Web Portal",
+        manualProcess: {
+          steps: [
+            "Prospect fills out generic 3-field contact form on WordPress site",
+            "Notification email arrives in unmonitored general company inbox",
+            "Sales rep discovers email 24–48 hours later",
+            "Sends manual email with proposed meeting times across timezones",
+            "Back-and-forth email scheduling takes 3–4 days",
+            "By the time meeting is set, prospect has already hired a faster competitor"
+          ],
+          timeTaken: "2–4 Days Latency",
+          friction: "High lead drop-off, scheduling friction, lost high-ticket client revenue"
+        },
+        automatedProcess: {
+          steps: [
+            "Prospect completes structured 8-field technical intake on edge-rendered Next.js portal &rarr; instant lead scoring, automatic Google Meet room provisioned, calendar invite sent to client and founder, and lead dossier logged in CRM database."
+          ],
+          timeTaken: "Under 60 Seconds (Instant Booking)",
+          gain: "3.4x higher consultation completion rate, 0 dropped qualified leads, sub-second page speed"
+        }
+      }}
+      limitationsAndCosts={{
+        limitations: [
+          "Not intended for low-budget template brochure sites where a basic landing page builder suffices",
+          "Requires client participation in brand positioning and core service value proposition definitions",
+          "Production deployment hosted on modern edge CDN platforms (Vercel, Cloudflare)"
+        ],
+        costStructure: "Fixed-scope turnkey web applications starting at $5,000 including custom design system, lead intake engines, technical SEO, and 100% source code handover."
+      }}
       architectureHeading="Edge-Rendered High-Throughput Web Stack"
       architectureSteps={[
-        { title: "Server-Component Edge Streaming", desc: "HTML is streamed instantly from global edge nodes with zero render-blocking scripts, maximizing Core Web Vitals (LCP < 1.5s)." },
+        { title: "Server-Component Edge Streaming", desc: "HTML is streamed instantly from global edge nodes with zero render-blocking scripts, maximizing Core Web Vitals (LCP < 1.2s)." },
         { title: "Dynamic Lead Qualification Engine", desc: "Interactive calculators, architecture estimators, and multi-step intake flows capture high-intent enterprise prospects." },
         { title: "Direct CRM & Scheduler Synchronization", desc: "Submissions instantly trigger calendar invitations and sync directly to your internal sales pipeline." }
       ]}
       businessBenefits={[
         { title: "Sub-Second Global Page Loads", desc: "Edge prerendering ensures Largest Contentful Paint (LCP) under 1.2s across North America, Europe, Asia, and the Middle East." },
         { title: "Authoritative Apple-Grade Aesthetics", desc: "Clean minimalist typography and generous whitespace establish immediate brand trust for enterprise buyers." },
-        { title: "Technical SEO & AEO Dominance", desc: "Comprehensive Schema.org markup, semantic HTML5, and llms.txt protocols position your brand for Google and AI engines." },
-        { title: "Zero Security Vulnerabilities", desc: "Static generation and serverless APIs eliminate common CMS database vulnerabilities and exploit vectors." }
+        { title: "Technical SEO & AEO Dominance", desc: "Comprehensive Schema.org markup, semantic HTML5, and llms.txt protocols position your brand for Google and AI engines." }
       ]}
       useCases={[
         {
@@ -57,10 +106,10 @@ export default function WebApplicationsPage() {
         }
       ]}
       implementationStages={[
-        { stage: "Stage 1: UX Architecture & Design System", timeframe: "Days 1–7", deliverable: "Figma interactive prototype, typographic scale, and conversion wireframes." },
-        { stage: "Stage 2: Next.js Engineering & Component Library", timeframe: "Days 8–18", deliverable: "Fully responsive component architecture, zero-bloat CSS, and animations." },
-        { stage: "Stage 3: Forms, Integrations & CMS Setup", timeframe: "Days 19–26", deliverable: "Dual-email dispatch, CRM webhooks, calendar scheduling integration, and analytics." },
-        { stage: "Stage 4: Core Web Vitals Optimization & Launch", timeframe: "Days 27–30", deliverable: "Lighthouse 95+ audit, global CDN deployment, DNS cutover, and search console indexing." }
+        { stage: "UX Architecture & Design System", timeframe: "Days 1–7", deliverable: "Interactive Figma prototype, typographic scale, and conversion wireframes." },
+        { stage: "Next.js Engineering & Component Library", timeframe: "Days 8–18", deliverable: "Fully responsive component architecture, zero-bloat CSS, and animations." },
+        { stage: "Forms, Integrations & API Setup", timeframe: "Days 19–26", deliverable: "Dual-email dispatch, CRM webhooks, calendar scheduling integration, and analytics." },
+        { stage: "Core Web Vitals Optimization & Launch", timeframe: "Days 27–30", deliverable: "Lighthouse 95+ audit, global CDN deployment, DNS cutover, and search console indexing." }
       ]}
       faqs={[
         {

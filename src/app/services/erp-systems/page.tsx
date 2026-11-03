@@ -2,14 +2,21 @@ import { Metadata } from "next";
 import ServiceDetail from "@/components/ServiceDetail";
 
 export const metadata: Metadata = {
-  title: "Custom ERP & Business Management Systems | GAUREX",
-  description: "Unified enterprise resource planning software connecting inventory, operations, billing, and team scheduling under one secure console with zero seat licenses.",
+  title: "ERP Automation Solutions for Businesses | GAUREX",
+  description: "Simplify business management with custom ERP systems that connect workflows, data and operational processes.",
+  keywords: [
+    "ERP automation solutions",
+    "Business system automation",
+    "Custom ERP systems for SMEs",
+    "Business management software",
+    "Business operations automation"
+  ],
   alternates: {
     canonical: "https://gaurex.vercel.app/services/erp-systems",
   },
   openGraph: {
-    title: "Custom ERP & Business Management Systems | GAUREX",
-    description: "Replace disconnected departmental spreadsheets with a centralized relational ERP platform built specifically for your operations.",
+    title: "ERP Automation Solutions for Businesses | GAUREX",
+    description: "Simplify business management with custom ERP systems that connect workflows, data and operational processes.",
     url: "https://gaurex.vercel.app/services/erp-systems",
   },
 };
@@ -18,13 +25,58 @@ export default function ERPSystemsPage() {
   return (
     <ServiceDetail
       slug="erp-systems"
-      badge="Enterprise Systems"
-      title="ERP & Business Management Systems"
-      subtitle="We build centralized management platforms that unite your inventory, service dispatch, team allocations, and financial reconciliations into a single real-time console."
-      outcome="Total operational visibility and unified accounting across all active departments."
-      problemHeading="Fragmented Data Silos & Blind Spots"
-      problemText="When accounting operates in QuickBooks, sales in a disconnected CRM, and operations on physical whiteboards or spreadsheets, leadership has zero real-time visibility. Decision-making is based on outdated data, and departments constantly step on each other."
-      architectureHeading="Relational Enterprise Backbone"
+      badge="ERP Automation Solutions"
+      title="Smarter ERP Systems for Connected Business Operations"
+      subtitle="GAUREX designs and develops centralized ERP automation platforms that connect your inventory, service dispatch, team allocations, and financial reconciliations under one real-time console with zero per-seat fees."
+      outcome="Achieve total operational visibility, unified financial accounting, and automated cross-departmental coordination."
+      problemHeading="Fragmented Departmental Spreadsheets & Blind Spots"
+      problemText="When accounting operates in QuickBooks, sales in a disconnected CRM, and operations on physical whiteboards or personal messaging apps, leadership has zero real-time operational visibility. Decision-making is based on outdated data, and departments constantly step on each other."
+      targetAudience={[
+        "Growing distributors and manufacturers outgrowing Excel and experiencing inventory discrepancies",
+        "Field service contractors managing technician dispatching across whiteboards and WhatsApp",
+        "Companies paying astronomical monthly per-seat licensing to NetSuite or SAP without using 80% of features",
+        "Enterprises requiring customized multi-warehouse inventory and BOM tracking workflows"
+      ]}
+      automatableProcesses={[
+        "Automated inventory deduction and low-stock supplier re-order notifications",
+        "Job dispatching with automated technician mobile task notifications",
+        "Order-to-invoice generation and multi-gateway payment reconciliation",
+        "Time tracking, technician billable hour logging, and payroll export",
+        "Bill of Materials (BOM) explosion and raw material yield calculations",
+        "Role-based audit logging tracking every transaction and status shift immutably"
+      ]}
+      workflowDemonstration={{
+        title: "Field Job Completion to Customer Invoicing: Manual vs Automated ERP",
+        manualProcess: {
+          steps: [
+            "Technician completes repair work on customer site",
+            "Fills out paper carbon-copy work order and gets customer signature",
+            "Returns to office at end of week and drops paperwork in billing tray",
+            "Billing clerk deciphers handwritten notes and part serial numbers",
+            "Manually updates inventory ledger in spreadsheet",
+            "Re-types line items into invoicing software and mails invoice to client",
+            "Finance reconciles payments 30 days later when customer calls with questions"
+          ],
+          timeTaken: "5–7 Days Latency",
+          friction: "Lost paperwork, inventory stockouts, delayed cash collection, customer disputes"
+        },
+        automatedProcess: {
+          steps: [
+            "Technician marks job completed on mobile ERP portal with digital customer sign-off &rarr; system immediately deducts truck inventory, triggers automated parts replenishment, stages digital invoice sent to customer email with instant payment link, and updates executive revenue ledger."
+          ],
+          timeTaken: "Under 15 Seconds (Real-Time)",
+          gain: "Shortened billing latency from 7 days to 15 seconds, 100% inventory accuracy"
+        }
+      }}
+      limitationsAndCosts={{
+        limitations: [
+          "Data migration from legacy spreadsheets requires data sanitization and deduplication review",
+          "Staff training and phased department-by-department rollout are required for smooth adoption",
+          "Requires client commitment to deprecate offline shadow spreadsheets"
+        ],
+        costStructure: "Fixed milestone rollout typically spanning 45–60 days starting at $7,500, with zero ongoing per-seat monthly license fees and full database ownership."
+      }}
+      architectureHeading="Relational Enterprise Backbone Architecture"
       architectureSteps={[
         { title: "Central Transaction Core", desc: "Every inventory shift, client invoice, and employee timesheet is committed to an ACID-compliant central relational database." },
         { title: "Granular Role-Based Permissions", desc: "Managers, technicians, finance personnel, and executives each receive purpose-built interfaces with strict data boundary security." },
@@ -32,9 +84,8 @@ export default function ERPSystemsPage() {
       ]}
       businessBenefits={[
         { title: "Single Source of Truth", desc: "Unify fragmented operations, inventory, and finance so leadership makes decisions on real-time data." },
-        { title: "Zero Monthly Seat Penalties", desc: "Unlike NetSuite or SAP that charge hundreds of dollars per user per month, your custom ERP has zero per-seat licensing fees." },
-        { title: "Custom Operational Workflows", desc: "Built around your actual business processes rather than forcing your staff to adapt to generic software limitations." },
-        { title: "Complete Compliance & Auditability", desc: "Immutable audit logs track every inventory transfer, price modification, and transaction status." }
+        { title: "Zero Monthly Seat Penalties", desc: "Unlike big-box ERPs that charge hundreds of dollars per user per month, your custom ERP has zero per-seat licensing fees." },
+        { title: "Custom Operational Workflows", desc: "Built around your actual business processes rather than forcing your staff to adapt to generic software limitations." }
       ]}
       useCases={[
         {
@@ -57,10 +108,10 @@ export default function ERPSystemsPage() {
         }
       ]}
       implementationStages={[
-        { stage: "Stage 1: Process Audit & Schema Design", timeframe: "Days 1–10", deliverable: "Entity relationship diagram (ERD), role hierarchy, and core transaction flows." },
-        { stage: "Stage 2: Core Database & CRUD Modules", timeframe: "Days 11–30", deliverable: "Relational database implementation, role-based security, and primary departmental modules." },
-        { stage: "Stage 3: Integration & Data Migration", timeframe: "Days 31–45", deliverable: "Historical spreadsheet and QuickBooks data migration, validation runs, and user acceptance testing." },
-        { stage: "Stage 4: Phased Rollout & Team Training", timeframe: "Days 46–60", deliverable: "Department-by-department deployment, staff training workshops, and live cutover support." }
+        { stage: "Process Audit & Schema Design", timeframe: "Days 1–10", deliverable: "Entity relationship diagram (ERD), role hierarchy, and core transaction flows." },
+        { stage: "Core Database & Departmental Modules", timeframe: "Days 11–30", deliverable: "Relational database implementation, role-based security, and primary departmental modules." },
+        { stage: "Integration & Historical Data Migration", timeframe: "Days 31–45", deliverable: "Historical spreadsheet and QuickBooks data migration, validation runs, and user acceptance testing." },
+        { stage: "Phased Rollout & Team Training", timeframe: "Days 46–60", deliverable: "Department-by-department deployment, staff training workshops, and live cutover support." }
       ]}
       faqs={[
         {

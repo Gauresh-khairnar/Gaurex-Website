@@ -2,14 +2,21 @@ import { Metadata } from "next";
 import ServiceDetail from "@/components/ServiceDetail";
 
 export const metadata: Metadata = {
-  title: "Custom Software Development & Engineering | GAUREX",
-  description: "Enterprise full-stack software development tailored to your exact business operations and technical architecture. Zero vendor lock-in with 100% IP ownership.",
+  title: "Workflow Automation Consulting & Custom Software | GAUREX",
+  description: "Get custom workflow automation and software solutions designed around your business processes, systems and operational requirements.",
+  keywords: [
+    "Workflow automation consulting",
+    "Automated business workflows",
+    "Custom software development company",
+    "Custom business automation solutions",
+    "Full-stack software engineering firm"
+  ],
   alternates: {
     canonical: "https://gaurex.vercel.app/services/custom-software",
   },
   openGraph: {
-    title: "Custom Software Engineering Firm | GAUREX",
-    description: "Architect and build full-stack web applications, internal tools, and scalable cloud systems engineered for your proprietary operations.",
+    title: "Workflow Automation Consulting & Custom Software | GAUREX",
+    description: "Get custom workflow automation and software solutions designed around your business processes, systems and operational requirements.",
     url: "https://gaurex.vercel.app/services/custom-software",
   },
 };
@@ -18,12 +25,57 @@ export default function CustomSoftwarePage() {
   return (
     <ServiceDetail
       slug="custom-software"
-      badge="Full-Stack Engineering"
-      title="Custom Software Development"
-      subtitle="We architect and build full-stack web applications and internal tools designed around your proprietary business workflows—free from monthly seat licenses and vendor lock-in."
-      outcome="Achieve absolute operational alignment with 100% intellectual property ownership."
-      problemHeading="Off-the-Shelf Software Doesn't Fit Your Reality"
-      problemText="Generic SaaS products force your team into rigid operational templates. You pay expensive recurring seat licenses for dozens of features you never use while lacking the core custom functionality your business uniquely requires."
+      badge="Workflow Automation Consulting"
+      title="Custom Workflow Automation for Your Business"
+      subtitle="GAUREX architects and builds full-stack web applications, internal tools, and automated business workflows designed around your exact operational reality—with 100% code ownership and zero monthly seat licenses."
+      outcome="Achieve absolute operational alignment with zero vendor lock-in and complete intellectual property ownership."
+      problemHeading="Off-the-Shelf Software Doesn't Fit Your Proprietary Workflows"
+      problemText="Generic SaaS products force your team into rigid operational templates. You pay expensive recurring seat licenses for dozens of features you never use while lacking the core custom functionality your business uniquely requires to maintain competitive advantage."
+      targetAudience={[
+        "Enterprises outgrowing off-the-shelf SaaS and paying punitive monthly per-seat licensing",
+        "Companies with proprietary service delivery processes requiring bespoke internal portals",
+        "Organizations needing strict regulatory compliance and private database isolation",
+        "Startups needing scalable full-stack web applications built on clean TypeScript architectures"
+      ]}
+      automatableProcesses={[
+        "Proprietary multi-role approval and dispatch workflows",
+        "Automated client quote and complex engineering cost estimation engines",
+        "Custom field technician scheduling, geolocation tracking, and mobile sign-offs",
+        "Document generation, digital signature capture, and customer onboarding hubs",
+        "Automated data migration pipelines between legacy on-prem systems and cloud databases",
+        "Role-based access control (RBAC) with granular auditable permission boundaries"
+      ]}
+      workflowDemonstration={{
+        title: "Complex Equipment Quoting: Manual Spreadsheets vs Custom Web Engine",
+        manualProcess: {
+          steps: [
+            "Estimator opens massive multi-tab Excel spreadsheet with hundreds of formulas",
+            "Manually updates raw material commodity prices from supplier PDFs",
+            "Adjusts margin percentages and calculates custom delivery logistics",
+            "Exports quote to Word, formats header/footer, and converts to PDF",
+            "Sends to Director of Operations for email approval",
+            "Waits 24-48 hours for sign-off before emailing customer",
+            "If customer requests changes, repeats entire multi-hour spreadsheet cycle"
+          ],
+          timeTaken: "2–3 Days per Custom Quote",
+          friction: "Broken spreadsheet formulas, version control collisions, lost deals due to quote latency"
+        },
+        automatedProcess: {
+          steps: [
+            "Estimator selects project specifications in custom web calculation portal &rarr; system pulls live commodity feeds, applies margin matrix with automated compliance validation, generates branded proposal PDF, routes for one-click mobile executive approval, and logs audit record in CRM."
+          ],
+          timeTaken: "Under 90 Seconds",
+          gain: "95% faster quote generation, zero formula errors, instant deal cycle acceleration"
+        }
+      }}
+      limitationsAndCosts={{
+        limitations: [
+          "Custom software requires initial architecture planning and user-testing phases rather than instantaneous template plug-and-play",
+          "Scope must be clearly bounded per sprint to prevent unnecessary feature sprawl",
+          "Requires dedicated cloud hosting environment (AWS, Vercel, or client private cloud)"
+        ],
+        costStructure: "Milestone-based engineering sprints starting from $6,500 with fixed milestones, 100% intellectual property handover, and zero ongoing per-user monthly SaaS fees."
+      }}
       architectureHeading="Modern Clean-Architecture Web Core"
       architectureSteps={[
         { title: "Domain-Driven Data Modeling", desc: "We design robust relational database schemas optimized for your exact transaction lifecycle, concurrency requirements, and reporting." },
@@ -33,8 +85,7 @@ export default function CustomSoftwarePage() {
       businessBenefits={[
         { title: "100% Tailored Workflow Fit", desc: "Software that mirrors your exact competitive advantage rather than forcing compliance with generic SaaS limitations." },
         { title: "Zero Recurring Seat Licenses", desc: "Scale from 10 to 1,000 team members without paying arbitrary per-user monthly SaaS subscription penalties." },
-        { title: "Complete IP & Data Sovereignty", desc: "You own the full source code, database architecture, and deployment pipelines outright." },
-        { title: "Enterprise Scalability & Speed", desc: "Engineered with modular microservices and modern relational databases that scale to millions of records." }
+        { title: "Complete IP & Data Sovereignty", desc: "You own the full source code, database architecture, and deployment pipelines outright." }
       ]}
       useCases={[
         {
@@ -57,10 +108,10 @@ export default function CustomSoftwarePage() {
         }
       ]}
       implementationStages={[
-        { stage: "Stage 1: Technical Architecture & Wireframes", timeframe: "Days 1–7", deliverable: "Interactive Figma wireframes, relational database schema, and architecture specification." },
-        { stage: "Stage 2: Core Backend & Data Layer", timeframe: "Days 8–20", deliverable: "PostgreSQL schema, Prisma ORM migrations, authentication, and REST/GraphQL API endpoints." },
-        { stage: "Stage 3: Frontend Development & Role Workflows", timeframe: "Days 21–35", deliverable: "Next.js responsive interface, role-based access control (RBAC), and user workflows." },
-        { stage: "Stage 4: Quality Assurance, Security Audit & Handover", timeframe: "Days 36–45", deliverable: "Security pen-testing, load verification, production cloud deployment, and full code handover." }
+        { stage: "Technical Architecture & Wireframes", timeframe: "Days 1–7", deliverable: "Interactive Figma wireframes, relational database schema, and architecture specification." },
+        { stage: "Core Backend & Data Layer", timeframe: "Days 8–20", deliverable: "PostgreSQL schema, Prisma ORM migrations, authentication, and REST/GraphQL API endpoints." },
+        { stage: "Frontend Development & Role Workflows", timeframe: "Days 21–35", deliverable: "Next.js responsive interface, role-based access control (RBAC), and user workflows." },
+        { stage: "Security Audit, QA & Handover", timeframe: "Days 36–45", deliverable: "Security pen-testing, load verification, production cloud deployment, and full code handover." }
       ]}
       faqs={[
         {
@@ -90,7 +141,7 @@ export default function CustomSoftwarePage() {
       ]}
       techStack={["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma", "Tailwind CSS", "Docker"]}
       relatedServices={[
-        { name: "Web Applications & Platforms", href: "/services/web-applications", reason: "Optimize your customer-facing web presence with sub-second Core Web Vitals." },
+        { name: "Business Process Automation", href: "/services/business-automation", reason: "Automate background data flows between your custom software and external tools." },
         { name: "ERP & Management Systems", href: "/services/erp-systems", reason: "Integrate custom software into comprehensive enterprise resource planning." },
         { name: "Business Analytics & Dashboards", href: "/services/business-analytics", reason: "Gain real-time business visibility across your custom software metrics." }
       ]}

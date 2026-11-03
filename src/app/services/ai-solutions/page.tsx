@@ -2,14 +2,21 @@ import { Metadata } from "next";
 import ServiceDetail from "@/components/ServiceDetail";
 
 export const metadata: Metadata = {
-  title: "Enterprise AI Solutions & Autonomous AI Agents | GAUREX",
-  description: "Enterprise-grade AI solutions, LLM workflows, and autonomous agents engineered to eliminate manual task overhead for businesses in USA, UK, UAE & India.",
+  title: "AI Business Automation Services | GAUREX",
+  description: "Explore AI-powered business automation solutions from GAUREX. Simplify workflows, process information and build smarter business systems.",
+  keywords: [
+    "AI business automation services",
+    "AI workflow automation agency",
+    "Autonomous AI agents development",
+    "AI solutions company",
+    "Business process automation services"
+  ],
   alternates: {
     canonical: "https://gaurex.vercel.app/services/ai-solutions",
   },
   openGraph: {
-    title: "Enterprise AI Solutions & Autonomous AI Agents | GAUREX",
-    description: "Deploy private LLM pipelines and autonomous agents with tool-calling capabilities and deterministic business safeguards.",
+    title: "AI Business Automation Services | GAUREX",
+    description: "Explore AI-powered business automation solutions from GAUREX. Simplify workflows, process information and build smarter business systems.",
     url: "https://gaurex.vercel.app/services/ai-solutions",
   },
 };
@@ -18,12 +25,57 @@ export default function AISolutionsPage() {
   return (
     <ServiceDetail
       slug="ai-solutions"
-      badge="Intelligent Automation & LLMs"
-      title="AI Solutions & Autonomous Agents"
-      subtitle="We engineer reliable AI systems embedded directly into your core business applications—automating routine communication, document parsing, and decision triage 24/7."
-      outcome="Eliminate up to 70% of routine manual triage with zero human latency."
-      problemHeading="Manual Data Triage & High Support Overhead"
-      problemText="Growing companies lose hundreds of hours each month manually reviewing inbound leads, reading repetitive client inquiries, and copying data from PDF documents into CRMs. Traditional chatbot widgets hallucinate or frustrate customers with generic answers."
+      badge="AI Business Automation Services"
+      title="AI Automation Solutions for Modern Businesses"
+      subtitle="GAUREX engineers reliable, deterministic AI systems and autonomous agents embedded directly into your core business applications—automating routine communication, document parsing, and decision triage 24/7."
+      outcome="Eliminate up to 70% of routine manual triage with zero human latency and 100% data privacy."
+      problemHeading="Manual Data Triage, Document Overload & Slow Support Response"
+      problemText="Growing companies lose hundreds of hours each month manually reviewing inbound leads, reading repetitive client emails, and copying data from PDF documents and invoices into CRMs. Traditional chatbot widgets hallucinate or frustrate customers with generic answers, while staff are overwhelmed trying to maintain instant response times across timezones."
+      targetAudience={[
+        "B2B service firms receiving high volumes of repetitive inquiries and RFPs",
+        "Logistics, freight, and accounting teams parsing thousands of PDF invoices monthly",
+        "Support teams bogged down answering repetitive tier-1 technical and policy questions",
+        "Founders looking to deploy autonomous AI agents that take verified database actions"
+      ]}
+      automatableProcesses={[
+        "24/7 inbound lead qualification, enrichment, and CRM routing",
+        "Unstructured PDF invoice, receipt, and contract data extraction",
+        "Multi-language tier-1 customer inquiries with live database lookups",
+        "Automated proposal drafting referencing historical deal records",
+        "Internal company SOP knowledge retrieval for employees (Private RAG)",
+        "Automated exception flagging and confidence-based human-in-the-loop escalation"
+      ]}
+      workflowDemonstration={{
+        title: "Vendor Invoice Data Extraction: Manual vs Autonomous AI",
+        manualProcess: {
+          steps: [
+            "Accounts payable receives PDF invoice via email",
+            "Opens document and manually inspects line items, tax rates, and vendor details",
+            "Logs into accounting software (QuickBooks/SAP)",
+            "Manually re-keys vendor name, invoice date, amounts, and due dates",
+            "Compares invoice against original purchase order for discrepancies",
+            "Emails department head for sign-off if over authorization limit",
+            "Files PDF in shared drive and marks email thread complete"
+          ],
+          timeTaken: "15–20 Minutes per Invoice",
+          friction: "Typo risks on invoice numbers, delayed vendor payments, missed early-payment discounts"
+        },
+        automatedProcess: {
+          steps: [
+            "Incoming PDF invoice received &rarr; GAUREX vision/document AI extracts structured line items with 99.4% accuracy, validates tax calculations, performs automated PO matching in database, and stages ready-to-pay transaction in accounting console with human approval alert."
+          ],
+          timeTaken: "Under 6 Seconds per Document",
+          gain: "95% reduction in invoice processing time, zero transcription errors, instant audit trail"
+        }
+      }}
+      limitationsAndCosts={{
+        limitations: [
+          "AI agents require clear boundary rules and confidence thresholds to ensure deterministic output",
+          "Low-resolution or handwritten scanned documents may require human verification fallback",
+          "Enterprise API usage costs (OpenAI, Claude, Azure) scale with token volume (typically $30–$150/mo for mid-size teams)"
+        ],
+        costStructure: "Sprint-based implementation starting from $4,500 for custom agent workflows and private RAG databases, with complete code ownership and zero monthly agency retainers."
+      }}
       architectureHeading="Deterministic AI Agent Architecture"
       architectureSteps={[
         { title: "Retrieval-Augmented Ingestion", desc: "We ingest your internal SOPs, product documentation, and client histories into a private, secure vector database." },
@@ -33,8 +85,7 @@ export default function AISolutionsPage() {
       businessBenefits={[
         { title: "70% Reduction in Triage Time", desc: "Immediate responses to customer inquiries and automated classification without manual intervention." },
         { title: "Zero Hallucination Guarantee", desc: "Agents operate within bounded context windows with deterministic tool-calling schemas and fallback verification." },
-        { title: "Private Data Sovereignty", desc: "Your proprietary business knowledge is stored in dedicated vector databases and never used for public model training." },
-        { title: "24/7 Operational Availability", desc: "Autonomous workflows handle cross-timezone inquiries, invoice verification, and system alerts without staffing delays." }
+        { title: "Private Data Sovereignty", desc: "Your proprietary business knowledge is stored in dedicated vector databases and never used for public model training." }
       ]}
       useCases={[
         {
@@ -57,10 +108,10 @@ export default function AISolutionsPage() {
         }
       ]}
       implementationStages={[
-        { stage: "Stage 1: Architecture & Data Ingestion", timeframe: "Days 1–5", deliverable: "Knowledge base ingestion, vector embedding setup, and schema definition." },
-        { stage: "Stage 2: Agent Tooling & Guardrails", timeframe: "Days 6–15", deliverable: "Tool-calling webhooks, guardrail test suite, and edge-case routing logic." },
-        { stage: "Stage 3: Integration & Sandboxed Pilot", timeframe: "Days 16–22", deliverable: "CRM/ERP connection, live shadowing mode, and validation benchmarks." },
-        { stage: "Stage 4: Production Deployment & Telemetry", timeframe: "Days 23–30", deliverable: "Production release, admin monitoring dashboard, and operational runbook." }
+        { stage: "Architecture & Data Ingestion", timeframe: "Days 1–5", deliverable: "Knowledge base ingestion, vector embedding setup, and schema definition." },
+        { stage: "Agent Tooling & Guardrails", timeframe: "Days 6–15", deliverable: "Tool-calling webhooks, guardrail test suite, and edge-case routing logic." },
+        { stage: "Integration & Sandboxed Pilot", timeframe: "Days 16–22", deliverable: "CRM/ERP connection, live shadowing mode, and validation benchmarks." },
+        { stage: "Production Deployment & Telemetry", timeframe: "Days 23–30", deliverable: "Production release, admin monitoring dashboard, and operational runbook." }
       ]}
       faqs={[
         {
@@ -90,7 +141,7 @@ export default function AISolutionsPage() {
       ]}
       techStack={["Python", "FastAPI", "OpenAI / Claude APIs", "PostgreSQL (pgvector)", "LangChain", "Next.js"]}
       relatedServices={[
-        { name: "Business Process Automation", href: "/services/business-automation", reason: "Connect AI agents to multi-step RPA and webhook triggers across legacy tools." },
+        { name: "Business Process Automation", href: "/services/business-automation", reason: "Connect AI agents to multi-step background webhook triggers across legacy tools." },
         { name: "Custom Software Development", href: "/services/custom-software", reason: "Build scalable cloud microservices and proprietary platforms to power your AI." },
         { name: "Business Analytics & Dashboards", href: "/services/business-analytics", reason: "Track agent ROI, error rates, and operational throughput in real-time." }
       ]}

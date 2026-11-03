@@ -2,14 +2,21 @@ import { Metadata } from "next";
 import ServiceDetail from "@/components/ServiceDetail";
 
 export const metadata: Metadata = {
-  title: "Business Dashboards & Analytics Engineering | GAUREX",
-  description: "Real-time executive command consoles, live telemetry dashboards, and multi-source business intelligence systems built for operational decision-making.",
+  title: "Business Operations & Analytics Solutions | GAUREX",
+  description: "Improve business visibility with analytics dashboards, reporting systems and connected operational data from GAUREX.",
+  keywords: [
+    "Business operations automation",
+    "Business process optimization",
+    "Business dashboards and analytics",
+    "Executive telemetry systems",
+    "Connected operational data"
+  ],
   alternates: {
     canonical: "https://gaurex.vercel.app/services/business-analytics",
   },
   openGraph: {
-    title: "Business Dashboards & Analytics Engineering | GAUREX",
-    description: "Replace month-end reporting lag with real-time executive telemetry connecting Stripe, HubSpot, inventory, and accounting into one dashboard.",
+    title: "Business Operations & Analytics Solutions | GAUREX",
+    description: "Improve business visibility with analytics dashboards, reporting systems and connected operational data from GAUREX.",
     url: "https://gaurex.vercel.app/services/business-analytics",
   },
 };
@@ -18,13 +25,57 @@ export default function BusinessAnalyticsPage() {
   return (
     <ServiceDetail
       slug="business-analytics"
-      badge="Business Intelligence"
-      title="Business Dashboards & Analytics"
-      subtitle="We aggregate fragmented metrics from marketing channels, CRM pipelines, and financial software into clean, real-time command consoles built for executive clarity."
+      badge="Business Operations Automation"
+      title="Make Better Business Decisions with Connected Data"
+      subtitle="GAUREX aggregates fragmented metrics from marketing channels, CRM pipelines, financial software, and fulfillment databases into clean, real-time command consoles built for executive clarity."
       outcome="Make decisive business decisions backed by real-time operational data, not month-end guesswork."
-      problemHeading="Fragmented Metrics & Reporting Lag"
-      problemText="Founders and executives spend hours each week manually stitching together spreadsheets from Stripe, Google Ads, HubSpot, and bank portals just to understand basic monthly revenue and churn. Operational issues go unnoticed until it's too late."
-      architectureHeading="Unified Telemetry Data Aggregation"
+      problemHeading="Fragmented Metrics, Conflicting Numbers & Month-End Reporting Lag"
+      problemText="Founders and executives spend hours each week manually stitching together spreadsheets from Stripe, Google Ads, HubSpot, and bank portals just to understand basic monthly revenue, CAC, and churn. By the time reports are assembled, data is already outdated and operational bottlenecks remain hidden."
+      targetAudience={[
+        "Founders and executives spending 10+ hours monthly preparing manual spreadsheet reports",
+        "Operations leaders managing multi-channel sales and fulfillment without a unified dashboard",
+        "B2B SaaS companies requiring real-time ARR, MRR, churn, and cohort retention telemetry",
+        "Enterprises seeking proactive anomaly alerts before revenue leaks go unnoticed"
+      ]}
+      automatableProcesses={[
+        "Automated multi-platform API metric ingestion (Stripe, Razorpay, HubSpot, Google Ads)",
+        "Daily/weekly automated executive PDF digests dispatched via email",
+        "Real-time customer churn and subscription downgrade anomaly alerts via Slack",
+        "Departmental throughput and technician productivity telemetry tracking",
+        "Automated financial cash-flow and burn-rate runway forecasting calculations",
+        "Customer health scoring aggregating support tickets, usage frequency, and invoice aging"
+      ]}
+      workflowDemonstration={{
+        title: "Monthly Financial & Operational Reporting: Manual vs Automated Telemetry",
+        manualProcess: {
+          steps: [
+            "Finance analyst logs into Stripe, Razorpay, QuickBooks, and bank portal",
+            "Exports CSV files and copy-pastes records into master Excel workbook",
+            "Runs VLOOKUPs to match client IDs across marketing and accounting tools",
+            "Manually formats charts, adjusts date ranges, and writes notes",
+            "Discovers discrepancy between payment gateway and CRM numbers; investigates for 3 hours",
+            "Exports workbook to PDF and emails leadership team 8 days after month close"
+          ],
+          timeTaken: "25–30 Hours per Month",
+          friction: "Reporting lag, human copy-paste errors, conflicting numbers across departments"
+        },
+        automatedProcess: {
+          steps: [
+            "Background serverless cron pipelines continuously ingest API payloads into high-speed columnar data store &rarr; executive dashboard computes real-time MRR, cash velocity, customer health, and CAC:LTV curves with automated weekly PDF digests delivered Monday morning at 8:00 AM."
+          ],
+          timeTaken: "Zero Human Hours (Live 24/7)",
+          gain: "100% elimination of reporting labor, sub-second query latency, unified single source of truth"
+        }
+      }}
+      limitationsAndCosts={{
+        limitations: [
+          "Data accuracy depends on underlying data hygiene in source applications (Stripe, CRM)",
+          "Complex multi-currency cross-entity consolidations require initial currency exchange schema modeling",
+          "Source platform API limits are managed via scheduled caching and background webhooks"
+        ],
+        costStructure: "Turnkey executive dashboard implementations starting at $4,000 with custom data warehouse configuration, automated reports, and zero monthly SaaS seat penalties."
+      }}
+      architectureHeading="Unified Telemetry Data Aggregation Architecture"
       architectureSteps={[
         { title: "Automated Multi-Source Extraction", desc: "Background cron workers periodically fetch raw transaction records from payment gateways, ad platforms, and operational databases." },
         { title: "Transformation & Anomaly Detection", desc: "Data is normalized, deduplicated, and analyzed against historical baselines to flag unusual spikes or drop-offs." },
@@ -33,8 +84,7 @@ export default function BusinessAnalyticsPage() {
       businessBenefits={[
         { title: "Instant Executive Visibility", desc: "Eliminate 15+ hours spent each month manually compiling Excel reports across disparate platforms." },
         { title: "Proactive Anomaly Alerts", desc: "Get notified via Slack or WhatsApp the moment customer churn, ad acquisition costs, or inventory levels breach safety thresholds." },
-        { title: "High-Performance Aggregations", desc: "Query millions of raw historical transactions in under 200 milliseconds using modern columnar or indexed data stores." },
-        { title: "Single Source of Truth", desc: "Align leadership, finance, and marketing teams around validated, unified KPIs without conflicting spreadsheet numbers." }
+        { title: "High-Performance Aggregations", desc: "Query millions of raw historical transactions in under 200 milliseconds using modern columnar or indexed data stores." }
       ]}
       useCases={[
         {
@@ -57,10 +107,10 @@ export default function BusinessAnalyticsPage() {
         }
       ]}
       implementationStages={[
-        { stage: "Stage 1: KPI Definition & Data Audit", timeframe: "Days 1–5", deliverable: "Executive metrics scorecard, source API credentials audit, and data schema design." },
-        { stage: "Stage 2: Extraction & Data Warehouse Pipeline", timeframe: "Days 6–15", deliverable: "ETL/ELT sync jobs, PostgreSQL/ClickHouse storage, and historical data backfill." },
-        { stage: "Stage 3: Dashboard Interface & Visualizations", timeframe: "Days 16–23", deliverable: "Interactive chart components, drill-down filters, and role-based views." },
-        { stage: "Stage 4: Automated Alerts & Executive Briefs", timeframe: "Days 24–28", deliverable: "Automated weekly email PDF digests, Slack anomaly webhooks, and team training." }
+        { stage: "KPI Definition & Data Audit", timeframe: "Days 1–5", deliverable: "Executive metrics scorecard, source API credentials audit, and data schema design." },
+        { stage: "Extraction & Data Warehouse Pipeline", timeframe: "Days 6–15", deliverable: "ETL/ELT sync jobs, PostgreSQL storage, and historical data backfill." },
+        { stage: "Dashboard Interface & Visualizations", timeframe: "Days 16–23", deliverable: "Interactive chart components, drill-down filters, and role-based views." },
+        { stage: "Automated Alerts & Executive Briefs", timeframe: "Days 24–28", deliverable: "Automated weekly email PDF digests, Slack anomaly webhooks, and team training." }
       ]}
       faqs={[
         {
@@ -88,7 +138,7 @@ export default function BusinessAnalyticsPage() {
         "Role-Based Executive vs Managerial Displays",
         "Database Architecture & Data Warehouse Setup"
       ]}
-      techStack={["Next.js", "TypeScript", "ClickHouse / PostgreSQL", "Apache ECharts", "Tailwind CSS", "Node.js"]}
+      techStack={["Next.js", "TypeScript", "PostgreSQL", "Apache ECharts", "Tailwind CSS", "Node.js"]}
       relatedServices={[
         { name: "ERP & Management Systems", href: "/services/erp-systems", reason: "Connect your executive dashboards directly to operational inventory and dispatch databases." },
         { name: "Business Process Automation", href: "/services/business-automation", reason: "Trigger automated operational actions directly when telemetry thresholds are breached." },

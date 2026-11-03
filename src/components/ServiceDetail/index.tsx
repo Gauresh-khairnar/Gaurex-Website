@@ -5,7 +5,8 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingModal from "@/components/BookingModal";
-import { ArrowRight, CheckCircle2, ChevronRight, HelpCircle, Layers, Check, ArrowUpRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronRight, HelpCircle, Check, ArrowUpRight, Zap, Clock, ShieldAlert, Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export interface ServiceUseCase {
   title: string;
@@ -19,6 +20,20 @@ export interface ServiceFAQ {
   a: string;
 }
 
+export interface WorkflowDemonstration {
+  title: string;
+  manualProcess: {
+    steps: string[];
+    timeTaken: string;
+    friction: string;
+  };
+  automatedProcess: {
+    steps: string[];
+    timeTaken: string;
+    gain: string;
+  };
+}
+
 export interface ServiceDetailProps {
   slug: string;
   badge: string;
@@ -27,6 +42,13 @@ export interface ServiceDetailProps {
   outcome: string;
   problemHeading: string;
   problemText: string;
+  targetAudience?: string[];
+  automatableProcesses?: string[];
+  workflowDemonstration?: WorkflowDemonstration;
+  limitationsAndCosts?: {
+    limitations: string[];
+    costStructure: string;
+  };
   architectureHeading: string;
   architectureSteps: { title: string; desc: string }[];
   businessBenefits: { title: string; desc: string }[];
@@ -46,6 +68,10 @@ export default function ServiceDetail({
   outcome,
   problemHeading,
   problemText,
+  targetAudience,
+  automatableProcesses,
+  workflowDemonstration,
+  limitationsAndCosts,
   architectureHeading,
   architectureSteps,
   businessBenefits,
@@ -85,6 +111,18 @@ export default function ServiceDetail({
             }
           }))
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `https://gaurex.vercel.app/services/${slug}#faq`,
+        "mainEntity": faqs.map((f) => ({
+          "@type": "Question",
+          "name": f.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": f.a
+          }
+        }))
       },
       {
         "@type": "BreadcrumbList",
@@ -127,16 +165,27 @@ export default function ServiceDetail({
         <div className="max-w-5xl mx-auto px-6">
           
           {/* Breadcrumb Navigation */}
-          <nav aria-label="Breadcrumbs" className="flex items-center gap-2 text-xs font-semibold text-gray-400 mb-8">
+          <motion.nav 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            aria-label="Breadcrumbs" 
+            className="flex items-center gap-2 text-xs font-semibold text-gray-400 mb-8"
+          >
             <Link href="/" className="hover:text-black transition-colors">Home</Link>
             <ChevronRight className="w-3.5 h-3.5" />
             <Link href="/#solutions" className="hover:text-black transition-colors">Services</Link>
             <ChevronRight className="w-3.5 h-3.5" />
             <span className="text-black font-medium">{title}</span>
-          </nav>
+          </motion.nav>
 
           {/* Hero Header */}
-          <div className="mb-16 pb-12 border-b border-gray-200">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-16 pb-12 border-b border-gray-200"
+          >
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gray-100 border border-gray-200 text-[11px] font-bold uppercase tracking-wider text-black mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-black" />
               {badge}
@@ -162,24 +211,30 @@ export default function ServiceDetail({
             <div className="flex flex-wrap items-center gap-4">
               <Link
                 href="/#contact"
-                className="px-6 py-3.5 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-full hover:bg-gray-800 transition-colors flex items-center gap-2 shadow-xs"
+                className="px-6 py-3.5 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-full hover:bg-gray-800 transition-all flex items-center gap-2 shadow-xs group cursor-pointer"
               >
-                Discuss This Solution <ArrowRight className="w-4 h-4" />
+                Discuss This Solution <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <button
                 type="button"
                 onClick={() => setBookingOpen(true)}
-                className="px-6 py-3.5 bg-gray-100 text-black text-xs font-bold uppercase tracking-wider rounded-full hover:bg-gray-200 transition-colors"
+                className="px-6 py-3.5 bg-gray-100 text-black text-xs font-bold uppercase tracking-wider rounded-full hover:bg-gray-200 transition-colors cursor-pointer"
               >
                 Schedule Technical Discovery
               </button>
             </div>
-          </div>
+          </motion.div>
 
           {/* Section 1: Customer Problem vs Engineered Architecture */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             
-            <div className="p-8 rounded-2xl bg-white border border-gray-200">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5 }}
+              className="p-8 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 transition-colors"
+            >
               <span className="text-[10px] font-bold uppercase tracking-wider text-red-600 bg-red-50 px-2 py-0.5 rounded inline-block mb-4">
                 The Operational Bottleneck
               </span>
@@ -189,9 +244,15 @@ export default function ServiceDetail({
               <p className="text-xs text-gray-600 leading-relaxed">
                 {problemText}
               </p>
-            </div>
+            </motion.div>
 
-            <div className="p-8 rounded-2xl bg-[#FAFAFA] border border-gray-200">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="p-8 rounded-2xl bg-[#FAFAFA] border border-gray-200 hover:border-gray-300 transition-colors"
+            >
               <span className="text-[10px] font-bold uppercase tracking-wider text-black bg-gray-200 px-2 py-0.5 rounded inline-block mb-4">
                 How The GAUREX Solution Works
               </span>
@@ -209,11 +270,123 @@ export default function ServiceDetail({
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
           </div>
 
-          {/* Section 2: Concrete Business Benefits */}
+          {/* Section 2: Real Demonstration - Manual vs Automated Workflow */}
+          {workflowDemonstration && (
+            <motion.div 
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.6 }}
+              className="mb-16 p-8 md:p-10 rounded-2xl bg-[#FAFAFA] border border-gray-200"
+            >
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
+                <Zap className="w-4 h-4 text-black" />
+                <span>Real Workflow Demonstration</span>
+              </div>
+              <h2 className="text-2xl font-bold text-black mb-2">
+                {workflowDemonstration.title}
+              </h2>
+              <p className="text-xs text-gray-600 mb-8">
+                A direct comparison showing the operational friction of manual execution versus the speed of a GAUREX automated system.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                {/* Manual Workflow */}
+                <div className="bg-white p-6 rounded-xl border border-gray-200">
+                  <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-red-600 bg-red-50 px-2 py-0.5 rounded">
+                      Manual Process ({workflowDemonstration.manualProcess.steps.length} Steps)
+                    </span>
+                    <span className="text-xs font-mono text-gray-400 flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5 text-gray-400" />
+                      {workflowDemonstration.manualProcess.timeTaken}
+                    </span>
+                  </div>
+                  <ol className="space-y-2.5 text-xs text-gray-600 mb-4 list-decimal list-inside">
+                    {workflowDemonstration.manualProcess.steps.map((st, i) => (
+                      <li key={i} className="leading-snug">{st}</li>
+                    ))}
+                  </ol>
+                  <div className="pt-3 border-t border-gray-100 text-[11px] text-red-600 font-medium">
+                    Bottleneck: {workflowDemonstration.manualProcess.friction}
+                  </div>
+                </div>
+
+                {/* Automated Workflow */}
+                <div className="bg-black text-white p-6 rounded-xl border border-black shadow-sm">
+                  <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-800">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-white bg-gray-900 border border-gray-700 px-2 py-0.5 rounded flex items-center gap-1">
+                      <Sparkles className="w-3 h-3 text-white" />
+                      GAUREX Automated ({workflowDemonstration.automatedProcess.steps.length} Step)
+                    </span>
+                    <span className="text-xs font-mono text-gray-300 flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5 text-white" />
+                      {workflowDemonstration.automatedProcess.timeTaken}
+                    </span>
+                  </div>
+                  <ol className="space-y-2.5 text-xs text-gray-300 mb-4 list-decimal list-inside">
+                    {workflowDemonstration.automatedProcess.steps.map((st, i) => (
+                      <li key={i} className="leading-snug">{st}</li>
+                    ))}
+                  </ol>
+                  <div className="pt-3 border-t border-gray-800 text-[11px] text-gray-200 font-medium">
+                    Measured Gain: {workflowDemonstration.automatedProcess.gain}
+                  </div>
+                </div>
+
+              </div>
+            </motion.div>
+          )}
+
+          {/* Section 3: Target Audience & Automatable Processes */}
+          {(targetAudience || automatableProcesses) && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+              {targetAudience && (
+                <div className="p-8 rounded-2xl bg-white border border-gray-200">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 block mb-2">
+                    Who Needs This Solution?
+                  </span>
+                  <h3 className="text-xl font-bold text-black mb-4">
+                    Ideal Fit & Organization Types
+                  </h3>
+                  <div className="space-y-2.5">
+                    {targetAudience.map((aud, i) => (
+                      <div key={i} className="flex items-center gap-2.5 text-xs text-gray-700">
+                        <CheckCircle2 className="w-4 h-4 text-black shrink-0" />
+                        <span>{aud}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {automatableProcesses && (
+                <div className="p-8 rounded-2xl bg-white border border-gray-200">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 block mb-2">
+                    What Can GAUREX Automate?
+                  </span>
+                  <h3 className="text-xl font-bold text-black mb-4">
+                    Target Workflows & Operations
+                  </h3>
+                  <div className="space-y-2.5">
+                    {automatableProcesses.map((proc, i) => (
+                      <div key={i} className="flex items-center gap-2.5 text-xs text-gray-700">
+                        <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0" />
+                        <span>{proc}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Section 4: Concrete Business Benefits */}
           <div className="mb-16">
             <span className="text-[11px] font-bold uppercase tracking-widest text-gray-400 block mb-2">
               Commercial Impact
@@ -223,18 +396,25 @@ export default function ServiceDetail({
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {businessBenefits.map((b, i) => (
-                <div key={i} className="p-6 rounded-2xl bg-[#FAFAFA] border border-gray-200">
+                <motion.div 
+                  key={i} 
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.08 }}
+                  className="p-6 rounded-2xl bg-[#FAFAFA] border border-gray-200 hover:border-black transition-colors"
+                >
                   <div className="w-7 h-7 rounded-full bg-black text-white flex items-center justify-center text-xs font-bold mb-4">
                     <Check className="w-4 h-4" />
                   </div>
                   <h3 className="text-sm font-bold text-black mb-2">{b.title}</h3>
                   <p className="text-xs text-gray-600 leading-relaxed">{b.desc}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
 
-          {/* Section 3: Relevant Real-World Use Cases */}
+          {/* Section 5: Relevant Real-World Use Cases */}
           <div className="mb-16">
             <span className="text-[11px] font-bold uppercase tracking-widest text-gray-400 block mb-2">
               Practical Implementation
@@ -244,7 +424,7 @@ export default function ServiceDetail({
             </h2>
             <div className="space-y-4">
               {useCases.map((uc, i) => (
-                <div key={i} className="p-6 rounded-2xl bg-white border border-gray-200">
+                <div key={i} className="p-6 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 transition-colors">
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                     <h3 className="text-base font-bold text-black">{uc.title}</h3>
                     <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 bg-gray-100 px-2 py-0.5 rounded">
@@ -262,7 +442,7 @@ export default function ServiceDetail({
             </div>
           </div>
 
-          {/* Section 4: Implementation Process & Stages */}
+          {/* Section 6: Implementation Process & Stages */}
           <div className="mb-16">
             <span className="text-[11px] font-bold uppercase tracking-widest text-gray-400 block mb-2">
               Delivery Roadmap
@@ -270,7 +450,7 @@ export default function ServiceDetail({
             <h2 className="text-2xl md:text-3xl font-bold text-black mb-6">
               Structured Implementation Stages
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {implementationStages.map((st, i) => (
                 <div key={i} className="p-6 rounded-2xl bg-white border border-gray-200">
                   <span className="text-[10px] font-mono font-bold uppercase text-gray-400 block mb-1">
@@ -283,7 +463,41 @@ export default function ServiceDetail({
             </div>
           </div>
 
-          {/* Section 5: Engineering Deliverables & Tech Stack */}
+          {/* Section 7: Limitations & Cost Transparency */}
+          {limitationsAndCosts && (
+            <div className="mb-16 p-8 rounded-2xl bg-white border border-gray-200">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-gray-400 block mb-2">
+                Honest Engineering Standards
+              </span>
+              <h2 className="text-2xl font-bold text-black mb-6">
+                Technical Boundaries & Cost Model
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-black mb-3">
+                    <ShieldAlert className="w-4 h-4 text-black" />
+                    <span>Scope & Limitations</span>
+                  </div>
+                  <ul className="space-y-2 text-xs text-gray-600 list-disc list-inside">
+                    {limitationsAndCosts.limitations.map((lim, i) => (
+                      <li key={i}>{lim}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-black mb-3">
+                    <CheckCircle2 className="w-4 h-4 text-black" />
+                    <span>Pricing & Ownership Model</span>
+                  </div>
+                  <p className="text-xs text-gray-600 leading-relaxed">
+                    {limitationsAndCosts.costStructure}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Section 8: Engineering Deliverables & Tech Stack */}
           <div className="p-8 md:p-10 rounded-2xl bg-white border border-gray-200 mb-16">
             <h2 className="text-2xl font-bold text-black mb-6">
               Complete Scope of Engineering Deliverables
@@ -311,7 +525,7 @@ export default function ServiceDetail({
             </div>
           </div>
 
-          {/* Section 6: Service-Specific FAQs (AEO) */}
+          {/* Section 9: Service-Specific FAQs (AEO) */}
           <div className="mb-16">
             <span className="text-[11px] font-bold uppercase tracking-widest text-gray-400 block mb-2">
               Common Questions
@@ -326,7 +540,7 @@ export default function ServiceDetail({
                   <div key={i} className="rounded-2xl border border-gray-200 bg-[#FAFAFA] overflow-hidden">
                     <button
                       onClick={() => setOpenFaq(isOpen ? null : i)}
-                      className="w-full text-left p-5 flex items-center justify-between gap-4 focus:outline-none"
+                      className="w-full text-left p-5 flex items-center justify-between gap-4 focus:outline-none cursor-pointer"
                     >
                       <span className="text-sm font-bold text-black flex items-center gap-2">
                         <HelpCircle className="w-4 h-4 text-gray-400 shrink-0" />
@@ -334,18 +548,28 @@ export default function ServiceDetail({
                       </span>
                       <ChevronRight className={`w-4 h-4 text-gray-400 shrink-0 transition-transform ${isOpen ? "rotate-90 text-black" : ""}`} />
                     </button>
-                    {isOpen && (
-                      <div className="px-5 pb-5 pt-0 border-t border-gray-200/60 text-xs text-gray-700 leading-relaxed bg-white pt-4">
-                        {f.a}
-                      </div>
-                    )}
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-5 pb-5 pt-0 border-t border-gray-200/60 text-xs text-gray-700 leading-relaxed bg-white pt-4">
+                            {f.a}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 );
               })}
             </div>
           </div>
 
-          {/* Section 7: Internal Cross-Linking Architecture */}
+          {/* Section 10: Internal Cross-Linking Architecture */}
           <div className="mb-16 p-8 rounded-2xl bg-[#FAFAFA] border border-gray-200">
             <span className="text-[11px] font-bold uppercase tracking-widest text-gray-400 block mb-2">
               Complementary Architectures
@@ -370,7 +594,7 @@ export default function ServiceDetail({
             </div>
           </div>
 
-          {/* Section 8: Strong Conversion CTA Box */}
+          {/* Section 11: Strong Conversion CTA Box */}
           <div className="p-8 md:p-12 rounded-2xl bg-black text-white text-center">
             <h2 className="text-2xl md:text-3xl font-bold mb-3">
               Ready to engineer your {title}?
@@ -387,7 +611,7 @@ export default function ServiceDetail({
               </Link>
               <button
                 onClick={() => setBookingOpen(true)}
-                className="w-full sm:w-auto px-8 py-3.5 bg-gray-900 text-white text-xs font-bold uppercase tracking-wider rounded-full border border-gray-700 hover:bg-gray-800 transition-colors"
+                className="w-full sm:w-auto px-8 py-3.5 bg-gray-900 text-white text-xs font-bold uppercase tracking-wider rounded-full border border-gray-700 hover:bg-gray-800 transition-colors cursor-pointer"
               >
                 Book Discovery Video Call
               </button>

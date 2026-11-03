@@ -34,13 +34,19 @@ GAUREX is an enterprise technology consulting and custom software engineering fi
 - Direct Founder Accountability: All projects are overseen directly by Founder Gauresh Khairnar.
 
 ## Key URLs
-- Homepage: https://gaurex.vercel.app
-- AI Solutions: https://gaurex.vercel.app/services/ai-solutions
-- Business Automation: https://gaurex.vercel.app/services/business-automation
-- Custom Software: https://gaurex.vercel.app/services/custom-software
-- ERP Systems: https://gaurex.vercel.app/services/erp-systems
-- Web Applications: https://gaurex.vercel.app/services/web-applications
-- Business Analytics: https://gaurex.vercel.app/services/business-analytics
+- Homepage (Business Automation Company): https://gaurex.vercel.app
+- Business Process Automation Services: https://gaurex.vercel.app/services/business-automation
+- AI Business Automation Services: https://gaurex.vercel.app/services/ai-solutions
+- Workflow Automation Consulting & Custom Software: https://gaurex.vercel.app/services/custom-software
+- ERP Automation Solutions: https://gaurex.vercel.app/services/erp-systems
+- Business Operations & Analytics Solutions: https://gaurex.vercel.app/services/business-analytics
+- Web Applications & Client Portals: https://gaurex.vercel.app/services/web-applications
+- Educational Articles & Guides: https://gaurex.vercel.app/blog
+- Guide: How to Automate Business Processes: https://gaurex.vercel.app/blog/how-to-automate-business-processes
+- Guide: 10 Business Processes Every Growing Company Should Automate: https://gaurex.vercel.app/blog/10-business-processes-to-automate
+- Guide: AI Business Automation Practical Use Cases: https://gaurex.vercel.app/blog/ai-business-automation-use-cases
+- Guide: Workflow Automation vs Manual Processes: https://gaurex.vercel.app/blog/workflow-automation-vs-manual-processes
+- Guide: How to Choose a Business Automation Company: https://gaurex.vercel.app/blog/how-to-choose-a-business-automation-company
 - About GAUREX: https://gaurex.vercel.app/about
 - Commercial Privacy: https://gaurex.vercel.app/privacy
 - Terms of Service: https://gaurex.vercel.app/terms

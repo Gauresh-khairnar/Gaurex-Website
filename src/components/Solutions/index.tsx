@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, Bot, Workflow, Code, Database, Globe, BarChart2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const solutions = [
   {
@@ -90,7 +91,13 @@ export default function Solutions() {
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header */}
-        <div className="max-w-3xl mb-16 md:mb-20">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-3xl mb-16 md:mb-20"
+        >
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
             <span>Pillars of Engineering</span>
           </div>
@@ -98,35 +105,45 @@ export default function Solutions() {
             Engineered Solutions Built Around Your Real Workflows.
           </h2>
           <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-            We don&apos;t sell generic pre-packaged software. Every GAUREX system is purpose-built to solve tangible operational bottlenecks, maximize team throughput, and accelerate sustainable growth.
+            We don&apos;t sell generic software templates. Every GAUREX platform is engineered from the ground up to solve specific operational bottlenecks and scale cleanly.
           </p>
-        </div>
+        </motion.div>
 
         {/* 6 Solutions Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {solutions.map((item) => {
+          {solutions.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div
+              <motion.div
                 key={item.slug}
-                className="bg-white rounded-2xl border border-gray-200 p-8 flex flex-col justify-between hover:border-black hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-all duration-200 group"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -4 }}
+                className="bg-white rounded-2xl border border-gray-200 p-8 flex flex-col justify-between hover:border-black hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300 group"
               >
                 <div>
-                  {/* Top Bar with Icon */}
-                  <div className="w-12 h-12 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center text-black mb-6 group-hover:bg-black group-hover:text-white transition-colors">
-                    <Icon className="w-5 h-5" />
+                  {/* Top Icon & Category */}
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-gray-100 border border-gray-200/80 flex items-center justify-center text-black group-hover:bg-black group-hover:text-white transition-all duration-300">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <span className="text-xs font-mono text-gray-400 font-semibold group-hover:text-black transition-colors">
+                      0{idx + 1}
+                    </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-black mb-3">
+                  <h3 className="text-2xl font-bold text-black mb-3 group-hover:text-black">
                     {item.title}
                   </h3>
 
-                  {/* Business Outcome Highlight */}
-                  <div className="p-3 bg-[#F7F7F7] rounded-lg border border-gray-200/60 mb-5">
+                  {/* Quantifiable Outcome Pill */}
+                  <div className="p-3 bg-gray-50 rounded-xl border border-gray-100 mb-5 group-hover:bg-gray-100/70 transition-colors">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-black block mb-0.5">
                       Business Outcome:
                     </span>
-                    <span className="text-xs font-semibold text-gray-900 leading-snug block">
+                    <span className="text-xs font-semibold text-gray-800 leading-snug block">
                       {item.outcome}
                     </span>
                   </div>
@@ -136,30 +153,30 @@ export default function Solutions() {
                   </p>
 
                   {/* Capabilities List */}
-                  <div className="space-y-2 mb-8">
+                  <div className="space-y-2 mb-6">
                     <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 block mb-2">
                       Key Capabilities:
                     </span>
-                    {item.capabilities.map((cap, i) => (
-                      <div key={i} className="flex items-start gap-2 text-xs text-gray-700">
-                        <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0 mt-1.5" />
+                    {item.capabilities.map((cap, capIdx) => (
+                      <div key={capIdx} className="flex items-center gap-2 text-xs text-gray-700">
+                        <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0" />
                         <span>{cap}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Working CTA */}
+                {/* Direct Page Link */}
                 <div className="pt-6 border-t border-gray-100">
                   <Link
                     href={`/services/${item.slug}`}
-                    className="w-full py-3 px-4 bg-gray-50 border border-gray-200 hover:border-black hover:bg-black hover:text-white text-black text-xs font-bold uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 group-hover:bg-black group-hover:text-white"
+                    className="w-full py-3 bg-gray-50 border border-gray-200 rounded-xl text-xs font-bold uppercase tracking-wider text-black flex items-center justify-center gap-2 group-hover:bg-black group-hover:text-white group-hover:border-black transition-all duration-200"
                   >
-                    Explore Service Details
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <span>View Technical Specifications</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

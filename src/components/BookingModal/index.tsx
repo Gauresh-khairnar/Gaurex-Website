@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { X, Calendar, Clock, CheckCircle2, ArrowRight, Loader2, AlertCircle, Video } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { submitDiscoveryCallBooking } from "@/app/actions/booking";
 
 interface BookingModalProps {
@@ -37,8 +38,6 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
 
   const availableSlots = [
     "Tomorrow, 10:00 AM IST (04:30 AM UTC)",
@@ -90,19 +89,32 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <div 
-        className="relative w-full max-w-lg bg-white rounded-2xl border border-gray-200 shadow-2xl p-6 md:p-8 animate-in fade-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto"
-        role="dialog"
-        aria-modal="true"
-      >
-        <button
-          onClick={resetAndClose}
-          className="absolute top-5 right-5 p-2 text-gray-400 hover:text-black rounded-full hover:bg-gray-100 transition-colors"
-          aria-label="Close dialog"
-        >
-          <X className="w-5 h-5" />
-        </button>
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={resetAndClose}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm"
+          />
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 10 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="relative w-full max-w-lg bg-white rounded-2xl border border-gray-200 shadow-2xl p-6 md:p-8 max-h-[90vh] overflow-y-auto z-10"
+            role="dialog"
+            aria-modal="true"
+          >
+            <button
+              onClick={resetAndClose}
+              className="absolute top-5 right-5 p-2 text-gray-400 hover:text-black rounded-full hover:bg-gray-100 transition-colors"
+              aria-label="Close dialog"
+            >
+              <X className="w-5 h-5" />
+            </button>
 
         {!bookingResult ? (
           <div>
@@ -258,7 +270,9 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
             </button>
           </div>
         )}
-      </div>
-    </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
   );
 }

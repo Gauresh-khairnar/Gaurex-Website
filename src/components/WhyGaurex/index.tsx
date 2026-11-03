@@ -1,6 +1,7 @@
 "use client";
 
 import { Target, Cpu, GitMerge, ShieldCheck, UserCheck } from "lucide-react";
+import { motion } from "framer-motion";
 
 const differentiators = [
   {
@@ -36,7 +37,13 @@ export default function WhyGaurex() {
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header */}
-        <div className="max-w-3xl mb-16 md:mb-20">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-3xl mb-16 md:mb-20"
+        >
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
             <span>Engineering Principles</span>
           </div>
@@ -46,19 +53,24 @@ export default function WhyGaurex() {
           <p className="text-base md:text-lg text-gray-600 leading-relaxed">
             We don&apos;t make hyperbolic guarantees. We deliver disciplined engineering, honest technical counsel, and digital systems built for operational reliability.
           </p>
-        </div>
+        </motion.div>
 
         {/* 5 Differentiators Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {differentiators.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div
+              <motion.div
                 key={idx}
-                className="bg-white rounded-2xl border border-gray-200 p-8 flex flex-col justify-between hover:border-black transition-all duration-200 shadow-[0_1px_3px_rgba(0,0,0,0.02)] group"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -4 }}
+                className="bg-white rounded-2xl border border-gray-200 p-8 flex flex-col justify-between hover:border-black hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300 group"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center text-black mb-6 group-hover:bg-black group-hover:text-white transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center text-black mb-6 group-hover:bg-black group-hover:text-white transition-all duration-300">
                     <Icon className="w-5 h-5" />
                   </div>
 
@@ -72,15 +84,22 @@ export default function WhyGaurex() {
                 </div>
 
                 <div className="mt-8 pt-4 border-t border-gray-100 flex items-center justify-between text-[11px] font-mono text-gray-400">
-                  <span>Standard 0{idx + 1}</span>
+                  <span className="group-hover:text-black transition-colors">Standard 0{idx + 1}</span>
                   <span className="text-black font-semibold">Strict Compliance</span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
 
           {/* Founder Statement Card */}
-          <div className="bg-black text-white rounded-2xl border border-black p-8 flex flex-col justify-between">
+          <motion.div 
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ y: -4 }}
+            className="bg-black text-white rounded-2xl border border-black p-8 flex flex-col justify-between hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all duration-300"
+          >
             <div>
               <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 block mb-4">
                 Founder&apos;s Commitment
@@ -94,11 +113,10 @@ export default function WhyGaurex() {
               <div className="font-bold text-sm text-white">Gauresh Khairnar</div>
               <div className="text-xs text-gray-400">Founder & Principal Systems Architect, GAUREX</div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
       </div>
     </section>
   );
 }
-

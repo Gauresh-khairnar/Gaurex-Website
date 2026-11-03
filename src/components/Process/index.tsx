@@ -2,6 +2,7 @@
 
 import { ArrowRight, Search, Compass, Terminal, Gauge } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const steps = [
   {
@@ -44,7 +45,13 @@ export default function Process() {
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header */}
-        <div className="max-w-3xl mb-16 md:mb-20">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-3xl mb-16 md:mb-20"
+        >
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
             <span>Engineering Discipline</span>
           </div>
@@ -54,24 +61,29 @@ export default function Process() {
           <p className="text-base md:text-lg text-gray-600 leading-relaxed">
             We operate with surgical precision. No vague consulting decks, no endless scope creep, and no untested software. Just structured engineering focused on business outcomes.
           </p>
-        </div>
+        </motion.div>
 
         {/* 4 Steps Timeline / Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {steps.map((step) => {
+          {steps.map((step, idx) => {
             const Icon = step.icon;
             return (
-              <div
+              <motion.div
                 key={step.num}
-                className="bg-white rounded-2xl border border-gray-200 p-7 flex flex-col justify-between hover:border-black transition-all duration-200 shadow-[0_1px_3px_rgba(0,0,0,0.02)] relative group"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -4 }}
+                className="bg-white rounded-2xl border border-gray-200 p-7 flex flex-col justify-between hover:border-black hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300 relative group"
               >
                 <div>
                   {/* Top Bar with Number and Icon */}
                   <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-100">
-                    <span className="text-2xl font-black font-mono text-black">
+                    <span className="text-2xl font-black font-mono text-black group-hover:tracking-wider transition-all">
                       {step.num}
                     </span>
-                    <div className="w-8 h-8 rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-700 group-hover:bg-black group-hover:text-white transition-colors">
+                    <div className="w-9 h-9 rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-700 group-hover:bg-black group-hover:text-white transition-all duration-300">
                       <Icon className="w-4 h-4" />
                     </div>
                   </div>
@@ -97,20 +109,27 @@ export default function Process() {
                     {step.deliverables}
                   </span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
-        {/* Action Link */}
-        <div className="mt-12 text-center">
+        {/* Process Footer CTA */}
+        <motion.div 
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-12 text-center"
+        >
           <Link
             href="#contact"
             className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-black hover:text-gray-600 transition-colors"
           >
-            Start Phase 01: Request a Technical Discovery Session <ArrowRight className="w-4 h-4" />
+            <span>Have a technical problem? Review our architecture roadmap</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
-        </div>
+        </motion.div>
 
       </div>
     </section>

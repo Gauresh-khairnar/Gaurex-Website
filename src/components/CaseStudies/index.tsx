@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface CaseStudy {
   project: string;
@@ -49,7 +50,13 @@ export default function CaseStudies() {
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header */}
-        <div className="max-w-3xl mb-16 md:mb-20">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-3xl mb-16 md:mb-20"
+        >
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
             <span>Verified Systems Engineering</span>
           </div>
@@ -59,14 +66,19 @@ export default function CaseStudies() {
           <p className="text-base md:text-lg text-gray-600 leading-relaxed">
             We prioritize transparency over invented statistics. Below are representative engineering engagements demonstrating how GAUREX identifies operational bottlenecks and builds durable software architectures.
           </p>
-        </div>
+        </motion.div>
 
         {/* Case Studies List */}
         <div className="space-y-12">
           {caseStudies.map((study, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="bg-[#FAFAFA] rounded-2xl border border-gray-200 p-8 md:p-12 hover:border-black transition-all duration-200"
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -3 }}
+              className="bg-[#FAFAFA] rounded-2xl border border-gray-200 p-8 md:p-12 hover:border-black hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-300"
             >
               {/* Category & Project Title */}
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-gray-200">
@@ -82,7 +94,7 @@ export default function CaseStudies() {
                   {study.techStack.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2.5 py-1 bg-white border border-gray-200 rounded text-[11px] font-mono text-gray-700"
+                      className="px-2.5 py-1 bg-white border border-gray-200 rounded text-[11px] font-mono text-gray-700 hover:border-black transition-colors"
                     >
                       {tech}
                     </span>
@@ -94,64 +106,63 @@ export default function CaseStudies() {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 
                 {/* Initial Problem */}
-                <div className="bg-white p-6 rounded-xl border border-gray-200">
+                <div className="bg-white p-6 rounded-xl border border-gray-200 hover:border-gray-300 transition-colors">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-red-600 bg-red-50 px-2 py-0.5 rounded inline-block mb-3">
                     Initial Bottleneck
                   </span>
-                  <p className="text-xs text-gray-700 leading-relaxed">
+                  <p className="text-xs text-gray-600 leading-relaxed">
                     {study.problem}
                   </p>
                 </div>
 
-                {/* Solution Developed */}
-                <div className="bg-white p-6 rounded-xl border border-gray-200">
+                {/* Built Solution */}
+                <div className="bg-white p-6 rounded-xl border border-gray-200 hover:border-gray-300 transition-colors">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-black bg-gray-100 px-2 py-0.5 rounded inline-block mb-3">
-                    Solution Engineered
+                    Engineered Solution
                   </span>
-                  <p className="text-xs text-gray-700 leading-relaxed">
+                  <p className="text-xs text-gray-600 leading-relaxed">
                     {study.solution}
                   </p>
                 </div>
 
                 {/* Actual Outcome */}
-                <div className="bg-black text-white p-6 rounded-xl border border-black flex flex-col justify-between">
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-white bg-gray-800 px-2 py-0.5 rounded inline-block mb-3">
-                      Measurable Operational Outcome
-                    </span>
-                    <p className="text-xs text-gray-200 leading-relaxed font-medium">
-                      {study.actualOutcome}
-                    </p>
-                  </div>
-                  <div className="mt-4 pt-3 border-t border-gray-800 flex items-center gap-1.5 text-[11px] text-gray-400 font-semibold">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-white" />
-                    <span>Verified Production Deployment</span>
-                  </div>
+                <div className="bg-black text-white p-6 rounded-xl border border-black shadow-sm">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-white bg-gray-900 border border-gray-700 px-2 py-0.5 rounded inline-flex items-center gap-1 mb-3">
+                    <CheckCircle2 className="w-3 h-3 text-white" />
+                    Measured Outcome
+                  </span>
+                  <p className="text-xs text-gray-200 leading-relaxed font-medium">
+                    {study.actualOutcome}
+                  </p>
                 </div>
 
               </div>
 
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="mt-14 p-8 rounded-2xl bg-black text-white flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div>
-            <h4 className="text-xl font-bold mb-1">
-              Have a similar operational challenge in your business?
-            </h4>
-            <p className="text-xs text-gray-400">
-              We review your workflow requirements under strict commercial confidentiality and map an actionable system architecture.
-            </p>
+        {/* Section Footer */}
+        <motion.div 
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-16 text-center"
+        >
+          <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-4 px-6 rounded-2xl bg-[#FAFAFA] border border-gray-200">
+            <span className="text-xs text-gray-600">
+              Need a tailored system engineered for your operational bottlenecks?
+            </span>
+            <Link
+              href="#contact"
+              className="text-xs font-bold uppercase tracking-wider text-black hover:text-gray-600 flex items-center gap-1.5 transition-colors group"
+            >
+              <span>Request Technical Feasibility Review</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
-          <Link
-            href="#contact"
-            className="shrink-0 px-6 py-3.5 bg-white text-black text-xs font-bold uppercase tracking-wider rounded-full hover:bg-gray-100 transition-colors flex items-center gap-2"
-          >
-            Review Your Requirements <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
+        </motion.div>
 
       </div>
     </section>

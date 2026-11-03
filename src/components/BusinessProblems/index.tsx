@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, AlertTriangle, ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const problems = [
   {
@@ -60,7 +61,13 @@ export default function BusinessProblems() {
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 md:mb-20">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-3xl mb-16 md:mb-20"
+        >
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
             <span>Root Operational Causes</span>
           </div>
@@ -70,18 +77,23 @@ export default function BusinessProblems() {
           <p className="text-base md:text-lg text-gray-600 leading-relaxed">
             Most technology failures occur because companies buy disconnected tools that treat symptoms rather than solving the operational root cause. Here are the core bottlenecks we resolve:
           </p>
-        </div>
+        </motion.div>
 
         {/* Problems & Solutions Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {problems.map((item) => (
-            <div
+          {problems.map((item, idx) => (
+            <motion.div
               key={item.num}
-              className="bg-white rounded-2xl border border-gray-200/90 p-7 flex flex-col justify-between hover:border-black transition-all duration-200 shadow-[0_1px_3px_rgba(0,0,0,0.02)] group"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -4 }}
+              className="bg-white rounded-2xl border border-gray-200/90 p-7 flex flex-col justify-between hover:border-black hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300 group"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-mono font-bold text-gray-400">
+                  <span className="text-xs font-mono font-bold text-gray-400 group-hover:text-black transition-colors">
                     {item.num}
                   </span>
                   <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-gray-100 text-[10px] font-bold uppercase tracking-wider text-gray-600">
@@ -90,7 +102,7 @@ export default function BusinessProblems() {
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-black mb-3 group-hover:text-black">
+                <h3 className="text-xl font-bold text-black mb-3">
                   {item.title}
                 </h3>
 
@@ -98,52 +110,37 @@ export default function BusinessProblems() {
                   {item.bottleneck}
                 </p>
 
-                {/* Solution Arrow Divider */}
-                <div className="pt-4 border-t border-gray-100">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-black block mb-1">
-                    GAUREX Engineered Fix:
-                  </span>
-                  <div className="font-semibold text-sm text-black mb-1.5 flex items-center justify-between">
-                    <span>{item.solution}</span>
+                {/* Solution Box */}
+                <div className="p-4 rounded-xl bg-gray-50 border border-gray-100 group-hover:bg-gray-100/60 group-hover:border-gray-200 transition-colors">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-black flex items-center justify-between mb-1">
+                    <span>Engineered Solution</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-black" />
                   </div>
-                  <p className="text-xs text-gray-500 leading-relaxed">
+                  <div className="text-sm font-bold text-black mb-1">
+                    {item.solution}
+                  </div>
+                  <div className="text-xs text-gray-500 leading-relaxed">
                     {item.solutionDesc}
-                  </p>
+                  </div>
                 </div>
               </div>
 
-              <div className="pt-5 mt-5 border-t border-gray-100">
+              {/* Action Link */}
+              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
                 <Link
                   href={item.href}
-                  className="text-xs font-bold uppercase tracking-wider text-black hover:text-gray-600 inline-flex items-center gap-1.5 transition-colors"
+                  className="text-xs font-bold uppercase tracking-wider text-black flex items-center gap-1.5 hover:text-gray-600 transition-colors"
                 >
-                  View Solution Blueprint <ArrowUpRight className="w-3.5 h-3.5" />
+                  <span>Explore Architecture</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </Link>
+                <ArrowUpRight className="w-3.5 h-3.5 text-gray-300 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-
-        {/* Bottom Banner */}
-        <div className="mt-12 p-8 rounded-2xl bg-white border border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div>
-            <h4 className="text-lg font-bold text-black mb-1">
-              Unsure which bottleneck is costing your business the most?
-            </h4>
-            <p className="text-xs text-gray-500">
-              We conduct a comprehensive 30-minute operational audit to identify your exact operational leakage points.
-            </p>
-          </div>
-          <Link
-            href="#contact"
-            className="shrink-0 px-6 py-3 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-full hover:bg-gray-800 transition-colors flex items-center gap-2"
-          >
-            Request Operational Audit <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
         </div>
 
       </div>
     </section>
   );
 }
-

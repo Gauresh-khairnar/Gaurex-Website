@@ -10,6 +10,7 @@ export default function Footer() {
     { label: "Industries", href: "/#industries" },
     { label: "How We Work", href: "/#how-it-works" },
     { label: "Case Studies", href: "/#case-studies" },
+    { label: "Articles & Insights", href: "/blog" },
     { label: "About GAUREX", href: "/about" },
     { label: "Contact Engineering", href: "/#contact" },
   ];

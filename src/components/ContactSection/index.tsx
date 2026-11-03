@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ArrowRight, CheckCircle2, AlertCircle, MessageSquare, Mail, Calendar, Loader2, Lock } from "lucide-react";
+import { motion } from "framer-motion";
 import { submitContactInquiry, ContactFormData } from "@/app/actions/contact";
 
 interface ContactSectionProps {
@@ -72,7 +73,13 @@ export default function ContactSection({ onOpenBooking }: ContactSectionProps) {
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header */}
-        <div className="max-w-3xl mb-16 md:mb-20">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-3xl mb-16 md:mb-20"
+        >
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
             <span>Direct Commercial Engagement</span>
           </div>
@@ -82,12 +89,18 @@ export default function ContactSection({ onOpenBooking }: ContactSectionProps) {
           <p className="text-base md:text-lg text-gray-600 leading-relaxed">
             Every software engagement begins with a clear operational understanding. Complete the formal technical enquiry below, or select an alternative direct communication channel.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           
           {/* Main B2B Form (8 Columns) */}
-          <div className="lg:col-span-8 bg-[#FAFAFA] border border-gray-200 rounded-3xl p-8 md:p-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-8 bg-[#FAFAFA] border border-gray-200 rounded-3xl p-8 md:p-12 hover:border-gray-300 transition-colors"
+          >
             
             {successResult ? (
               <div className="text-center py-12">
@@ -326,13 +339,19 @@ export default function ContactSection({ onOpenBooking }: ContactSectionProps) {
               </form>
             )}
 
-          </div>
+          </motion.div>
 
           {/* Alternative Contact & Channels (4 Columns) */}
-          <div className="lg:col-span-4 flex flex-col justify-between gap-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-4 flex flex-col justify-between gap-6"
+          >
             
             {/* Direct Discovery Call Box */}
-            <div className="p-8 rounded-3xl bg-black text-white flex flex-col justify-between">
+            <div className="p-8 rounded-3xl bg-black text-white flex flex-col justify-between hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)] transition-all">
               <div>
                 <div className="w-10 h-10 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-center mb-6">
                   <Calendar className="w-5 h-5 text-white" />
@@ -405,7 +424,7 @@ export default function ContactSection({ onOpenBooking }: ContactSectionProps) {
               </p>
             </div>
 
-          </div>
+          </motion.div>
 
         </div>
 
