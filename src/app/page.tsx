@@ -10,6 +10,7 @@ import Process from "@/components/Process";
 import CaseStudies from "@/components/CaseStudies";
 import WhyGaurex from "@/components/WhyGaurex";
 import FAQ from "@/components/FAQ";
+import FeaturedArticles from "@/components/FeaturedArticles";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import BookingModal from "@/components/BookingModal";
@@ -53,6 +54,11 @@ export default function Home() {
         {/* Section 7: Why GAUREX */}
         <div id="why-gaurex">
           <WhyGaurex />
+        </div>
+
+        {/* Section 7.5: Featured Engineering Guides & Insights (Sitewide Crawl Authority) */}
+        <div id="articles">
+          <FeaturedArticles />
         </div>
 
         {/* Section 8: FAQ & Answer Engine Optimization */}

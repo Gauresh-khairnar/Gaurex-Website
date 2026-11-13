@@ -150,6 +150,12 @@ export default function CustomSoftwarePage() {
         { name: "ERP & Management Systems", href: "/services/erp-systems", reason: "Integrate custom software into comprehensive enterprise resource planning." },
         { name: "Business Analytics & Dashboards", href: "/services/business-analytics", reason: "Gain real-time business visibility across your custom software metrics." }
       ]}
+      relatedGuide={{
+        title: "Workflow Automation vs Manual Processes: The True Cost",
+        href: "/blog/workflow-automation-vs-manual-processes",
+        readTime: "6 min read",
+        excerpt: "A detailed ROI and financial breakdown comparing the compounding hidden expense of manual workflows versus custom automated software engineering."
+      }}
     />
   );
 }

@@ -152,6 +152,12 @@ export default function AISolutionsPage() {
         { name: "Custom Software Development", href: "/services/custom-software", reason: "Build scalable cloud microservices and proprietary platforms to power your AI." },
         { name: "Business Analytics & Dashboards", href: "/services/business-analytics", reason: "Track agent ROI, error rates, and operational throughput in real-time." }
       ]}
+      relatedGuide={{
+        title: "AI Business Automation: Practical Use Cases for Modern Companies",
+        href: "/blog/ai-business-automation-use-cases",
+        readTime: "6 min read",
+        excerpt: "Explore real-world applications of autonomous AI agents, document parsing pipelines, and private RAG systems that eliminate operational drag."
+      }}
     />
   );
 }

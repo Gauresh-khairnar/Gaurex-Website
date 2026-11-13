@@ -150,6 +150,12 @@ export default function BusinessAutomationPage() {
         { name: "AI Solutions & Agents", href: "/services/ai-solutions", reason: "Add cognitive unstructured document parsing and autonomous reasoning to your workflows." },
         { name: "Business Analytics & Dashboards", href: "/services/business-analytics", reason: "Visualize automation throughput, cycle time reductions, and system health." }
       ]}
+      relatedGuide={{
+        title: "How to Automate Business Processes: A Practical Step-by-Step Guide",
+        href: "/blog/how-to-automate-business-processes",
+        readTime: "7 min read",
+        excerpt: "Learn how to identify operational bottlenecks, select the right automation architecture, and build deterministic automated business workflows that scale."
+      }}
     />
   );
 }

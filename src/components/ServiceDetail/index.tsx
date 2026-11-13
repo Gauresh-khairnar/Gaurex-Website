@@ -34,6 +34,13 @@ export interface WorkflowDemonstration {
   };
 }
 
+export interface RelatedGuide {
+  title: string;
+  href: string;
+  excerpt: string;
+  readTime: string;
+}
+
 export interface ServiceDetailProps {
   slug: string;
   badge: string;
@@ -58,6 +65,7 @@ export interface ServiceDetailProps {
   deliverables: string[];
   techStack: string[];
   relatedServices: { name: string; href: string; reason: string }[];
+  relatedGuide?: RelatedGuide;
 }
 
 export default function ServiceDetail({
@@ -81,6 +89,7 @@ export default function ServiceDetail({
   deliverables,
   techStack,
   relatedServices,
+  relatedGuide,
 }: ServiceDetailProps) {
   const [bookingOpen, setBookingOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -569,7 +578,34 @@ export default function ServiceDetail({
             </div>
           </div>
 
-          {/* Section 10: Internal Cross-Linking Architecture */}
+          {/* Section 10: Related Engineering Blueprint (Topical Authority Linking) */}
+          {relatedGuide && (
+            <div className="mb-10 p-6 sm:p-8 rounded-2xl bg-[#FAFAFA] border border-gray-200 hover:border-black/40 transition-all">
+              <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-black mb-3">
+                <span className="w-2 h-2 rounded-full bg-black" />
+                <span>Recommended Technical Guide</span>
+                <span className="text-gray-400">&bull;</span>
+                <span className="text-gray-500 font-normal">{relatedGuide.readTime}</span>
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-black mb-2">
+                <Link href={relatedGuide.href} className="hover:underline">
+                  {relatedGuide.title}
+                </Link>
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed mb-5 max-w-2xl">
+                {relatedGuide.excerpt}
+              </p>
+              <Link
+                href={relatedGuide.href}
+                className="inline-flex items-center gap-2 text-xs font-bold text-black group hover:underline"
+              >
+                <span>Read Full Technical Blueprint</span>
+                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+          )}
+
+          {/* Section 10.5: Internal Cross-Linking Architecture */}
           <div className="mb-16 p-8 rounded-2xl bg-[#FAFAFA] border border-gray-200">
             <span className="text-[11px] font-bold uppercase tracking-widest text-gray-400 block mb-2">
               Complementary Architectures

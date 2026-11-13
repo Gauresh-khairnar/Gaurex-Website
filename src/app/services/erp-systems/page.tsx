@@ -150,6 +150,12 @@ export default function ERPSystemsPage() {
         { name: "Business Analytics & Dashboards", href: "/services/business-analytics", reason: "Embed real-time financial, inventory, and operational KPIs directly into your ERP." },
         { name: "Custom Software Development", href: "/services/custom-software", reason: "Develop custom client-facing applications connected to your ERP core." }
       ]}
+      relatedGuide={{
+        title: "10 Business Processes Every Growing Company Should Automate",
+        href: "/blog/10-business-processes-to-automate",
+        readTime: "8 min read",
+        excerpt: "Discover the top 10 high-ROI business processes to automate—from invoice reconciliation and lead triage to multi-system inventory sync."
+      }}
     />
   );
 }

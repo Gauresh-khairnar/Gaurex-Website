@@ -149,6 +149,12 @@ export default function WebApplicationsPage() {
         { name: "AI Solutions & Agents", href: "/services/ai-solutions", reason: "Embed intelligent AI agents directly into your customer onboarding and support flows." },
         { name: "Business Analytics & Dashboards", href: "/services/business-analytics", reason: "Track visitor journeys, conversion funnels, and customer retention metrics." }
       ]}
+      relatedGuide={{
+        title: "How to Choose a Business Automation Company in 2026",
+        href: "/blog/how-to-choose-a-business-automation-company",
+        readTime: "7 min read",
+        excerpt: "An executive vetting framework to evaluate automation partners, identify red flags, and select an engineering partner that delivers real ROI."
+      }}
     />
   );
 }

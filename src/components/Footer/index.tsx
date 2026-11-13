@@ -24,12 +24,20 @@ export default function Footer() {
     { label: "Dashboards & Analytics", href: "/services/business-analytics" },
   ];
 
+  const guides = [
+    { label: "How to Automate Processes", href: "/blog/how-to-automate-business-processes" },
+    { label: "10 Processes to Automate", href: "/blog/10-business-processes-to-automate" },
+    { label: "Practical AI Use Cases", href: "/blog/ai-business-automation-use-cases" },
+    { label: "Automation vs Manual Cost", href: "/blog/workflow-automation-vs-manual-processes" },
+    { label: "Vetting Automation Agencies", href: "/blog/how-to-choose-a-business-automation-company" },
+  ];
+
   return (
     <footer className="bg-white border-t border-gray-200 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* Top 4-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-gray-200">
+        {/* Top 6-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 pb-16 border-b border-gray-200">
           
           {/* Col 1 & 2: Brand & Positioning */}
           <div className="lg:col-span-2">
@@ -68,7 +76,7 @@ export default function Footer() {
           {/* Col 4: Services */}
           <div>
             <span className="text-[11px] font-bold uppercase tracking-widest text-black block mb-4">
-              Services & Architecture
+              Services & Systems
             </span>
             <ul className="space-y-2.5">
               {services.map((item) => (
@@ -84,7 +92,26 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 5: Contact & Channels */}
+          {/* Col 5: Technical Guides & Blueprints */}
+          <div>
+            <span className="text-[11px] font-bold uppercase tracking-widest text-black block mb-4">
+              Engineering Guides
+            </span>
+            <ul className="space-y-2.5">
+              {guides.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="text-xs text-gray-600 hover:text-black transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 6: Contact & Channels */}
           <div>
             <span className="text-[11px] font-bold uppercase tracking-widest text-black block mb-4">
               Direct Contact

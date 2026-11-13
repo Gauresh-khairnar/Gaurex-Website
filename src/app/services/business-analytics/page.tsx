@@ -149,6 +149,12 @@ export default function BusinessAnalyticsPage() {
         { name: "Business Process Automation", href: "/services/business-automation", reason: "Trigger automated operational actions directly when telemetry thresholds are breached." },
         { name: "AI Solutions & Agents", href: "/services/ai-solutions", reason: "Use AI agents to synthesize natural-language summaries of weekly dashboard trends." }
       ]}
+      relatedGuide={{
+        title: "How to Automate Business Processes: A Practical Step-by-Step Guide",
+        href: "/blog/how-to-automate-business-processes",
+        readTime: "7 min read",
+        excerpt: "Learn how to connect fragmented operational databases into automated reporting pipelines that feed executive telemetry dashboards."
+      }}
     />
   );
 }
