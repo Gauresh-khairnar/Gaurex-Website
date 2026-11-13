@@ -19,14 +19,19 @@ export const metadata: Metadata = {
   keywords: [
     "Business automation company",
     "Business process automation company",
-    "Business process automation services",
-    "AI business automation services",
-    "Workflow automation consulting",
-    "Custom business automation solutions",
-    "AI workflow automation agency",
+    "AI development company",
+    "AI agent development services",
+    "AI automation company",
+    "Custom software development company",
     "ERP automation solutions",
+    "Custom ERP development services",
+    "Dashboard development services",
+    "Power BI consulting services",
+    "Web application development company",
+    "Workflow automation consulting",
     "Business operations automation",
-    "Automated business workflows",
+    "AI development company Nashik Pune Mumbai",
+    "Business process automation India",
     "How to automate business processes"
   ],
   authors: [{ name: "Gauresh Khairnar", url: "https://gaurex.vercel.app" }],
@@ -120,11 +125,57 @@ export default function RootLayout({
           "addressCountry": "IN"
         },
         "areaServed": [
+          { "@type": "City", "name": "Nashik" },
+          { "@type": "City", "name": "Pune" },
+          { "@type": "City", "name": "Mumbai" },
+          { "@type": "AdministrativeArea", "name": "Maharashtra" },
           { "@type": "Country", "name": "India" },
           { "@type": "Country", "name": "United States" },
           { "@type": "Country", "name": "United Kingdom" },
           { "@type": "Country", "name": "United Arab Emirates" }
         ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "GAUREX Core Engineering Services",
+          "itemListElement": [
+            {
+              "@type": "Service",
+              "name": "AI Development & Autonomous Agents",
+              "description": "Custom LLM integrations, autonomous AI agents, enterprise private RAG pipelines, and conversational AI triage systems.",
+              "url": "https://gaurex.vercel.app/services/ai-solutions"
+            },
+            {
+              "@type": "Service",
+              "name": "Business Process Automation Services",
+              "description": "Zero-touch workflow automation, multi-app webhook synchronization, operational bottlenecks elimination, and API integration.",
+              "url": "https://gaurex.vercel.app/services/business-automation"
+            },
+            {
+              "@type": "Service",
+              "name": "Custom Software Development",
+              "description": "Bespoke full-stack business software, enterprise SaaS applications, internal operations tools, and database engineering.",
+              "url": "https://gaurex.vercel.app/services/custom-software"
+            },
+            {
+              "@type": "Service",
+              "name": "Custom ERP Systems & Business Management Software",
+              "description": "Unified ERP architectures connecting inventory management, job dispatch, automated billing, and CRM pipelines.",
+              "url": "https://gaurex.vercel.app/services/erp-systems"
+            },
+            {
+              "@type": "Service",
+              "name": "Business Dashboards, Power BI & Data Analytics",
+              "description": "Executive business intelligence dashboards, real-time telemetry, Power BI consulting, and multi-source data warehousing.",
+              "url": "https://gaurex.vercel.app/services/business-analytics"
+            },
+            {
+              "@type": "Service",
+              "name": "Modern Web Applications & Client Portals",
+              "description": "Sub-second Next.js web applications, client self-service vaults, high-conversion B2B platforms, and digital products.",
+              "url": "https://gaurex.vercel.app/services/web-applications"
+            }
+          ]
+        },
         "contactPoint": [
           {
             "@type": "ContactPoint",

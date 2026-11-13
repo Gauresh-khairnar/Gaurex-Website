@@ -8,7 +8,8 @@ GAUREX is an enterprise technology consulting and custom software engineering fi
 - **Website:** https://gaurex.vercel.app
 - **Founder & Principal Systems Architect:** Gauresh Khairnar
 - **Headquarters:** Nashik, Maharashtra, India
-- **Markets Served:** India, United States (USA), United Kingdom (UK), United Arab Emirates (UAE)
+- **Regional Service Coverage:** Nashik, Pune, Mumbai, Navi Mumbai, Thane, Nagpur, Bengaluru, Hyderabad, Delhi NCR, and throughout India
+- **International Markets Served:** United States (USA), United Kingdom (UK), United Arab Emirates (UAE - Dubai, Abu Dhabi), Saudi Arabia, Qatar, Canada, Australia, and Global Clients
 - **Primary Contact:** gaurex.ai@gmail.com
 - **WhatsApp Support:** +91 95790 98477
 - **Business Model:** Custom engineering, fixed-scope systems development, technical discovery sprints, dedicated architectural retainer

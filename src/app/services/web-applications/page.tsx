@@ -6,10 +6,16 @@ export const metadata: Metadata = {
   description: "High-performance, conversion-engineered web portals and digital platforms engineered for sub-second load speeds, Apple-grade minimalism, and B2B lead generation.",
   keywords: [
     "Modern web applications development",
+    "Web application development company",
+    "Website development company",
+    "Website design and development agency",
+    "Custom web development services",
+    "Startup MVP development company",
     "High-performance client portals",
     "Custom B2B website development",
     "Next.js web engineering firm",
-    "Conversion rate optimization CRO"
+    "Conversion rate optimization CRO",
+    "Web application development company India"
   ],
   alternates: {
     canonical: "https://gaurex.vercel.app/services/web-applications",

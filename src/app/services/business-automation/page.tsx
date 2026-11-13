@@ -6,10 +6,15 @@ export const metadata: Metadata = {
   description: "Automate repetitive business processes with GAUREX. Build smarter workflows, connect business systems and improve operational efficiency.",
   keywords: [
     "Business process automation services",
-    "Business operations automation",
+    "Business process automation company",
+    "Business automation services",
+    "Workflow automation consulting",
+    "Automation consulting company",
     "Custom business automation solutions",
     "Automated business workflows",
-    "Workflow automation consulting"
+    "Business operations automation",
+    "Business automation company India",
+    "Business process automation Pune Mumbai"
   ],
   alternates: {
     canonical: "https://gaurex.vercel.app/services/business-automation",

@@ -6,10 +6,15 @@ export const metadata: Metadata = {
   description: "Simplify business management with custom ERP systems that connect workflows, data and operational processes.",
   keywords: [
     "ERP automation solutions",
-    "Business system automation",
+    "ERP software development company",
+    "Custom ERP development services",
+    "Business management software development",
     "Custom ERP systems for SMEs",
-    "Business management software",
-    "Business operations automation"
+    "Inventory management software development",
+    "Billing software development company",
+    "Business system automation",
+    "Business operations automation",
+    "Custom ERP solutions India"
   ],
   alternates: {
     canonical: "https://gaurex.vercel.app/services/erp-systems",

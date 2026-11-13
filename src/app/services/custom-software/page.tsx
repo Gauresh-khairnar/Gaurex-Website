@@ -6,8 +6,13 @@ export const metadata: Metadata = {
   description: "Get custom workflow automation and software solutions designed around your business processes, systems and operational requirements.",
   keywords: [
     "Workflow automation consulting",
-    "Automated business workflows",
     "Custom software development company",
+    "Enterprise software development services",
+    "SaaS development company",
+    "Software consulting company",
+    "Internal business software development",
+    "Automated business workflows",
+    "Custom software development company India",
     "Custom business automation solutions",
     "Full-stack software engineering firm"
   ],

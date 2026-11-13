@@ -6,10 +6,17 @@ export const metadata: Metadata = {
   description: "Explore AI-powered business automation solutions from GAUREX. Simplify workflows, process information and build smarter business systems.",
   keywords: [
     "AI business automation services",
-    "AI workflow automation agency",
+    "AI development company",
+    "AI agent development services",
+    "AI automation company",
+    "AI workflow automation services",
     "Autonomous AI agents development",
-    "AI solutions company",
-    "Business process automation services"
+    "RAG application development services",
+    "AI chatbot development company",
+    "Machine learning development company",
+    "Generative AI development company",
+    "AI development company India",
+    "AI solutions company"
   ],
   alternates: {
     canonical: "https://gaurex.vercel.app/services/ai-solutions",

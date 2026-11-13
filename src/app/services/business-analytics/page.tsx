@@ -6,10 +6,15 @@ export const metadata: Metadata = {
   description: "Improve business visibility with analytics dashboards, reporting systems and connected operational data from GAUREX.",
   keywords: [
     "Business operations automation",
-    "Business process optimization",
-    "Business dashboards and analytics",
+    "Dashboard development services",
+    "Power BI consulting services",
+    "Data analytics company",
+    "Business intelligence services",
+    "Business operations & analytics solutions",
     "Executive telemetry systems",
-    "Connected operational data"
+    "Business process optimization",
+    "Connected operational data",
+    "Data analytics company India"
   ],
   alternates: {
     canonical: "https://gaurex.vercel.app/services/business-analytics",
